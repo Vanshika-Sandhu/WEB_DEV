@@ -1,0 +1,25 @@
+{
+  "name": "pepcoding_web_dev",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Vanshika-Sandhu/Dev.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Vanshika-Sandhu/Dev/issues"
+  },
+  "homepage": "https://github.com/Vanshika-Sandhu/Dev#readme",
+  "dependencies": {
+    "cheerio": "^1.0.0-rc.5",
+    "puppeteer": "^5.5.0",
+    "request": "^2.88.2"
+  }
+}
