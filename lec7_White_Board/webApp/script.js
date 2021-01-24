@@ -9,7 +9,11 @@ canvas.width = window.innerWidth ;
 window.addEventListener("resize" , function(){
     canvas.height = window.innerHeight - canvasTop ;
     canvas.width = window.innerWidth ;
+    redrawLines();
 })
+
+ctx.lineCap = 'round' 
+ctx.lineJoin ='round'
 
 let db =[];
 let redoDB =[];
@@ -25,7 +29,9 @@ canvas.addEventListener("mousedown" , function(e){
     let pointObject = {
         id : "md",
         x,
-        y
+        y,
+        lineWidth: ctx.lineWidth,
+        strokeStyle: ctx.strokeStyle
     }
     line.push(pointObject);
 })
