@@ -1,19 +1,7 @@
-/*
-<div class="sticky">
-<div class="sticky-nav">
-    <div class="minimize"></div>
-    <div class="close"></div>
-</div>
-<div class="sticky-content">
-    <textarea id="sticky-text"></textarea>
-</div>
-</div>
-*/
-
-let stickyIcon = document.querySelector("#sticky");
-
-stickyIcon.addEventListener("click" , function(){
-
+function createSticky(elem){
+    //<img src ="">
+    //or
+    // <textarea id = "sticky-text"></textarea>
     let sticky = document.createElement("div");
     sticky.classList.add("sticky");
     //<<div class="sticky"></div>
@@ -34,15 +22,7 @@ stickyIcon.addEventListener("click" , function(){
     stickyContent.classList.add("sticky-content");
     //<div class="sticky-content"></div>
 
-    let stickyText = document.createElement("textarea");
-    //<textarea></textarea>
-    stickyText.setAttribute("id" , "sticky-text");
-    //<textarea id="sticky-text"></textarea>
-
-    stickyContent.append(stickyText);
-    //<div class="sticky-content">
-    //<textarea id="sticky-text"></textarea>
-    //</div>
+    stickyContent.append(elem);
 
     stickyNav.append(minimize);
     stickyNav.append(close);
@@ -127,5 +107,4 @@ stickyIcon.addEventListener("click" , function(){
     stickyNav.addEventListener("mouseup" , function(e){
         isStickyHold = false ;
     })
-
-})
+}

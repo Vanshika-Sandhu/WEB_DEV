@@ -9,11 +9,13 @@ canvas.width = window.innerWidth ;
 window.addEventListener("resize" , function(){
     canvas.height = window.innerHeight - canvasTop ;
     canvas.width = window.innerWidth ;
+    ctx.lineCap = 'round' ;
+    ctx.lineJoin ='round' ;
     redrawLines();
 })
 
-ctx.lineCap = 'round' 
-ctx.lineJoin ='round'
+ctx.lineCap = 'round' ;
+ctx.lineJoin ='round' ;
 
 let db =[];
 let redoDB =[];
@@ -32,9 +34,10 @@ canvas.addEventListener("mousedown" , function(e){
         y,
         lineWidth: ctx.lineWidth,
         strokeStyle: ctx.strokeStyle
-    }
+    };
     line.push(pointObject);
-})
+    socket.emit("md" , pointObject) ;
+});
 
 canvas.addEventListener("mousemove" , function(e){
     if(isMouseDown){
@@ -49,14 +52,15 @@ canvas.addEventListener("mousemove" , function(e){
             id : "mm",
             x,
             y
-        }
+        };
         line.push(pointObject);
+        socket.emit("mm" , pointObject) ;
     }
-})
+});
 
 canvas.addEventListener("mouseup" , function(e){
     isMouseDown = false ;
     db.push(line);
     line = [];
-    console.log(db);
-})
+    socket.emit("mu");
+});

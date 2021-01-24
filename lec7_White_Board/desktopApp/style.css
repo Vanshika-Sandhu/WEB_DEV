@@ -147,3 +147,9 @@
     border: 1px solid lavenderblush;
     border-bottom-left-radius: 15px;
 }
+
+.sticky-image{
+    height: 100%;
+    width: 100%;
+    object-fit: cover;
+}
