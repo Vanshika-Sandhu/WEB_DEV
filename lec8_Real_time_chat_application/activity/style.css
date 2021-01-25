@@ -1,0 +1,196 @@
+*{
+  box-sizing: border-box;
+  margin-top: 0px;
+  padding: 0px;
+  /* display: flex; */
+}
+
+.content{
+  background: #FFBCDF;
+  height: 100vh;
+  width: 100vw;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.chat-content{
+  height: 80%;
+  width: 60%;
+  display: flex;
+}
+
+.chat-profile{
+  height: 100%;
+  background: #6F6DD6;
+  width: 30%;
+  border-top-left-radius: 10px;
+  border-bottom-left-radius: 10px;
+}
+
+.chat-box{
+  height: 100%;
+  width: 70%;
+  background: #ebeef2;
+  border-bottom-right-radius: 10px;
+  border-top-right-radius: 10px;
+}
+
+.group-chat-name{
+
+height: 15%;
+
+background: white;
+
+border-top-right-radius: 10px;
+
+display: flex;
+
+justify-content: center;
+
+align-items: center;
+}
+
+.chat-area{
+
+height: 75%;
+
+overflow-y: auto;
+}
+
+.chat{
+
+margin: 5px;
+
+padding: 8px;
+
+border-radius: 10px;
+
+display: flex;
+
+align-items: center;
+
+max-width: 300px;
+}
+
+.chat-input{
+
+height: 10%;
+
+background: white;
+
+border-bottom-right-radius: 10px;
+
+display: flex;
+
+justify-content: space-evenly;
+
+align-items: center;
+}
+
+.emoji-box{
+
+height: 30px;
+
+/* background: yellow; */
+
+width: 30px;
+
+border-radius: 50%;
+
+/* margin-right: 10px; */
+
+display: flex;
+
+align-items: center;
+
+justify-content: center;
+}
+
+#input-text{
+
+height: 60%;
+
+width: 66%;
+
+background: #ebeef2;
+
+border: none;
+
+outline: none;
+
+border-radius: 10px;
+
+color: slategrey;
+
+padding: 5px;
+
+}
+
+.send-chat-button{
+
+height: 30px;
+
+width: 30px;
+
+background: mediumpurple;
+
+border-radius: 50%;
+
+display: flex;
+
+align-items: center;
+
+justify-content: center;
+}
+
+.left{
+
+background: white;
+float: left ;
+clear: both;
+}
+
+.right{
+  
+background: #6F6DD6;
+  
+color: white;
+
+float :right ;
+
+clear: both;
+}
+
+.fas{
+  color: white;
+  font-size: 24px;
+}
+
+.far{
+  color: lightslategrey;
+  font-size: 26px;
+}
+
+.join{
+  background: slategrey;
+    float: left;
+    clear: both;
+    color: white;
+    width: 97%;
+    max-width: none;
+    /* text-align: center; */
+    justify-content: center;
+}
+
+
+.leave{
+  background: lightgrey;
+  float: left;
+  clear: both;
+  color: lightslategrey;
+  width: 97.5%;
+  max-width: none;
+  /* text-align: center; */
+  justify-content: center;
+}
