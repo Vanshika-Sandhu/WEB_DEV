@@ -18,12 +18,6 @@
                     <h1 class="group-name">GROUP CHAT</h1>
                 </div>
                 <div class="chat-area">
-                    <div class="chat left">Hii</div>
-                    <div class="chat right">Hello</div>
-                    <div class="chat join">User joined the chat</div>
-                    <div class="chat left">How have you been?</div>
-                    <div class="chat right">I am doing really well. Wbu?</div>
-                    <div class="chat leave">User left the chat</div>
                 </div>
                 <div class="chat-input">
                     <div class="emoji-box">
@@ -39,7 +33,13 @@
 
         
     </div>
-    
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/3.1.0/socket.io.js" integrity="sha512-+l9L4lMTFNy3dEglQpprf7jQBhQsQ3/WvOnjaN/+/L4i0jOstgScV0q2TjfvRF4V+ZePMDuZYIQtg5T4MKr+MQ==" crossorigin="anonymous"></script>
+    <script>
+        const socket = io.connect("http://localhost:3000");
+        console.log(socket) ;
+    </script>
     <script src="./script.js"></script>
+    <script src="./socket.js"></script>
 </body>
 </html>
