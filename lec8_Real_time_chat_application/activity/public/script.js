@@ -16,13 +16,28 @@ chatMessageInput.addEventListener("keyup" , function(e){
 sendChat.addEventListener("click" , function(){
     let chat = chatMessageInput.value;
     if(chat){
-        let chatDiv = document.createElement("div");
-        chatDiv.classList.add("chat");
-        chatDiv.classList.add("right");
-        chatDiv.innerHTML = chat ;
-        chatArea.append(chatDiv);
-        chatMessageInput.value = "";
-        chatArea.scrollTop = chatArea.scrollHeight ;
+        
+    let chatDiv = document.createElement("div");
+    chatDiv.classList.add("chat-info");
+    chatDiv.classList.add("right");
+    //<div class="chat-info right"></div>
+
+    let usernameDiv = document.createElement("div");
+    usernameDiv.classList.add("username");
+    usernameDiv.innerHTML= "You : " ;
+    //<div class="username">You : </div>
+
+    let chatMessageDiv = document.createElement("div");
+    chatMessageDiv.classList.add("chat");
+    chatMessageDiv.innerHTML= chat ;
+    //<div class="chat">message</div>
+
+    chatDiv.append(usernameDiv);
+    chatDiv.append(chatMessageDiv);
+    chatArea.append(chatDiv);
+
+    chatMessageInput.value = "";
+    chatArea.scrollTop = chatArea.scrollHeight ;
 
         socket.emit("send-chat" , chat) ;
     }
