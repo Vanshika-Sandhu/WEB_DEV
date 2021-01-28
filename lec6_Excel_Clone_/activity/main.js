@@ -1,30 +1,22 @@
-//in activity folder
-// npm init -y
-//npm i electron
+const electron  = require("electron");
+const ejse = require("ejs-electron");
+const app = electron.app ;
+const BrowserWindow = electron.BrowserWindow ;
 
-// in package.json
-//"start" : "electron ." 
-
-//electron code
-
-const electron = require("electron");
-
-const app = electron.app;
-const BrowserWindow = electron.BrowserWindow;
-
-function createWindow(){
+function createWindow (){
     const win = new BrowserWindow({
         width: 800,
-        height:600,
-        webPreferences:{
+        height: 600,
+        webPreferences: {
             nodeIntegration:true
         }
-    })
-    win.loadFile('index.html').then(function(){
+    }) ;
+
+    win.loadFile('index.ejs').then(function(){
         win.maximize();
         win.webContents.openDevTools();
-    });
-
+    }) ;
 }
 
 app.whenReady().then(createWindow);
+

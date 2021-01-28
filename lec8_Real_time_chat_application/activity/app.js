@@ -31,7 +31,7 @@ io.on('connection', function(socket){
     })
 
     socket.on("disconnect" , function(){
-        console.log(socket.id + " connected!!");
+        console.log(socket.id + " disconnected!!");
         let disconnectedUser;
         let filteredUsers = usersDB.filter(function(socketObject){
             if( socketObject.id == socket.id ){

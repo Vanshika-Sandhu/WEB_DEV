@@ -1,0 +1,124 @@
+*{
+    box-sizing: border-box;
+    margin: 0px;
+}
+.menu{
+
+height: 40px;
+
+border: 1px solid;
+}
+.menu-options{
+
+height: 60px;
+
+border: 1px solid;
+}
+.address{
+
+height: 40px;
+
+border: 1px solid;
+}
+.content{
+
+height: calc(100vh - 180px);
+
+border: 1px solid;
+
+overflow: auto;
+
+position: relative;
+
+left: -1px;
+
+top: -1px;
+}
+.sheets{
+
+height: 40px;
+
+border: 1px solid;
+}
+
+.row{
+
+display: flex;
+}
+
+.cell{
+    
+border: 1px solid;
+    
+min-height: 25px;
+    
+min-width: 60px;
+    
+display: flex;
+    
+justify-content: center;
+    
+align-items: center;
+}
+
+.cells{position: absolute;left: 30px;top: 25px;}
+
+.top-left-cell{
+
+height: 25px;
+
+width: 30px;
+
+background: lightgrey;
+}
+
+.top-row{
+
+display: flex;
+
+position: absolute;
+
+top: 0px;
+
+left: 30px;
+
+background: lightgreen;
+
+}
+
+.left-column{
+
+position: absolute;
+
+background: lightgreen;
+}
+
+.left-col-cell{
+    
+height: 25px;
+    
+border: 1px solid;
+    
+width: 30px;
+    
+text-align: center;
+}
+
+.top-row-cell{
+    height: 25px;
+    
+    border: 1px solid;
+        
+    min-width: 60px;
+        
+    text-align: center;
+}
+
+#address{
+
+}
+
+#formula{
+
+}
+
