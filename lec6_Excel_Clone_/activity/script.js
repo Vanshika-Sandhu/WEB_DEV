@@ -1,28 +1,117 @@
+const { fchmod } = require("fs");
 const $ = require("jquery");
 
-$(document).ready(function(){
+$(function(){
     //console.log("document is loaded");
     let db;
+    let lsc;
 
     $('.cell').on("click" , function(){
-        console.log("cell clicked");
+        //console.log("cell clicked");
         let rowId =Number($(this).attr("rowid"));
         let colId = Number($(this).attr("colid"));
         let address = String.fromCharCode(colId+65) + (rowId+1) ;
+        let cellObject = db[rowId][colId];
         $('#address').val(address);
+        $("#formula").val(cellObject.formula);
+        //console.log(db); 
     })
 
     $('.cell').on("blur",function(){
-        console.log("cell blurred");
+        lsc = this ;
+        //console.log("cell blurred");
         let rowId = ($(this).attr("rowid"));
         let colId = ($(this).attr("colid"));
         let cellObject = db[rowId][colId];
+
         let value = $(this).text();
         if(value && cellObject.value!=value){
+            if(cellObject.formula){
+                deleteFormula(cellObject);
+                $("#formula").val("");
+            }
             cellObject.value = value ;
-            console.log(db);
+            updateChildren(cellObject);
+            //console.log(db);
         }      
     })
+
+    $("#formula").on("blur" , function(){
+        let formula = $(this).val() ;
+        console.log(formula);
+        let rowId = $(lsc).attr("rowid");
+        let colId = $(lsc).attr("colid");
+        let cellObject = db[rowId][colId];
+        if(formula && cellObject.formula!=formula){
+            if(cellObject.formula){
+                deleteFormula(cellObject);
+            }
+            cellObject.formula=formula;
+            let value = solve(formula , cellObject);
+            //db update
+            cellObject.value = value ;
+            //ui update
+            $(lsc).text(value);
+            //update children
+            updateChildren(cellObject);
+        }
+    })
+
+    function deleteFormula(cellObject){
+        cellObject.formula = "" ;
+        for(let i = 0 ;i<cellObject.parents.length ; i++){
+            let parentName = cellObject.parents[i];
+            let {rowId, colId} = getRowIdColIdFromAddress(parentName);
+            let parentCellObject = db[rowId][colId];
+            let children = parentCellObject.children;
+            let newChildren = children.filter(function(child){
+                return child != cellObject.name ;
+            })
+            parentCellObject.children = newChildren ;
+        }
+        cellObject.parents = [];
+    }
+
+    function updateChildren(cellObject){
+        let children = cellObject.children;
+        for(let i=0 ; i<children.length ; i++){
+            let {rowId , colId} = getRowIdColIdFromAddress(children[i]);
+            let childrenCellObject = db[rowId][colId];
+            let newValue = solve(childrenCellObject.formula) ;
+            //db update
+            childrenCellObject.value = newValue ;
+            //ui update
+            $(`div[rowid=${rowId}][colid=${colId}]`).text(newValue);
+        }
+    }
+
+    function solve(formula , cellObject){
+        let fComps = formula.split(" ");
+        for(let i=0 ; i<fComps.length ; i++){
+            if(fComps[i][0]>="A" && fComps[i][0]<="Z"){
+                let {rowId , colId} = getRowIdColIdFromAddress(fComps[i]);
+                let cellObjectofFComps = db[rowId][colId];
+                if(cellObject){
+                    cellObjectofFComps.children.push(cellObject.name);
+                    cellObject.parents.push(fComps[i]);
+                }
+                formula = formula.replace(fComps[i] , cellObjectofFComps.value);
+            }
+        }
+        let value = eval(formula);
+        return value ;
+    }
+
+    //utility functions
+    function getRowIdColIdFromAddress(address){
+        let rowId = Number(address.substring(1))-1;
+        let colId = address.charCodeAt(0)-65;
+        return {
+            rowId , 
+            colId
+        }
+    }
+
 
     function initBD(){
         db=[];
@@ -32,7 +121,10 @@ $(document).ready(function(){
                 let name = String.fromCharCode(j+65) + (i+1) ;
                 let cellObject = {
                     name:name,
-                    value:""
+                    value:"",
+                    formula:"",
+                    children:[],
+                    parents:[]
                 }
                 row.push(cellObject);
             }
