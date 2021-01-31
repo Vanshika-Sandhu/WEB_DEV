@@ -27,7 +27,7 @@ io.on('connection', function(socket){
                 break;
             }
         }
-        socket.broadcast.emit("join-chat" , username);
+        socket.broadcast.emit("join-chat" , {username, usersDB});
     })
 
     socket.on("disconnect" , function(){
@@ -44,7 +44,7 @@ io.on('connection', function(socket){
         })
         
         usersDB =filteredUsers ;
-        socket.broadcast.emit("leave-chat" , disconnectedUser);
+        socket.broadcast.emit("leave-chat" , {disconnectedUser , usersDB});
     })
 
     socket.on("send-chat" , function(chatMessage){

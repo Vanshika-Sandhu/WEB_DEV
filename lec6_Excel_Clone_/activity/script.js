@@ -5,6 +5,7 @@ $(function(){
     //console.log("document is loaded");
     let db;
     let lsc;
+    let sheetId = 1;
 
     $('.cell').on("click" , function(){
         //console.log("cell clicked");
@@ -16,6 +17,15 @@ $(function(){
         $("#formula").val(cellObject.formula);
         //console.log(db); 
     })
+
+    //sheets logic
+    $(".add-sheet").on("click",function(){
+        //dynamically html add to dom
+        sheetId++;
+        let sheetToBeAdded = `<div class="sheet">Sheet ${sheetId}</div>`;
+        $(".sheets-list").append(sheetToBeAdded);
+    })
+
 
     $('.cell').on("blur",function(){
         lsc = this ;

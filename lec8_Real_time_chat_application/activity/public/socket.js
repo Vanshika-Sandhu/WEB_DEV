@@ -29,16 +29,17 @@ socket.on("add-chat", function(chatObject){
     chatArea.scrollTop = chatArea.scrollHeight ;
 })
 
-socket.on("join-chat" , function(username){
+socket.on("join-chat" , function({username, usersDB}){
     let chatDiv = document.createElement("div");
     chatDiv.classList.add("chat");
     chatDiv.classList.add("join");
     chatDiv.innerHTML = `${username} joined the chat` ;
     chatArea.append(chatDiv);
     chatArea.scrollTop = chatArea.scrollHeight ;
+    ActiveUsersDiv(username , usersDB);
 })
 
-socket.on("leave-chat" , function(username){
+socket.on("leave-chat" , function({username,usersDB}){
     let chatDiv = document.createElement("div");
     chatDiv.classList.add("chat");
     chatDiv.classList.add("leave");
@@ -46,3 +47,29 @@ socket.on("leave-chat" , function(username){
     chatArea.append(chatDiv);
     chatArea.scrollTop = chatArea.scrollHeight ;
 })
+
+function ActiveUsersDiv(username , usersDB){
+  /*
+    <div class="active-username">
+        <div class="name">Abcd</div>
+        <div class="icon">
+            <i class="far fa-user-circle"></i>
+        </div>
+    </div>
+  */
+let activeUsers = document.querySelector(".active-users");
+let activeUserDiv = document.createElement("div");
+activeUserDiv.classList.add("active-username");
+let name =  document.createElement("div");
+name.classList.add("name");
+name.innerHTML = `${username}`;
+let icon =  document.createElement("div");
+icon.classList.add("icon");
+let iTag =  document.createElement("i");
+iTag.classList.add("far fa-user-circle");
+icon.append(iTag);
+activeUserDiv.append(name);
+activeUserDiv.append(icon);
+activeUsers.append(activeUserDiv);
+document.body.append(activeUsers);
+}
