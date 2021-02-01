@@ -1,4 +1,3 @@
-
 socket.on("add-chat", function(chatObject){
 
     /*
@@ -36,7 +35,7 @@ socket.on("join-chat" , function({username, usersDB}){
     chatDiv.innerHTML = `${username} joined the chat` ;
     chatArea.append(chatDiv);
     chatArea.scrollTop = chatArea.scrollHeight ;
-    ActiveUsersDiv(username , usersDB);
+    //ActiveUsersDiv(username , usersDB);
 })
 
 socket.on("leave-chat" , function({username,usersDB}){
@@ -48,6 +47,7 @@ socket.on("leave-chat" , function({username,usersDB}){
     chatArea.scrollTop = chatArea.scrollHeight ;
 })
 
+/*
 function ActiveUsersDiv(username , usersDB){
   /*
     <div class="active-username">
@@ -57,6 +57,7 @@ function ActiveUsersDiv(username , usersDB){
         </div>
     </div>
   */
+ /*
 let activeUsers = document.querySelector(".active-users");
 let activeUserDiv = document.createElement("div");
 activeUserDiv.classList.add("active-username");
@@ -73,3 +74,4 @@ activeUserDiv.append(icon);
 activeUsers.append(activeUserDiv);
 document.body.append(activeUsers);
 }
+*/
