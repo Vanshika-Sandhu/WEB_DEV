@@ -2,8 +2,8 @@ const puppeteer = require("puppeteer");
 const id = "sandhuvanshika01@gmail.com";
 const pw = "mona6975";
 
-let profile = "Pepcoding";
-
+let profile = "sushberiwal";
+let noOfPosts = 97 ;
 (async function(){
     try{
         let browser = await puppeteer.launch({
@@ -43,24 +43,17 @@ let profile = "Pepcoding";
         //pepcoding k first link pr jaana hai //navigation
         // await Promise.all([ tab.waitForNavigation({waitUntil:"networkidle2"}) , tab.click(".drKGC .fuqBx .yCE8d.JvDyy ") ]); // navigation
         //let pepcodingBtn= await tab.$('.yCE8d.JvDyy'); 
-        await tab.waitForSelector('a[href="/pepcoding/"]' , {visible:true});
-        await tab.click('a[href="/pepcoding/"]');
-        console.log("pepcoding ig account appeared");
+        await tab.waitForSelector('.fuqBx a[tabindex="0"]' , {visible:true}); //'.fuqBx .yCE8d.JvDyy'
+        await tab.click('.fuqBx a[tabindex="0"]'); //'.fuqBx .yCE8d.JvDyy'
+        console.log(`${profile} ig account appeared`);
 
         //first post kholni hai //navigation
-        //.v1Nh3.kIKUG._bz0w
-        //let firstRowPosts = await tab.$$(".v1Nh3.kIKUG._bz0w");
-        //let firstPost = firstRowPosts[0];
-        //firstPost = 
-        //let addChallengeBtn = await tab.$('.btn.btn-green.backbone.pull-right');
-        //let addChallengeLink = await tab.evaluate( function(element){   return element.getAttribute("href");  }  , addChallengeBtn);
-        //firstPostLink = `https://www.instagram.com/pepcoding${firstPostLink}`;
-        await tab.waitForSelector('a[href="/p/CJ5tUOirVD_/"]' , {visible:true});
-        await tab.click('a[href="/p/CJ5tUOirVD_/"]');
+        await tab.waitForSelector('.v1Nh3.kIKUG._bz0w' , {visible:true}); //'.v1Nh3.kIKUG._bz0w'
+        await tab.click('.v1Nh3.kIKUG._bz0w'); //'.v1Nh3.kIKUG._bz0w'
         console.log("First post appeared");
 
         //like krna hai and next button pr press krna hai for all the post //navigation
-        for(let i = 1; i < 472 ; i++){
+        for(let i = 1; i < noOfPosts ; i++){
             //like for one post
             await tab.waitForSelector('.fr66n .QBdPU' , {visible:true});
             await tab.click('.fr66n .QBdPU');
@@ -70,9 +63,6 @@ let profile = "Pepcoding";
         console.log("all posts likes");
 
         //close
-
-
-
 
     }
     catch(error){
