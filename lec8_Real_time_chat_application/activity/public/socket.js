@@ -12,7 +12,7 @@ socket.on("add-chat", function(chatObject){
     //<div class="chat-info left"></div>
 
     let usernameDiv = document.createElement("div");
-    usernameDiv.classList.add("username");
+    usernameDiv.classList.add("sender-name");
     usernameDiv.innerHTML=`${chatObject.name} : ` ;
     //<div class="username">name</div>
 
@@ -26,7 +26,7 @@ socket.on("add-chat", function(chatObject){
     chatArea.append(chatDiv);
 
     chatArea.scrollTop = chatArea.scrollHeight ;
-})
+});
 
 socket.on("join-chat" , function({username, usersDB}){
     let chatDiv = document.createElement("div");
@@ -36,7 +36,7 @@ socket.on("join-chat" , function({username, usersDB}){
     chatArea.append(chatDiv);
     chatArea.scrollTop = chatArea.scrollHeight ;
     //ActiveUsersDiv(username , usersDB);
-})
+});
 
 socket.on("leave-chat" , function({username,usersDB}){
     let chatDiv = document.createElement("div");
@@ -45,7 +45,18 @@ socket.on("leave-chat" , function({username,usersDB}){
     chatDiv.innerHTML = `${username} left the chat` ;
     chatArea.append(chatDiv);
     chatArea.scrollTop = chatArea.scrollHeight ;
-})
+});
+
+socket.on("new-group-name" , function(changeInfo){
+    groupChatName.innerHTML = `<div class="group-name">${changeInfo.changedName}</div>` ;
+
+    let chatDiv = document.createElement("div");
+    chatDiv.classList.add("chat");
+    chatDiv.classList.add("change");
+    chatDiv.innerHTML = `${changeInfo.username} changed the group name` ;
+    chatArea.append(chatDiv);
+    chatArea.scrollTop = chatArea.scrollHeight ;
+});
 
 /*
 function ActiveUsersDiv(username , usersDB){

@@ -51,12 +51,19 @@ io.on('connection', function(socket){
         for(let i = 0 ;i <usersDB.length ; i++){
             if(usersDB[i].id == socket.id){
                 let name = usersDB[i].username;
-                socket.broadcast.emit("add-chat" , { name , chatMessage});
+                socket.broadcast.emit("add-chat" , { name , chatMessage });
                 break;
             }
         }  
         //console.log(chatMessage);
     })
+
+    socket.on("change-group-name" , function(changeInfo){
+        //console.log(changeInfo.changedName);
+        //console.log(changeInfo.username) ;
+        socket.broadcast.emit("new-group-name" , changeInfo) ;
+    })
+
   });
 
 http.listen(3000 , function(){

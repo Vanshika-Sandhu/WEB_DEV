@@ -24,7 +24,7 @@ sendChat.addEventListener("click" , function(){
     //<div class="chat-info right"></div>
 
     let usernameDiv = document.createElement("div");
-    usernameDiv.classList.add("username");
+    usernameDiv.classList.add("your-name");
     usernameDiv.innerHTML= "You : " ;
     //<div class="username">You : </div>
 
@@ -66,7 +66,13 @@ changeGroupName.addEventListener("click" , function(){
                     newGroupNameInput.classList.add("hide") ;
                 }
 
-                socket.emit("change-group-name" , changedName) ;
+                socket.emit("change-group-name" , {changedName , username}) ;
+                let chatDiv = document.createElement("div");
+                chatDiv.classList.add("chat");
+                chatDiv.classList.add("change");
+                chatDiv.innerHTML = `You changed the group name` ;
+                chatArea.append(chatDiv);
+                chatArea.scrollTop = chatArea.scrollHeight ;
 
                 // let previousGroupName = groupName.innerHTML ;
                 // if(changedName && changedName != previousGroupName){
