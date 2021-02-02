@@ -57,23 +57,35 @@ changeGroupName.addEventListener("click" , function(){
         newGroupNameInput.addEventListener("keyup" ,function(e){
             if(e.keyCode == "13"){
                 let changedName = newGroupNameInput.value ;
+
+                // ul = html
                 let previousGroupName = groupName.innerHTML ;
                 if(changedName && changedName != previousGroupName){
-                    groupName.remove();
-                    //changeGroupName.remove();
-                    let newName = document.createElement("li");
-                    newName.classList.add("group-name");
-                    newName.innerHTML = changedName ;
-
-                    groupChatName.insertBefore(newName, groupChatName.childNodes[0]); 
-                    //groupChatName.prepend(newName) ; //one and the same thing
-
-                    newGroupNameInput.value ="";
+                    groupChatName.innerHTML = `<div class="group-name">${changedName}</div>` ;
+                    newGroupNameInput.value = "";
                     newGroupNameInput.classList.add("hide") ;
-
                 }
+
+                socket.emit("change-group-name" , changedName) ;
+
+                // let previousGroupName = groupName.innerHTML ;
+                // if(changedName && changedName != previousGroupName){
+                //     groupName.remove();
+                //     //changeGroupName.remove();
+                //     let newName = document.createElement("li");
+                //     newName.classList.add("group-name");
+                //     newName.innerHTML = changedName ;
+
+                //     groupChatName.insertBefore(newName, groupChatName.childNodes[0]); 
+                //     //groupChatName.prepend(newName) ; //one and the same thing
+
+                //     newGroupNameInput.value ="";
+                //     newGroupNameInput.classList.add("hide") ;
+
+                // }
             }
         });
     }
+    
 });
   
