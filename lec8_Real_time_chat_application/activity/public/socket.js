@@ -28,7 +28,7 @@ socket.on("add-chat", function(chatObject){
     chatArea.scrollTop = chatArea.scrollHeight ;
 });
 
-socket.on("join-chat" , function({username, usersDB}){
+socket.on("join-chat" , function(username){
     let chatDiv = document.createElement("div");
     chatDiv.classList.add("chat");
     chatDiv.classList.add("join");
@@ -36,9 +36,10 @@ socket.on("join-chat" , function({username, usersDB}){
     chatArea.append(chatDiv);
     chatArea.scrollTop = chatArea.scrollHeight ;
     //ActiveUsersDiv(username , usersDB);
+
 });
 
-socket.on("leave-chat" , function({username,usersDB}){
+socket.on("leave-chat" , function(username){
     let chatDiv = document.createElement("div");
     chatDiv.classList.add("chat");
     chatDiv.classList.add("leave");
@@ -58,31 +59,103 @@ socket.on("new-group-name" , function(changeInfo){
     chatArea.scrollTop = chatArea.scrollHeight ;
 });
 
+socket.on("user-info" , function(username){
+    //console.log(username);
+    /*
+    <div class="my-detail">
+                    <h4>You</h4>
+                    <div class="active-username">
+                        <div class="name">Vanshika</div>
+                        <div class="icon">
+                            <i class="far fa-user-circle"></i>
+                        </div>
+                    </div>
+    */
+
+    let myDetails = document.querySelector(".my-detail");
+
+    let yourActiveUsername = document.createElement("div");
+    yourActiveUsername.classList.add("active-username");
+
+    let Yourname = document.createElement("div");
+    Yourname.classList.add("name");
+    Yourname.innerHTML = username;
+     
+    let icon = document.createElement("div");
+    icon.classList.add("icon");
+
+    let i = document.createElement("i");
+    i.classList.add("far");
+    i.classList.add("fa-user-circle");
+
+    icon.append(i);
+    yourActiveUsername.append(Yourname);
+    yourActiveUsername.append(icon);
+    myDetails.append(yourActiveUsername);
+
+
+});
+
 /*
-function ActiveUsersDiv(username , usersDB){
-  /*
-    <div class="active-username">
-        <div class="name">Abcd</div>
-        <div class="icon">
-            <i class="far fa-user-circle"></i>
-        </div>
-    </div>
-  */
- /*
-let activeUsers = document.querySelector(".active-users");
-let activeUserDiv = document.createElement("div");
-activeUserDiv.classList.add("active-username");
-let name =  document.createElement("div");
-name.classList.add("name");
-name.innerHTML = `${username}`;
-let icon =  document.createElement("div");
-icon.classList.add("icon");
-let iTag =  document.createElement("i");
-iTag.classList.add("far fa-user-circle");
-icon.append(iTag);
-activeUserDiv.append(name);
-activeUserDiv.append(icon);
-activeUsers.append(activeUserDiv);
-document.body.append(activeUsers);
-}
+<ul class="user-list">
+        <li class="active-username" uid="0">
+            <div class="name">Abcd</div>
+            <div class="icon">
+                 <i class="far fa-user-circle"></i>
+              </div>
+        </li>
+    </ul>
 */
+socket.on("active-users" , function(usersDB){
+    //console.log(usersDB);
+    let userList = document.querySelector(".user-list");
+    for(let i=0 ; i<usersDB.length; i++){
+        let activeUserInfo = document.createElement("li");
+        activeUserInfo.classList.add("active-username");
+
+        let name = document.createElement("div");
+        name.classList.add("name");
+        name.innerHTML = usersDB[i].username;
+
+        let icon = document.createElement("div");
+        icon.classList.add("icon");
+
+        let iTag = document.createElement("i");
+        iTag.classList.add("far");
+        iTag.classList.add("fa-user-circle");
+
+        icon.append(iTag);
+        activeUserInfo.append(name);
+        activeUserInfo.append(icon);
+        userList.append(activeUserInfo);
+    }
+});
+
+socket.on("add-active-user", function(username){
+        let userList = document.querySelector(".user-list");
+        let activeUserInfo = document.createElement("li");
+        //let activeUserInfo = `<li class="active-username" uid=${usersDb.length++}></li>` ;
+        activeUserInfo.classList.add("active-username");
+
+        let name = document.createElement("div");
+        name.classList.add("name");
+        name.innerHTML = username;
+
+        let icon = document.createElement("div");
+        icon.classList.add("icon");
+
+        let iTag = document.createElement("i");
+        iTag.classList.add("far");
+        iTag.classList.add("fa-user-circle");
+
+        icon.append(iTag);
+        activeUserInfo.append(name);
+        activeUserInfo.append(icon);
+        userList.append(activeUserInfo);
+});
+
+socket.on("remove-active-user", function(username){
+    //console.log(username);
+    let allUserNames = document.querySelectorAll(".user-list .active-username .name");
+    console.log(allUserNames.outerText);
+} );

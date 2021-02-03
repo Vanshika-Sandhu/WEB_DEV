@@ -4,7 +4,7 @@ let chatMessageInput = document.querySelector("#input-text");
 
 
 let username = prompt("Enter your name");
-console.log(username);
+//console.log(username);
 
 socket.emit("join" , username) ;
 
@@ -42,7 +42,7 @@ sendChat.addEventListener("click" , function(){
 
         socket.emit("send-chat" , chat) ;
     }
-})
+});
 
 
 let changeGroupName = document.querySelector(".change-group-name");
@@ -65,33 +65,39 @@ changeGroupName.addEventListener("click" , function(){
                     newGroupNameInput.value = "";
                     newGroupNameInput.classList.add("hide") ;
                 }
-
                 socket.emit("change-group-name" , {changedName , username}) ;
+
                 let chatDiv = document.createElement("div");
                 chatDiv.classList.add("chat");
                 chatDiv.classList.add("change");
                 chatDiv.innerHTML = `You changed the group name` ;
                 chatArea.append(chatDiv);
                 chatArea.scrollTop = chatArea.scrollHeight ;
-
-                // let previousGroupName = groupName.innerHTML ;
-                // if(changedName && changedName != previousGroupName){
-                //     groupName.remove();
-                //     //changeGroupName.remove();
-                //     let newName = document.createElement("li");
-                //     newName.classList.add("group-name");
-                //     newName.innerHTML = changedName ;
-
-                //     groupChatName.insertBefore(newName, groupChatName.childNodes[0]); 
-                //     //groupChatName.prepend(newName) ; //one and the same thing
-
-                //     newGroupNameInput.value ="";
-                //     newGroupNameInput.classList.add("hide") ;
-
-                // }
             }
+
         });
     }
+    //else{ newGroupNameInput.classList.add("hide"); }
     
 });
+
+
+let emojiButton = document.querySelector(".fa-laugh-beam");
+let emojiOptions = document.querySelector(".emoji-options");
+
+emojiButton.addEventListener("click" , function(){
+    //console.log("emoji button clicked");
+    if(emojiOptions.classList.contains("hide")){
+        emojiOptions.classList.remove("hide");
+    }
+    else{ emojiOptions.classList.add("hide"); }
+
+})
+
+
+
+
+
+
+
   
