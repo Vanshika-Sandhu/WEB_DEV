@@ -154,8 +154,28 @@ socket.on("add-active-user", function(username){
         userList.append(activeUserInfo);
 });
 
-socket.on("remove-active-user", function(username){
+socket.on("remove-active-user", function(usersDB){
     //console.log(username);
-    let allUserNames = document.querySelectorAll(".user-list .active-username .name");
-    console.log(allUserNames.outerText);
-} );
+    let userList = document.querySelector(".user-list");
+    userList.innerHTML="";
+    for(let i=0 ; i<usersDB.length; i++){
+        let activeUserInfo = document.createElement("li");
+        activeUserInfo.classList.add("active-username");
+
+        let name = document.createElement("div");
+        name.classList.add("name");
+        name.innerHTML = usersDB[i].username;
+
+        let icon = document.createElement("div");
+        icon.classList.add("icon");
+
+        let iTag = document.createElement("i");
+        iTag.classList.add("far");
+        iTag.classList.add("fa-user-circle");
+
+        icon.append(iTag);
+        activeUserInfo.append(name);
+        activeUserInfo.append(icon);
+        userList.append(activeUserInfo);
+    }
+});

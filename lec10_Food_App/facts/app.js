@@ -1,4 +1,4 @@
- const express = require("express") ;
+const express = require("express") ;
 const fs = require("fs");
 // nodejs => code se server build hota tha  =>  but express nodejs ka code easy way me krta hai 
 

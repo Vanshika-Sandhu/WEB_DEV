@@ -49,7 +49,7 @@ io.on('connection', function(socket){
         
         usersDB =filteredUsers ;
         socket.broadcast.emit("leave-chat" , disconnectedUser);
-        socket.broadcast.emit("remove-active-user" , disconnectedUser);
+        socket.broadcast.emit("remove-active-user" , usersDB);
     })
 
     socket.on("send-chat" , function(chatMessage){
