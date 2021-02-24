@@ -11,7 +11,7 @@ async function createUser(req , res){
     try {
         let userObject = req.body;
         let userCreated = await userModel.create(userObject);   
-        req.json({
+        res.json({
             message:"Successfully created used!",
             userCreated
         })
@@ -25,23 +25,78 @@ async function createUser(req , res){
 
 };
 
-function getAllUsers(req , res){
-
+async function getAllUsers(req , res){
+    try {
+        let allUsers = await userModel.find();
+        console.log(allUsers);
+        res.json({
+            message:"Successfully got all users!",
+            allUsers
+        });
+    } catch (error) {
+        res.json({
+            message:"Failed to get all users!",
+            error
+        });
+    }
 };
 
-function getUserById(req , res){
-
+async function getUserById(req , res){
+    try {
+        let id = req.params.id;
+        let user = await userModel.findById(id);
+        res.json({
+            message:"Successfully got user!",
+            user
+        })
+    } catch (error) {
+        res.json({
+            message:"Failed to get user!",
+            error
+        })
+    }
 };
 
-function updateUserById(req , res){
+async function updateUserById(req , res){
+    try {
+        //console.log(req.body);
+        let updateObject = req.body;
+        let id = req.params.id;
+        let user = await userModel.findById(id);
+        for(let key in updateObject){
+            user[key] = updateObject[key];
+        }
+        let updatedUser = await user.save();
+        console.log(updatedUser)
+        res.json({
+            message:"User updated successfully!!",
+            updatedUser
+        });
 
+    } catch (error) {
+        res.json({
+            message:"Update failed!!",
+            error
+        });
+    }
 };
 
-function deleteUserById(req , res){
-
+async function deleteUserById(req , res){
+    try {
+        let id = req.params.id;
+        let deletedUser = await userModel.findByIdAndDelete(id);
+        //console.log(deletedUser);
+        res.json({
+            message:"User deleted successfully!!",
+            deletedUser
+        });
+    } catch (error) {
+        res.json({
+            message:"User deletion unsuccessful!!",
+            error
+        });
+    }
 };
-
-
 
 
 module.exports.createUser = createUser;
