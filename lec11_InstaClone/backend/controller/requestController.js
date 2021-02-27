@@ -98,7 +98,15 @@ async function pendingRequest(req , res){
 };
 
 async function deleteRequest(req , res){
-
+  try {
+    
+  } 
+  catch (error) {
+    res.json({
+      message:"Failed to delete request!!",
+      error
+    });
+  }
 };
 
 async function cancelRequest(req , res){
