@@ -1,6 +1,7 @@
 const userModel = require("../model/userModel");
 const followingModel = require("../model/followingModel");
 const followerModel = require("../model/followerModel");
+const { request } = require("express");
 
 async function sendRequest(req, res) {
     try {
@@ -68,8 +69,74 @@ async function acceptRequest(req , res) {
   }
 };
 
+async function pendingRequest(req , res){
+  try {
+    let uid = req.params.uid;
+    console.log(uid);
+    let docs = await followingModel.find({isAccepted:false , followId:uid }).exec();
+    console.log(docs);   
+    let requests = [];
+
+    for(let i=0 ; i<docs.length ; i++){
+      let uid = docs[i].uid;
+      let user = await userModel.findById(uid);
+      requests.push(user);
+    }
+    console.log(requests);
+    res.json({
+      message:"Successfully got the request list!!",
+      requests
+    });
+  } 
+  catch (error) {
+    res.json({
+      message:"Failed to get request list!!",
+      error
+    });
+    
+  }
+};
+
+async function deleteRequest(req , res){
+
+};
+
+async function cancelRequest(req , res){
+
+};
+
+async function deleteFollower(req , res){
+
+};
+
+async function deleteFollowing(req , res){
+
+};
+
+async function getAllFollowing(req , res){
+
+};
+
+async function getAllFollowers(req , res){
+
+};
+
+async function getAllSuggestions(req , res){
+
+};
+
+
+
 
 
 
 module.exports.sendRequest = sendRequest;
 module.exports.acceptRequest = acceptRequest;
+module.exports.pendingRequest = pendingRequest;
+module.exports.deleteRequest = deleteRequest;
+module.exports.cancelRequest = cancelRequest;
+module.exports.deleteFollower = deleteFollower;
+module.exports.deleteFollowing = deleteFollowing;
+module.exports.getAllFollowing = getAllFollowing;
+module.exports.getAllFollowers = getAllFollowers;
+module.exports.getAllSuggestions = getAllSuggestions;
