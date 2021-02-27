@@ -113,17 +113,101 @@ async function deleteFollowing(req , res){
 
 };
 
-async function getAllFollowing(req , res){
+async function getFollowingHelper(uid) {
+  try {
+    let following = await followingModel.find({ uid: uid, isAccepted: true }).exec();
+    let myFollowing = [];
+    for (let i = 0; i < following.length; i++) {
+      let user = await userModel.findById(following[i].followId);
+      myFollowing.push(user);
+    }
+    return myFollowing;
+  } catch (error) {
+    return error;
+  }
+}
 
-};
+async function getAllFollowing(req, res) {
+  try {
+    let uid = req.params.uid;
+    let myFollowing = await getFollowingHelper(uid);
+    if (myFollowing.length) {
+      res.json({
+        message: "Succesfully got all following !",
+        myFollowing,
+      });
+    } else {
+      res.json({
+        message: "You dont have any following !",
+      });
+    }
+  } catch (error) {
+    res.json({
+      message: "Failed to get all following",
+      error,
+    });
+  }
+}
 
-async function getAllFollowers(req , res){
+async function getAllFollowers(req, res) {
+  try {
+    let uid = req.params.uid;
+    let followerIds = await followerModel.find({ uid: uid });
+    // console.log(followerIds);
+    if (followerIds.length) {
+      let myFollowers = [];
+      for (let i = 0; i < followerIds.length; i++) {
+        let user = await userModel.findById(followerIds[i].followerId);
+        myFollowers.push(user);
+      }
+      res.json({
+        message: "Succesfully got all Followers",
+        myFollowers,
+      });
+    } else {
+      res.json({
+        message: "You dont have any follower !",
+      });
+    }
+  } catch (error) {
+    res.json({
+      message: "Failed to get all followers",
+      error,
+    });
+  }
+}
 
-};
-
-async function getAllSuggestions(req , res){
-
-};
+async function getAllSuggestions(req, res) {
+  try {
+    let uid = req.params.uid;
+    let myFollowing = await getFollowingHelper(uid);
+    let checkList = myFollowing.map( function(user){
+        return user["_id"]+"";
+    });
+    checkList.push(uid);
+    console.log(checkList);
+    let suggestions = [];
+    for(let i=0 ; i<myFollowing.length ; i++){
+        let followingOfMyFollowings = await getFollowingHelper(myFollowing[i]["_id"]);
+        for(let j=0 ; j<followingOfMyFollowings.length ; j++){
+            if(!checkList.includes(followingOfMyFollowings[j]["_id"])){
+                suggestions.push(followingOfMyFollowings[j]);
+                checkList.push(followingOfMyFollowings[j]["_id"]+"");
+            }
+        }
+    }
+    console.log(checkList);
+    res.json({
+        message:"Succesfully got all suggestions !",
+        suggestions
+    });
+  } catch (error) {
+    res.json({
+      message: "Failed to get suggestions !",
+      error,
+    });
+  }
+}
 
 
 
