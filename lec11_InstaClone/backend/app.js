@@ -5,8 +5,10 @@
 const express = require("express");
 const userRouter = require("./router/userRouter");
 const requestRouter = require("./router/requestRouter");
+const postRouter = require("./router/postRouter");
 
 const app = express();
+app.use(express.static("public"));
 
 // dumps post data into req.body
 app.use(express.json());
@@ -17,8 +19,11 @@ app.use(express.json());
 app.use("/api/user" , userRouter);
 
 
-// for all the post related functions
+// for all the request related functions
 app.use("/api/request" , requestRouter);
+
+//for all the post related functions
+//app.use("/api/post" , postRouter);
 
 
 
