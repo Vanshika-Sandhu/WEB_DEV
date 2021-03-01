@@ -43,10 +43,17 @@ let obj = {
 
 obj.sayHii(); //here this points to obj //method call
 
-
 function fun(){
     console.log(this);
     console.log("inside Fun!!!");
 }
 
 //fun(); //here this points to a global object
+
+
+
+fun2 = () => {
+    console.log("I am fun2");
+    console.log(this); //empty object
+}
+fun2();
