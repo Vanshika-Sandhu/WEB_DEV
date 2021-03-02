@@ -4,13 +4,21 @@ import Todos from './Components/Todos';
 
 
 class App extends Component {
-  state = {  }
+  state = { 
+    todos: [
+      {id:"1", todo: "Learn HTML"},
+      {id:"2", todo: "Learn JS"},
+      {id:"3", todo: "Learn React"},
+      {id:"4", todo: "Learn NodeJS"},
+  ],
+   };
+
   render() { 
     return ( 
-      <React.Fragment>
+      <div className="Container">
         <InputBox />
-        <Todos />
-      </React.Fragment>
+        <Todos todos={this.state.todos}/>
+      </div>
      );
   }
 }

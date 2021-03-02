@@ -9,10 +9,16 @@ class Todos extends Component {
     // this can be omitted as the code understands it has to call constructor and super
     // this is possible only because of JSX code
 
-    
     state = {  }
+
     render() { 
-        return ( <h1>Hello from Todos component!</h1> );
+        let todos = this.props.todos;
+        return ( 
+        <div className="todos container">
+            { todos.map( todoObj =>{
+                return <p key={todoObj.id}>{todoObj.todo}</p>
+            })}
+        </div> );
     }
 }
  
