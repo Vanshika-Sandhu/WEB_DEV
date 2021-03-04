@@ -6,10 +6,12 @@ import Todos from './Components/Todos';
 class App extends Component {
   state = { 
     todos: [
+      /*
       {id:"1", todo: "Learn HTML"},
       {id:"2", todo: "Learn JS"},
       {id:"3", todo: "Learn React"},
       {id:"4", todo: "Learn NodeJS"},
+      */
   ],
    };
 
@@ -23,11 +25,27 @@ class App extends Component {
       //this will trigger render function once again
     }
 
+    addTodo = (todo) =>{
+      this.setState({
+        todos : [...this.state.todos , {id:this.state.todos.length+1 , todo:todo}]
+        // the tripple dot (...) before this appends the earlier todo list separated with coma
+        /* eg 
+        todos: [
+        {id:"1", todo: "Learn HTML"},
+        {id:"2", todo: "Learn JS"},
+        {id:"3", todo: "Learn React"},
+        {id:"4", todo: "Learn NodeJS"},
+        {id: this.state.todos.length+1 , todo: todo}
+          ]
+        */
+
+      })
+    }
 
   render() { 
     return ( 
       <div className="Container">
-        <InputBox />
+        <InputBox addTodo = {this.addTodo}/>
         <Todos todos={this.state.todos} deleteTodo = {this.deleteTodo}/>
       </div>
      );
