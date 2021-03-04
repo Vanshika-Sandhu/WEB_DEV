@@ -1,9 +1,14 @@
 import React, { Component } from 'react';
 
 class InputBox extends Component {
-    state = {  }
+    state = {  };
     render() { 
-        return (<h1>Hello from Input Component!</h1> );
+        return (<React.Fragment>
+            <div className="input-group mb-3 container">
+            <input type="text" className="form-control" placeholder="Enter todo"></input>
+            <button className="btn btn-outline-secondary">ADD</button>
+            </div>
+        </React.Fragment>);
     }
 }
  

@@ -13,11 +13,22 @@ class App extends Component {
   ],
    };
 
+    deleteTodo = (id) => {
+      let filteredTodos = this.state.todos.filter(todoObj =>{
+        return todoObj.id!==id;
+      })
+      this.setState({
+        todos:filteredTodos
+      })
+      //this will trigger render function once again
+    }
+
+
   render() { 
     return ( 
       <div className="Container">
         <InputBox />
-        <Todos todos={this.state.todos}/>
+        <Todos todos={this.state.todos} deleteTodo = {this.deleteTodo}/>
       </div>
      );
   }
