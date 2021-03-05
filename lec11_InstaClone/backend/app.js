@@ -15,9 +15,8 @@ app.use(express.json());
 
 
 //for all the user related functions, navigate to userRouter
-//localhost:3000/api/user  post method
+//localhost:4000/api/user  post method
 app.use("/api/user" , userRouter);
-
 
 // for all the request related functions
 app.use("/api/request" , requestRouter);
