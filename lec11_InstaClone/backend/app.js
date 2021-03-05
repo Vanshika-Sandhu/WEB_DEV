@@ -23,7 +23,7 @@ app.use("/api/user" , userRouter);
 app.use("/api/request" , requestRouter);
 
 //for all the post related functions
-//app.use("/api/post" , postRouter);
+app.use("/api/post" , postRouter);
 
 
 

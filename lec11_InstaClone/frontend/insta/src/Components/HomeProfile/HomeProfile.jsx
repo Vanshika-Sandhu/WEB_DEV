@@ -46,7 +46,7 @@ class HomeProfile extends Component {
                                         <div className="name">{suggestionList.name}</div>
                                     </div>
                                     <div className="follow">
-                                        <i class="fas fa-user-plus"></i>
+                                        <i className="fas fa-user-plus"></i>
                                     </div>
                                 </div>
                             })
