@@ -1,0 +1,132 @@
+.setting{
+    display: flex;
+    justify-content:center;
+    align-items: center;
+
+}
+
+.setting .photo-edit{
+    height: 450px;
+    width: 400px;
+    margin: 20px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.setting .userimage{
+    height: 200px;
+    width: 200px;
+    border-radius: 50%;
+    background: grey;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 20px;
+}
+.setting .profile-photo{
+    
+}
+
+.setting .userimage img{
+}
+
+.setting .upload-photo{
+    width: 200px;
+    height: 50px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    border: 1px solid lightgray;
+    background: white;
+    border-radius: 3px;
+
+}
+
+#photo-image{
+    width: 90px;
+    margin-left: 20px;
+
+}
+
+.setting .upload-photo .upload-btn{
+    margin-right: 20px;
+    font-size: small;
+
+}
+
+.setting .form-edit{
+    border: 1px solid lightgray;
+    height: 450px;
+    width: 450px;
+    background: white;
+    margin: 20px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-evenly;
+
+}
+
+.setting .user-info{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 85%;
+    height: 50px;
+    padding: 5px;
+    border: 1px solid lightgray;
+    border-radius: 3px;
+}
+
+.setting .key{
+    width: 100px;
+    height: 30px;
+    display: flex;
+    align-items: center;
+    font-size: 15px;
+    font-weight: bolder;
+    color:#5295F6;
+}
+
+.setting .user-info input{
+    height: 30px;
+    width: 300px;
+    border-radius: 3px;
+    outline: none;
+    border: 1px solid lightgray;
+
+}
+
+.setting .photo-edit-header{
+    height: 30px;
+    width: 300px;
+    font-size: 25px;
+    text-align: center;
+    font-weight: bolder;
+    color: #262626;
+    margin-bottom: 20px ;
+
+}
+
+.setting .options{
+    display: flex;
+    align-items: center;
+    justify-content: space-evenly;
+}
+.setting .options button{
+    margin: 20px;
+    height: 20px;
+    width: 80px;
+}
+.setting .edit{
+    
+}
+
+.setting .cancel{
+   
+}
+
+.setting .save{
+   
+}
