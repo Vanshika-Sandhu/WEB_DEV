@@ -26,10 +26,11 @@ class Home extends Component {
         return (
             <div className="home">
                 { this.state.user ? 
-                (<React.Fragment>
-                <Feeds user = {this.state.user}/>
-                <HomeProfile user = {this.state.user}/> 
-                </React.Fragment>)
+                (<div className="home-body">
+                    <Feeds user = {this.state.user}/>
+                    <HomeProfile user = {this.state.user}/> 
+                </div>
+                )
                 : (<h1>Loading Data</h1> )
                 }  
             </div>
