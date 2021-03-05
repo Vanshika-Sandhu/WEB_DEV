@@ -4,6 +4,7 @@
     width: 500px;
     margin-bottom: 30px;
     background: white;
+    border-radius: 3px;
 }
 
 .post-header{
