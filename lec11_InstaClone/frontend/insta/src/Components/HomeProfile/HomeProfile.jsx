@@ -1,8 +1,22 @@
+import axios from 'axios';
 import React, { Component } from 'react';
 import "./HomeProfile.css";
 
 class HomeProfile extends Component {
-    state = {  }
+    state = {  
+        suggestions:[]
+    }
+    componentDidMount(){
+        //suggestions
+        let uid = this.props.user["_id"]
+        axios.get(`/api/request/suggestions/${uid}`).then( obj =>{
+            let suggestions = obj.data.suggestions;
+            this.setState({
+                suggestions:suggestions
+            })
+        });
+    }
+
     render() { 
         let { name , username, profilePic} = this.props.user;
         return ( 
@@ -18,6 +32,28 @@ class HomeProfile extends Component {
                 </div>
                 <div className="user-suggestions">
                     <div className="suggestion-head">Suggestions for you</div>
+                    {
+                        this.state.suggestions.length ? 
+                        <div className="suggestion-body">
+                            {
+                            this.state.suggestions.map( suggestionList => {
+                                return <div key={suggestionList["_id"]} className="suggested-user user-info">
+                                    <div className="user-image">
+                                        <img src={suggestionList.profilePic} alt=""/>
+                                    </div>
+                                    <div className="name-info">
+                                    <div className="username"><strong>{suggestionList.username}</strong></div>
+                                        <div className="name">{suggestionList.name}</div>
+                                    </div>
+                                    <div className="follow">
+                                        <i class="fas fa-user-plus"></i>
+                                    </div>
+                                </div>
+                            })
+                            }
+                        </div> 
+                        : <div className="suggestion-body">SORRY! No suggestions found for you!</div>
+                    }
                 </div>
             </div>
          );
