@@ -19,36 +19,46 @@
 .user-image{
     height:80px;
     width: 80px;
-
+    
 }
 
 .user-image img{
     height:100%;
     width: 100%;
     border-radius: 50%;
+    object-fit: cover;
+
 }
 
 .name-info{
     margin-left: 15px;
-
 }
 .name-info div{
-
+    font-size: 18px;
 }
 
 .username{
-
+    
 
 }
 
 .name{
     color: #A4A4A4;
+    margin-top: 5px;
 }
 
 .user-suggestions{
     width: 80%;
-    height: 65%;
-    margin: 35px;
-    background: lightgray;
+    height: 70%;
+    margin: 20px;
+    border: 1px solid lightgray;
 
+}
+
+.suggestion-head{
+    font-size: 18px;
+    font-weight: bold ;
+    color: #A4A4A4;
+    margin-top: 5px;
+    text-align: center;
 }

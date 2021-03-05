@@ -14,10 +14,10 @@ class Header extends Component {
                 </div>
                 <div className="nav-links">
                     <div>
-                        <a href="/">Home</a>
-                        <a href="/profile">Profile</a>
-                        <a href="/setting">Setting</a>
-                        <a href="">Logout</a>
+                        <a href="/"><i className="fas fa-home"></i></a>
+                        <a href="/profile"><i className="far fa-user-circle"></i></a>
+                        <a href="/setting"><i className="fas fa-cog"></i></a>
+                        <a href="/logout"><i className="fas fa-sign-out-alt"></i></a>
                     </div>
                 </div>
             </div>
