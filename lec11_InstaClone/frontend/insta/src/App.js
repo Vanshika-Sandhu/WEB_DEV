@@ -24,6 +24,12 @@ class App extends Component {
       });
   }
 
+  updateUser = (updatedUser) =>{
+    this.setState({
+      user:updatedUser
+    });
+  }
+
   render() { 
     let user = this.state.user;
     return ( 
@@ -31,7 +37,7 @@ class App extends Component {
         <div className ="app">
           <Header/>
           {
-            user?  
+            user ?  
             (
             <Switch>
               <Route path="/" exact>
@@ -41,7 +47,7 @@ class App extends Component {
                 <Profile user={user} />
               </Route>
               <Route path="/setting" exact>
-                <Setting user={user} />
+                <Setting user={user} updateUser = {this.updateUser}/>
               </Route>
               <Route path="*">
                 <Redirect to="/"></Redirect>

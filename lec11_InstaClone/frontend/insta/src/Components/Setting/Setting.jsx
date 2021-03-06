@@ -1,5 +1,7 @@
 import React, { Component } from 'react';
+import axios from "axios";
 import './Setting.css';
+import uid from '../../uid';
 
 class Settings extends Component {
     state = { 
@@ -11,6 +13,8 @@ class Settings extends Component {
         profilePic:"",
         disabled:true
      }
+
+     fileInput = React.createRef();
 
      onChangeHandler = (e) =>{
          let type = e.target.id;
@@ -27,12 +31,37 @@ class Settings extends Component {
      };
 
      onCancelHandler = () =>{
+        let {name, username, bio, email, password, profilePic} = this.props.user;
         this.setState({
+            name,
+            username,
+            bio,
+            email,
+            password,
+            profilePic,
             disabled:true
         });
      };
 
      onSaveHandler =() =>{
+         let formData = new FormData();
+         let {name, username, bio, email, password} = this.state;
+         formData.append('name' , name);
+         formData.append('username' , username);
+         formData.append('bio' , bio);
+         formData.append('email' , email);
+         formData.append('password' , password);
+
+         axios.patch(`api/user/${uid}` , formData).then( obj =>{
+            if( obj.data.updatedUser)
+            {
+                this.props.updateUser(obj.data.updatedUser);
+                this.setState({
+                    disabled:true
+                });
+            }        
+        });
+
 
      };
 
@@ -44,10 +73,26 @@ class Settings extends Component {
             bio,
             email,
             password,
-            profilePic,
+            profilePic
         });
      }
 
+     onUpdateProfileHandler = () =>{
+        let fileObject = this.fileInput.current.files[0] ;
+        //console.log(fileObject);
+        let formData = new FormData();
+        formData.append('user' , fileObject);
+        axios.patch(`api/user/${uid}` , formData).then( obj =>{
+            let profilePic = obj.data.updatedUser.profilePic;
+            this.setState({
+                profilePic
+            })
+        });
+     }
+
+     componentDidUpdate(){
+         console.log("Inside")
+     }
 
     render() { 
         return ( 
@@ -58,8 +103,8 @@ class Settings extends Component {
                         <img src={this.state.profilePic} alt="" className="profile-photo"/>
                     </div>
                     <div className="upload-photo">
-                        <input type="file" id="photo-image" ref = ""/>
-                        <div className="upload-btn"><i className="fas fa-file-upload"></i></div>
+                        <input type="file" id="photo-image" ref = {this.fileInput}/>
+                        <div className="upload-btn" onClick={this.onUpdateProfileHandler} ><i className="fas fa-file-upload"></i></div>
                     </div>
                 </div>
                 <div className="form-edit">
