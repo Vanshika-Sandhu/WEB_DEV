@@ -90,9 +90,6 @@ class Settings extends Component {
         });
      }
 
-     componentDidUpdate(){
-         console.log("Inside")
-     }
 
     render() { 
         return ( 
