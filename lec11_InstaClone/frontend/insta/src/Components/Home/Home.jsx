@@ -2,8 +2,6 @@ import React, { Component } from 'react';
 import Feeds from '../Feeds/Feeds';
 import HomeProfile from '../HomeProfile/HomeProfile';
 import "./Home.css"
-import axios from "axios";
-import uid from "../../uid";
 
 class Home extends Component {
     state = { 
@@ -11,14 +9,8 @@ class Home extends Component {
      }
 
     componentDidMount(){
-        //inside component did mount !
-        //proxy defined
-        axios.get(`/api/user/${uid}`).then( obj=>{
-            //console.log(obj);
-            let user = obj.data.user;
-            this.setState({
-                user:user
-            })
+        this.setState({
+            user: this.props.user
         });
     }
 

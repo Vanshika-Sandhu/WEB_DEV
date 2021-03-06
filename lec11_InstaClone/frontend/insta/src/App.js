@@ -1,31 +1,56 @@
 import React, { Component } from 'react';
 import Header from './Components/Header/Header';
 import Home from './Components/Home/Home';
-import {BrowserRouter as Router , Route, Switch} from 'react-router-dom';
+import {BrowserRouter as Router , Redirect, Route, Switch} from 'react-router-dom';
 import Profile from './Components/Profile/Profile'
 import Setting from './Components/Setting/Setting';
+import uid from "./uid";
+import axios from "axios";
 
 class App extends Component {
-  state = {  }
+  state = { 
+    user:null
+   };
+
+  componentDidMount(){
+     //inside component did mount !
+        //proxy defined
+        axios.get(`/api/user/${uid}`).then( obj=>{
+          //console.log(obj);
+          let user = obj.data.user;
+          this.setState({
+              user:user
+          })
+      });
+  }
+
   render() { 
+    let user = this.state.user;
     return ( 
       <Router>
         <div className ="app">
           <Header/>
-          <Switch>
-            <Route path="/" exact>
-              <Home/>
-            </Route>
-            <Route path="/profile" exact>
-              <Profile/>
-            </Route>
-            <Route path="/setting" exact>
-              <Setting/>
-            </Route>
-            <Route path="*">
-              <Home/>
-            </Route>
-          </Switch>
+          {
+            user?  
+            (
+            <Switch>
+              <Route path="/" exact>
+                <Home user={user} />
+              </Route>
+              <Route path="/profile" exact>
+                <Profile user={user} />
+              </Route>
+              <Route path="/setting" exact>
+                <Setting user={user} />
+              </Route>
+              <Route path="*">
+                <Redirect to="/"></Redirect>
+              </Route>
+            </Switch>
+            )
+            :
+            (<h1>Loading Data!</h1>)
+          }
         </div> 
        </Router>
       );

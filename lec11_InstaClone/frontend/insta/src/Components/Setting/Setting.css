@@ -12,23 +12,29 @@
     display: flex;
     flex-direction: column;
     align-items: center;
+    background: white;
+    border: 1px solid lightgray;
+    border-radius: 3px;
 }
 
 .setting .userimage{
-    height: 200px;
-    width: 200px;
+    height: 250px;
+    width: 250px;
     border-radius: 50%;
-    background: grey;
     display: flex;
     align-items: center;
     justify-content: center;
-    margin-bottom: 20px;
+    margin-bottom: 30px;
 }
 .setting .profile-photo{
     
 }
 
 .setting .userimage img{
+    height: 100%;
+    width: 100%;
+    object-fit: cover;
+    border-radius: 50%;
 }
 
 .setting .upload-photo{
@@ -65,6 +71,7 @@
     flex-direction: column;
     align-items: center;
     justify-content: space-evenly;
+    border-radius: 3px;
 
 }
 
@@ -99,13 +106,19 @@
 }
 
 .setting .photo-edit-header{
-    height: 30px;
+    height: 40px;
     width: 300px;
     font-size: 25px;
     text-align: center;
     font-weight: bolder;
-    color: #262626;
-    margin-bottom: 20px ;
+    background: #5295F6;
+    color: white;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 25px;
+    border-radius: 5px;
+
 
 }
 
@@ -129,4 +142,9 @@
 
 .setting .save{
    
+}
+
+.action{
+    display:flex;
+    align-items: center;
 }
