@@ -16,6 +16,18 @@ class Settings extends Component {
 
      fileInput = React.createRef();
 
+     componentDidMount(){
+        let {name, username, bio, email, password, profilePic} = this.props.user;
+       this.setState({
+           name,
+           username,
+           bio,
+           email,
+           password,
+           profilePic
+       });
+    };
+
      onChangeHandler = (e) =>{
          let type = e.target.id;
          let value = e.target.value;
@@ -43,7 +55,7 @@ class Settings extends Component {
         });
      };
 
-     onSaveHandler =() =>{
+     onSaveHandler = () =>{
          let formData = new FormData();
          let {name, username, bio, email, password} = this.state;
          formData.append('name' , name);
@@ -64,19 +76,7 @@ class Settings extends Component {
 
 
      };
-
-     componentDidMount(){
-         let {name, username, bio, email, password, profilePic} = this.props.user;
-        this.setState({
-            name,
-            username,
-            bio,
-            email,
-            password,
-            profilePic
-        });
-     }
-
+     
      onUpdateProfileHandler = () =>{
         let fileObject = this.fileInput.current.files[0] ;
         //console.log(fileObject);
@@ -88,8 +88,7 @@ class Settings extends Component {
                 profilePic
             })
         });
-     }
-
+     };
 
     render() { 
         return ( 
