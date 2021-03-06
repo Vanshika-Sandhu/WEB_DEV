@@ -16,19 +16,21 @@
     align-items: center;
 }
 
+
 .user-image{
     height:80px;
     width: 80px;
     
 }
 
-.user-image img{
+.user-image img {
     height:100%;
     width: 100%;
     border-radius: 50%;
     object-fit: cover;
 
 }
+
 
 .name-info{
     margin-left: 15px;

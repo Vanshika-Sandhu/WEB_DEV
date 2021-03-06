@@ -38,7 +38,7 @@ class HomeProfile extends Component {
                             {
                             this.state.suggestions.map( suggestionList => {
                                 return <div key={suggestionList["_id"]} className="suggested-user user-info">
-                                    <div className="user-image">
+                                    <div className="sugg-img user-image">
                                         <img src={suggestionList.profilePic} alt=""/>
                                     </div>
                                     <div className="name-info">
