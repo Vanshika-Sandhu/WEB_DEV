@@ -1,0 +1,112 @@
+.profile{
+
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.profile-user-info{
+    height: 170px;
+    width: 70%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.profile-user-image{
+    height: 150px;
+    width: 150px;
+    background: blue;
+    margin-right: 25px;
+}
+
+.profile-user-detail-info{
+    height: 150px;
+    width: 500px;
+    margin-left: 25px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+}
+
+.profile-user-details{
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+    height: 70%;
+    width: 80%;
+}
+
+.profile-user-username{
+    font-size: 30px;
+    font-weight: lighter;
+}
+
+.profile-user-name{
+    font-size: 15px;
+    font-weight: bolder;
+}
+
+.profile-user-bio{
+    font-size: 20px;
+    font-weight: lighter;
+}
+
+.profile-stats{
+    display: flex;
+    align-items: center;
+}
+
+.profile-stats div{
+    margin-right: 100px;
+    display: flex;
+}
+
+.profile-stats div strong{
+    margin-right: 5px;
+}
+
+.profile-user-posts{
+    overflow: auto;
+    display: flex;
+    width: 70%;
+    height: 348px;
+    display: flex;
+    align-items: center;
+    justify-content: space-evenly;
+}
+
+.profile-user-post{
+    height: 300px;
+    background: white;
+    width: 250px;
+    border-radius: 3px;
+    border: 1px solid lightgray;
+}
+
+.profile-user-post img{
+    height: 250px;
+    width: 250px;
+    border-radius: 3px;
+}
+
+.profile-caption-footer{
+    border-top: 1px-solid lightgray;
+    display: flex;
+    flex-direction: column;
+}
+
+.profile-caption-username{
+    font-size: 12px;
+    font-weight: bolder;
+    margin-left: 5px ;
+}
+
+.profile-post-image-caption{
+    font-size: 15px;
+    font-weight: lighter;
+    margin-left: 5px ;
+}
+
+
+
