@@ -67,13 +67,14 @@
 .profile-stats div{
     margin-right: 100px;
     display: flex;
+    cursor: pointer;
 }
 
 .profile-stats div strong{
     margin-right: 5px;
 }
 
-.profile-user-posts{
+.profile-user-view-info{
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -87,6 +88,7 @@
     font-size: 30px;
     font-weight: bolder;
     color: #5295F6;
+    margin-bottom: -60px;
 }
 
 .profile-view-body{
@@ -99,37 +101,18 @@
     justify-content: space-evenly;
 }
 
-.profile-user-post{
-    height: 350px;
-    background: white;
-    width: 300px;
-    border-radius: 3px;
-    border: 1px solid lightgray;
-}
-
-.profile-user-post img{
-    height: 300px;
-    width: 300px;
-    border-radius: 3px;
-}
-
-.profile-caption-footer{
-    border-top: 1px-solid lightgray;
+.follow-view-body{
     display: flex;
     flex-direction: column;
+    margin-top: 70px;
+    background: white;
+    border: 1px solid lightgray;
+    border-radius: 3px;
+    width: 40%;
+    align-items: center;
+    margin-bottom: 30px;
 }
 
-.profile-caption-username{
-    font-size: 12px;
-    font-weight: bolder;
-    margin-left: 5px ;
-}
-
-.profile-post-image-caption{
-    font-size: 15px;
-    font-weight: lighter;
-    margin-left: 5px ;
-}
 
 
 

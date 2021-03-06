@@ -1,3 +1,35 @@
 .profile-user-post{
-    
+    height: 250px;
+    background: white;
+    width: 300px;
+    border-radius: 3px;
+    border: 1px solid lightgray;
+}
+
+.profile-user-post img{
+    height: 170px;
+    width: 300px;
+    border-radius: 3px;
+    object-fit: contain;
+}
+
+.profile-caption-username{
+    font-size: 10px;
+    font-weight: bolder;
+    margin-left: 5px ;
+    height: 15px;
+}
+
+.profile-caption-footer{
+    border-top: 1px-solid lightgray;
+    display: flex;
+    flex-direction: column;
+    height: 80px;
+}
+
+.profile-post-image-caption{
+    font-size: 13px;
+    font-weight: lighter;
+    margin-left: 5px ;
+    height: 65px;
 }
