@@ -100,7 +100,7 @@ class Settings extends Component {
                     </div>
                     <div className="upload-photo">
                         <input type="file" id="photo-image" ref = {this.fileInput}/>
-                        <div className="upload-btn" onClick={this.onUpdateProfileHandler} ><i className="fas fa-file-upload"></i></div>
+                        <div className="upload-btn" onClick={this.onUpdateProfileHandler} >CHANGE</div>
                     </div>
                 </div>
                 <div className="form-edit">

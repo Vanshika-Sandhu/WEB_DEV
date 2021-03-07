@@ -60,7 +60,7 @@ class Feeds extends Component {
                     <div className="upload-post">
                         <input type="file" id="post-image" ref = {this.fileInput}/>
                         <input type="text" id="caption" placeholder="Add caption" value={this.state.captionInput} onChange={ (e) => {this.onCaptionChangeHandler(e.target.value)}}/>
-                        <div className="upload-btn" onClick={this.onUploadPostHandler}><i className="fas fa-file-upload"></i></div>
+                        <div className="upload-btn" onClick={this.onUploadPostHandler}>POST</div>
                     </div>
                 </div>
                 {

@@ -24,6 +24,7 @@ class UserPost extends Component {
                 <div className="profile-caption-footer">
                     <div className="profile-caption-username">Caption</div>
                     <div className="profile-post-image-caption">{caption}</div>
+                    <div className="profile-post-delete">Delete</div>
                 </div>
             </div>
         );

@@ -7,12 +7,17 @@
     border-radius: 3px;
 }
 
+::-webkit-scrollbar {
+    display: none;
+}
+
 .post-header{
     height: 60px;
     display: flex;
     align-items: center;
     border-bottom: 1px solid lightgrey;
 }
+
 
 .user-photo{
     margin-left: 10px;

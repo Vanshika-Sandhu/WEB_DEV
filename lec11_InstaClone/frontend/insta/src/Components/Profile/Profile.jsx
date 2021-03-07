@@ -84,8 +84,8 @@ class Profile extends Component {
                         </div>
                         <div className="profile-stats">
                             <div className="no-of-posts" onClick={()=>{ this.onPostClickHandler()}} ><strong>{this.state.posts.length}</strong> Posts</div>
-                            <div className="no-of-following" onClick={()=>{this.onFollowingClickHandler()}} ><strong>{this.state.following.length}</strong> Following</div>
                             <div className="no-of-followers" onClick={()=>{this.onFollowerClickHandler()}} ><strong>{this.state.followers.length}</strong> Followers</div>
+                            <div className="no-of-following" onClick={()=>{this.onFollowingClickHandler()}} ><strong>{this.state.following.length}</strong> Following</div>
                         </div>
                     </div>
                 </div>
@@ -108,11 +108,13 @@ class Profile extends Component {
                         this.state.view == "FOLLOWERS" && (
                             this.state.followers.length ? 
                             <div className="follow-view-body">
-                            {
-                                this.state.followers.map( follower =>{
-                                return <Follow follow={follower} action={followerAction}/>
-                                })
-                            }
+                                <div className="followe-view-list">
+                                    {
+                                    this.state.followers.map( follower =>{
+                                    return <Follow follow={follower} action={followerAction}/>
+                                    })
+                                    }
+                                </div>
                             </div>
                             : <div className="follow-view-body">You have no follower!</div>    
                         )
@@ -121,11 +123,13 @@ class Profile extends Component {
                         this.state.view == "FOLLOWING" && (
                             this.state.following.length ? 
                             <div className="follow-view-body">
-                            {
-                                this.state.following.map( followingUsers =>{
-                                return <Follow follow={followingUsers} action={followingAction}/>
-                                })
-                            }
+                                <div className="follow-view-list">
+                                    {
+                                     this.state.following.map( followingUsers =>{
+                                     return <Follow follow={followingUsers} action={followingAction}/>
+                                     })
+                                    }
+                                </div>
                             </div>
                             : <div className="follow-view-body">You do not follow any user!</div>    
                         )

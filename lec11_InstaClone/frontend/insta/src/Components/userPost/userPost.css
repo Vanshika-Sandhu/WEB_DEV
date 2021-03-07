@@ -1,9 +1,10 @@
 .profile-user-post{
-    height: 250px;
+    height: 270px;
     background: white;
     width: 300px;
     border-radius: 3px;
     border: 1px solid lightgray;
+    margin: 19px;
 }
 
 .profile-user-post img{
@@ -14,22 +15,36 @@
 }
 
 .profile-caption-username{
-    font-size: 10px;
+    font-size: 13px;
     font-weight: bolder;
     margin-left: 5px ;
-    height: 15px;
+    height: 20px;
 }
 
 .profile-caption-footer{
     border-top: 1px-solid lightgray;
     display: flex;
     flex-direction: column;
-    height: 80px;
+    height: 100px;
 }
 
 .profile-post-image-caption{
-    font-size: 13px;
+    font-size: 15px;
     font-weight: lighter;
     margin-left: 5px ;
-    height: 65px;
+    height: 50px;
+}
+
+.profile-post-delete{
+    height: 20px;
+    width: 50px;
+    font-size: 13px;
+    font-weight: bolder;
+    color: red;
+    align-items: center;
+    display: flex;
+    justify-content: center;
+    border-radius: 3px;
+    border: 1.5px solid red;
+    margin-left: 243px;
 }
