@@ -20,6 +20,7 @@ class Header extends Component {
 
                         <Link to="/"><i className="fas fa-home"></i></Link>
                         <Link to="/profile"><i className="far fa-user-circle"></i></Link>
+                        <Link to="/notifications"><i className="fas fa-exclamation-circle"></i></Link>
                         <Link to="/setting"><i className="fas fa-cog"></i></Link>
                         <Link to="/logout"><i className="fas fa-sign-out-alt"></i></Link>
                     </div>
