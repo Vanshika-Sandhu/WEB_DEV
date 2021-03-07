@@ -108,7 +108,7 @@ class Profile extends Component {
                         this.state.view == "FOLLOWERS" && (
                             this.state.followers.length ? 
                             <div className="follow-view-body">
-                                <div className="followe-view-list">
+                                <div className="follow-view-list">
                                     {
                                     this.state.followers.map( follower =>{
                                     return <Follow follow={follower} action={followerAction}/>
