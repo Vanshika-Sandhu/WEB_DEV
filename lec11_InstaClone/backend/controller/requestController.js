@@ -81,11 +81,18 @@ async function pendingRequest(req , res){
       let user = await userModel.findById(uid);
       requests.push(user);
     }
-    console.log(requests);
-    res.json({
-      message:"Successfully got the request list!!",
-      requests
-    });
+    //console.log(requests);
+    if(requests.length){
+      res.json({
+        message:"Successfully got the follow request list!!",
+        requests
+      });
+    }
+    else{
+      res.json({
+        message:"You have no follow requests!"
+      })
+    }
   } 
   catch (error) {
     res.json({
@@ -155,7 +162,7 @@ async function getFollowingHelper(uid) {
   } catch (error) {
     return error;
   }
-}
+};
 
 async function getAllFollowing(req, res) {
   try {
@@ -177,7 +184,7 @@ async function getAllFollowing(req, res) {
       error,
     });
   }
-}
+};
 
 async function getAllFollowers(req, res) {
   try {
@@ -205,7 +212,7 @@ async function getAllFollowers(req, res) {
       error,
     });
   }
-}
+};
 
 async function getAllSuggestions(req, res) {
   try {
@@ -236,7 +243,7 @@ async function getAllSuggestions(req, res) {
       error,
     });
   }
-}
+};
 
 
 

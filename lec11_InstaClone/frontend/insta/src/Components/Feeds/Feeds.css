@@ -1,9 +1,9 @@
 .feeds{
-    
+    margin-right: 30px;
 }
 
 .feed-body{
-    height: 360px;
+    height: 550px;
     overflow: auto;
 }
 
@@ -33,7 +33,7 @@
 }
 
 #post-image{
-    width: 18%;
+    width: 90px;
 }
 
 #caption{
