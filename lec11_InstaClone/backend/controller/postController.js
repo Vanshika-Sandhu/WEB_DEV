@@ -56,7 +56,26 @@ async function getMyPosts(req, res){
     }
 };
 
+async function deleteMyPost(req, res){
+    try {
+        //console.log("inside deletemypost function");
+        let pid = req.params.pid;
+        let deletedPost = await postModel.findByIdAndDelete(pid);
+        //console.log(deletedPost);
+        res.json({
+            message:"Post deleted successfully",
+            deletedPost
+        });
+    } 
+    catch (error) {
+        res.json({
+            message:"Failed to delete post",
+            error
+        });
+    };
+};
 
+module.exports.deleteMyPost = deleteMyPost;
 module.exports.getMyPosts = getMyPosts;
 module.exports.getAllPosts = getAllPosts;
 module.exports.createPost = createPost;

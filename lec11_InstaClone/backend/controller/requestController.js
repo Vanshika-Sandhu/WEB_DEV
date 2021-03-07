@@ -1,7 +1,6 @@
 const userModel = require("../model/userModel");
 const followingModel = require("../model/followingModel");
 const followerModel = require("../model/followerModel");
-const { request } = require("express");
 
 async function sendRequest(req, res) {
     try {
@@ -118,6 +117,29 @@ async function deleteFollower(req , res){
 };
 
 async function deleteFollowing(req , res){
+  console.log("Inside delete following");
+  try {
+    let uid = req.params.uid;
+    let myFollowing = await getFollowingHelper(uid);
+    if (myFollowing.length) {
+      console.log(myFollowing);
+      res.json({
+        message: "Succesfully got all following !",
+        myFollowing,
+      });
+    } else {
+      res.json({
+        message: "You dont have any following !",
+      });
+    }
+
+  } catch (error) {
+    res.json({
+      message:"Couldn't delete following",
+      error
+    })
+    
+  }
 
 };
 
@@ -192,19 +214,18 @@ async function getAllSuggestions(req, res) {
     let checkList = myFollowing.map( function(user){
         return user["_id"]+"";
     });
-    checkList.push(uid);
-    console.log(checkList);
+    checkList.push(uid); 
     let suggestions = [];
     for(let i=0 ; i<myFollowing.length ; i++){
         let followingOfMyFollowings = await getFollowingHelper(myFollowing[i]["_id"]);
         for(let j=0 ; j<followingOfMyFollowings.length ; j++){
-            if(!checkList.includes(followingOfMyFollowings[j]["_id"])){
+            if(!(checkList.includes(followingOfMyFollowings[j]["_id"])) &&( followingOfMyFollowings[j]["_id"]!=uid)){
                 suggestions.push(followingOfMyFollowings[j]);
                 checkList.push(followingOfMyFollowings[j]["_id"]+"");
             }
         }
     }
-    console.log(checkList);
+
     res.json({
         message:"Succesfully got all suggestions !",
         suggestions
