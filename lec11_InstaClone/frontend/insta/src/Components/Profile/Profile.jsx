@@ -3,6 +3,7 @@ import axios from "axios";
 import "./Profile.css";
 import UserPost from '../userPost/userPost';
 import Follow from '../Follow/Follow';
+import uid from '../../uid';
 
 class Profile extends Component {
     state = { 
@@ -69,7 +70,7 @@ class Profile extends Component {
         });
     }
 
-    onDeleteHandler=(post)=>{
+    onDeletePostHandler=(post)=>{
         let pid = post["_id"];
         axios.delete(`/api/post/${pid}`).then( obj => {
             //console.log(obj);
@@ -78,7 +79,34 @@ class Profile extends Component {
                 this.componentDidMount();
             }     
         });
-     }
+    };
+
+    onRemoveFollowerHandler=(follower)=>{
+        //console.log("Inside remove follower handler");
+        // console.log(uid);
+        let followerId = follower["_id"];
+        //console.log(followerId);
+
+        axios.delete(`api/request/delete/follower/${uid}/${followerId}`).then(obj=>{
+            if(obj.data.deletedFollower){
+                console.log("Follower removed successfully");
+                this.componentDidMount();
+            }
+        });
+    };
+
+    onUnfollowHandler=(following)=>{
+        let followingId = following["_id"];
+
+        axios.delete(`api/request/delete/following/${uid}/${followingId}`).then(obj=>{
+            if(obj.data.deletedFollowing){
+                console.log("Unfollowed user successfully");
+                this.componentDidMount();
+            }
+        });
+
+    };
+
 
 
     render() { 
@@ -114,7 +142,7 @@ class Profile extends Component {
                                 this.state.posts.map( post =>{
                                 return <div className="post-entity">
                                     <UserPost post={post} key={post["_id"]}/>
-                                    <div className="profile-post-delete" onClick={()=>this.onDeleteHandler(post)}>Delete</div>
+                                    <div className="profile-post-delete" onClick={()=>this.onDeletePostHandler(post)}>Delete</div>
                                 </div>
                                 })
                             }
@@ -132,7 +160,7 @@ class Profile extends Component {
                                     return <div className="follow-entity">
                                         <Follow follow={follower} key={follower["_id"]}/>
                                         <div className="follow-action-btn">
-                                            <div className="follow-action">{followerAction}</div>
+                                            <div className="follow-action" onClick={()=>this.onRemoveFollowerHandler(follower)} >{followerAction}</div>
                                         </div>
                                     </div>
                                     })
@@ -152,7 +180,7 @@ class Profile extends Component {
                                         return <div className="follow-entity">
                                             <Follow follow={following} key={following["_id"]} />
                                             <div className="follow-action-btn">
-                                                <div className="follow-action">{followingAction}</div>
+                                                <div className="follow-action" onClick={()=>this.onUnfollowHandler(following)} >{followingAction}</div>
                                             </div>
                                         </div>
                                         })
