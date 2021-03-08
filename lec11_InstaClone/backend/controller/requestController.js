@@ -2,6 +2,7 @@ const userModel = require("../model/userModel");
 const followingModel = require("../model/followingModel");
 const followerModel = require("../model/followerModel");
 
+//completed
 async function sendRequest(req, res) {
     try {
       console.log(req.body);
@@ -22,7 +23,8 @@ async function sendRequest(req, res) {
         res.json({
           message: "Request sent and accepted !!",
         });
-      } else {
+      } 
+      else {
         // isPublic = false
         await followingModel.create({
           uid,
@@ -90,8 +92,9 @@ async function pendingRequest(req , res){
     }
     else{
       res.json({
-        message:"You have no follow requests!"
-      })
+        message:"You have no follow requests!",
+        requests
+      });
     }
   } 
   catch (error) {
@@ -104,17 +107,29 @@ async function pendingRequest(req , res){
 };
 
 async function deleteRequest(req , res){
+  // console.log("inside delete request function");
   try {
-    
+    let uid = req.params.uid;
+    let followId = req.params.followId;
+    let request = await followingModel.find({isAccepted:false , uid , followId}).exec();
+    console.log(request); 
+    let docId = request[0]["id"];
+    let deletedRequest = await followingModel.findByIdAndDelete(docId);
+    res.json({
+      message:"Request deleted successfully",
+      deletedRequest
+    });
   } 
   catch (error) {
     res.json({
       message:"Failed to delete request!!",
       error
     });
-  }
+  };
 };
 
+
+//still ppending
 async function cancelRequest(req , res){
 
 };
@@ -150,6 +165,9 @@ async function deleteFollowing(req , res){
 
 };
 
+
+
+///completed
 async function getFollowingHelper(uid) {
   try {
     let following = await followingModel.find({ uid: uid, isAccepted: true }).exec();
@@ -244,8 +262,6 @@ async function getAllSuggestions(req, res) {
     });
   }
 };
-
-
 
 
 

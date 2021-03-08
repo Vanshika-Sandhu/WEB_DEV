@@ -22,7 +22,10 @@ class Profile extends Component {
             let Myposts = obj.data.myposts;
             if(Myposts){
                 posts= Myposts;
-                console.log(posts);
+                let sortedPosts = posts.sort( (a,b)=>{
+                    return new Date(b.createdOn) - new Date(a.createdOn) ;
+                })
+                posts= sortedPosts;
             }
             let followerObjecPromise = axios.get(`/api/request/follower/${uid}`);
             return followerObjecPromise;
@@ -66,10 +69,22 @@ class Profile extends Component {
         });
     }
 
+    onDeleteHandler=(post)=>{
+        let pid = post["_id"];
+        axios.delete(`/api/post/${pid}`).then( obj => {
+            //console.log(obj);
+            if(obj.data.deletedPost){
+                console.log("deleted post successfully");
+                this.componentDidMount();
+            }     
+        });
+     }
+
+
     render() { 
         let {name, username, profilePic, bio} = this.props.user;
         let followerAction = "Remove";
-        let followingAction = "Following";
+        let followingAction = "Unfollow";
         return ( 
             <div className="profile">
                 <div className="profile-user-info">
@@ -92,12 +107,15 @@ class Profile extends Component {
                 <div className="profile-user-view-info">
                     <div className="profile-view-head">{this.state.view}</div>
                     {
-                        this.state.view == "POSTS" && (
+                        this.state.view === "POSTS" && (
                             this.state.posts.length ? 
                             <div className="profile-view-body">
                             {
                                 this.state.posts.map( post =>{
-                                return <UserPost post={post} key={post["_id"]}/>
+                                return <div className="post-entity">
+                                    <UserPost post={post} key={post["_id"]}/>
+                                    <div className="profile-post-delete" onClick={()=>this.onDeleteHandler(post)}>Delete</div>
+                                </div>
                                 })
                             }
                             </div>
@@ -105,13 +123,18 @@ class Profile extends Component {
                         )
                     }
                     {
-                        this.state.view == "FOLLOWERS" && (
+                        this.state.view === "FOLLOWERS" && (
                             this.state.followers.length ? 
                             <div className="follow-view-body">
                                 <div className="follow-view-list">
                                     {
                                     this.state.followers.map( follower =>{
-                                    return <Follow follow={follower} action={followerAction}/>
+                                    return <div className="follow-entity">
+                                        <Follow follow={follower} key={follower["_id"]}/>
+                                        <div className="follow-action-btn">
+                                            <div className="follow-action">{followerAction}</div>
+                                        </div>
+                                    </div>
                                     })
                                     }
                                 </div>
@@ -120,16 +143,21 @@ class Profile extends Component {
                         )
                     }
                     {
-                        this.state.view == "FOLLOWING" && (
+                        this.state.view === "FOLLOWING" && (
                             this.state.following.length ? 
                             <div className="follow-view-body">
                                 <div className="follow-view-list">
                                     {
-                                     this.state.following.map( followingUsers =>{
-                                     return <Follow follow={followingUsers} action={followingAction}/>
-                                     })
-                                    }
-                                </div>
+                                        this.state.following.map( following =>{
+                                        return <div className="follow-entity">
+                                            <Follow follow={following} key={following["_id"]} />
+                                            <div className="follow-action-btn">
+                                                <div className="follow-action">{followingAction}</div>
+                                            </div>
+                                        </div>
+                                        })
+                                        }
+                                    </div>
                             </div>
                             : <div className="follow-view-body">You do not follow any user!</div>    
                         )

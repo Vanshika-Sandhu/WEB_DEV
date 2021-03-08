@@ -1,10 +1,12 @@
 .feeds{
     margin-right: 30px;
+    height: 500px;
+    overflow: auto;
 }
 
 .feed-body{
     height: 550px;
-    overflow: auto;
+   
 }
 
 .upload-post{
@@ -20,7 +22,8 @@
     flex-direction: column;
     border:1px solid lightgray;
     background: white;
-    margin-bottom:30px;
+    height: 80px;
+    margin-bottom:20px;
     border-radius: 3px;
 }
 

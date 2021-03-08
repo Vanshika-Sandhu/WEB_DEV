@@ -22,7 +22,6 @@ class Follow extends Component {
     render() { 
         
         let {username, name, profilePic} = this.props.follow;
-        let action = this.props.action;
         return ( 
             <div className="follow-component-body">
                 <div className="follow-user-image">
@@ -31,9 +30,6 @@ class Follow extends Component {
                 <div className="follow-user-info">
                     <div className="follow-user-name">{username}</div>
                     <div className="follow-user-username">{name}</div>
-                </div>
-                <div className="follow-action-btn">
-                    <div className="follow-action">{action}</div>
                 </div>
             </div>
           );

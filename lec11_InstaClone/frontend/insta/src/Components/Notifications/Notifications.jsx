@@ -19,19 +19,47 @@ class Notifications extends Component {
         });
 
         axios.get(`/api/request/${uid}`).then(obj=>{
-            let myFollowRequests = obj.data.requests;
-            if(myFollowRequests.length){
-                this.followReq = myFollowRequests;
+            if(obj.data.requests.length){
+                this.followReq = obj.data.requests;
+                this.setState({
+                    followRequests:this.followReq
+                });
             }
-            this.setState({
-                followRequests:this.followReq
-            });
+            
         })
-    }
+    };
+
+    onAcceptRequestHandler = (followReq) =>{
+        let uid = this.props.user["_id"];
+        let toBeAccepted = followReq["_id"];
+        let acceptedObj = { uid , toBeAccepted};
+
+        axios.post(`/api/request/accept` , acceptedObj).then(obj=>{
+            console.log(obj);
+            console.log("request accepted");
+            this.componentDidMount();
+        })
+    };
+
+    onDeleteRequestHandler = (followReq) =>{
+        let uid = this.props.user["_id"];
+        let toBeAccepted = followReq["_id"];
+        // let deletedObj = { uid , toBeAccepted};
+        // console.log(deletedObj);
+        console.log("Delete button pressed");
+
+        axios.delete(`/api/request/delete/${uid}/${toBeAccepted}`).then( obj => {
+            //console.log(obj);
+            if(obj.data.deletedRequest){
+                console.log("request deleted successfully");
+                this.componentDidMount();
+            }     
+        });
+    };
+
+
     
     render() { 
-
-        let action = "Accept";
         return (
         <div className="notifications-page">
             { 
@@ -50,7 +78,17 @@ class Notifications extends Component {
                                     <div className="follow-view-list">
                                             {
                                             this.state.followRequests.map( followReq =>{
-                                            return <Follow follow={followReq} action={action}/>
+                                            return <div className="follow-entity">
+                                                    <Follow follow={followReq}/>
+                                                    <div className="request-action">
+                                                        <div className="follow-action-btn">
+                                                            <div className="follow-action" onClick={ () => this.onAcceptRequestHandler(followReq)} >Accept</div>    
+                                                        </div>
+                                                        <div className="follow-action-btn">
+                                                        <div className="follow-action delete" onClick={()=>this.onDeleteRequestHandler(followReq)} >Delete</div>
+                                                        </div>
+                                                    </div>
+                                                </div>
                                             })
                                             }
                                     </div>

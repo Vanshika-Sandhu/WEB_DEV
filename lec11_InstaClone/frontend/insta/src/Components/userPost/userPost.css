@@ -1,10 +1,6 @@
 .profile-user-post{
-    height: 270px;
-    background: white;
+    height: 240px;
     width: 300px;
-    border-radius: 3px;
-    border: 1px solid lightgray;
-    margin: 19px;
 }
 
 .profile-user-post img{

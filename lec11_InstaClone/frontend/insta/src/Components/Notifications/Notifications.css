@@ -48,3 +48,22 @@
     align-items: center;
 }
 
+.request-action{
+    display: flex;
+    width: 150px;
+    height: 50px;
+    align-items: center;
+    justify-content: center;
+    margin-left: -33px;
+}
+
+.request-action .follow-action{
+    height: 30px;
+    width: 60px;
+}
+
+.delete{
+    border: 2px solid red;
+    color: red;
+}
+
