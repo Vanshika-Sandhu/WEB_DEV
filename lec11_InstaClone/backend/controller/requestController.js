@@ -128,32 +128,43 @@ async function deleteRequest(req , res){
   };
 };
 
-
-//still ppending
-async function cancelRequest(req , res){
-
-};
-
 async function deleteFollower(req , res){
-
+    //console.log("Inside delete follower function");
+    try {
+      let uid = req.params.uid;
+      let followerId = req.params.followerId;
+      let request = await followerModel.find({uid,followerId}).exec();
+      //console.log(request);
+      let docId = request[0]["id"];
+      let deletedFollower = await followerModel.findByIdAndDelete(docId);
+      res.json({
+        message:"Follower deleted successfully",
+        deletedFollower
+      });
+    } 
+    catch (error) {
+      res.json({
+        message:"Failed to delete follower",
+        error
+      });
+    };
 };
 
 async function deleteFollowing(req , res){
   console.log("Inside delete following");
   try {
     let uid = req.params.uid;
-    let myFollowing = await getFollowingHelper(uid);
-    if (myFollowing.length) {
-      console.log(myFollowing);
+    //console.log(uid);
+    let followId = req.params.followingId;
+    //console.log(followId);
+    let request = await followingModel.find({ isAccepted:true, uid, followId}).exec();
+    //console.log(request);
+    let docId = request[0]["id"];
+      let deletedFollowing = await followingModel.findByIdAndDelete(docId);
       res.json({
-        message: "Succesfully got all following !",
-        myFollowing,
+        message:"Following id deleted successfully",
+        deletedFollowing
       });
-    } else {
-      res.json({
-        message: "You dont have any following !",
-      });
-    }
 
   } catch (error) {
     res.json({
@@ -165,7 +176,10 @@ async function deleteFollowing(req , res){
 
 };
 
+//still pending
+async function cancelRequest(req , res){
 
+};
 
 ///completed
 async function getFollowingHelper(uid) {
