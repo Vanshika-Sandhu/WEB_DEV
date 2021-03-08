@@ -106,6 +106,7 @@ async function pendingRequest(req , res){
   }
 };
 
+//completed by me
 async function deleteRequest(req , res){
   // console.log("inside delete request function");
   try {
@@ -151,7 +152,7 @@ async function deleteFollower(req , res){
 };
 
 async function deleteFollowing(req , res){
-  console.log("Inside delete following");
+  //console.log("Inside delete following");
   try {
     let uid = req.params.uid;
     //console.log(uid);
@@ -176,9 +177,28 @@ async function deleteFollowing(req , res){
 
 };
 
-//still pending
 async function cancelRequest(req , res){
-
+  //console.log("inside cancel request function");
+  try {
+    let uid = req.params.uid;
+      //console.log(uid);
+      let followId = req.params.followId;
+      //console.log(followId);
+      let request = await followingModel.find({ isAccepted:false, uid, followId}).exec();
+      //console.log(request);
+      let docId = request[0]["id"];
+      let cancelledRequest = await followingModel.findByIdAndDelete(docId);
+      res.json({
+        message:"Request cancelled successfully",
+        cancelledRequest
+      }); 
+  } 
+  catch (error) {
+    res.json({
+      message:"Failed to cancel request!!",
+      error
+    });
+  };
 };
 
 ///completed

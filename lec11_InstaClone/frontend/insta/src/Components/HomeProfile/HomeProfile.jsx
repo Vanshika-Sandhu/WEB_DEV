@@ -1,6 +1,7 @@
 import axios from 'axios';
 import React, { Component } from 'react';
 import "./HomeProfile.css";
+import {Link} from "react-router-dom";
 
 class HomeProfile extends Component {
     state = {  
@@ -22,13 +23,17 @@ class HomeProfile extends Component {
         return ( 
             <div className="home-profile">
                 <div className="user-info">
+                    <Link to="/profile">
                     <div className="user-image">
                         <img src={profilePic} alt=""/>
                     </div>
+                    </Link>
+                    <Link to="/profile" style={{ textDecoration: 'none' }}>
                     <div className="name-info">
                         <div className="username"><strong>{username}</strong></div>
                         <div className="name">{name}</div>
                     </div>
+                    </Link>
                 </div>
                 <div className="user-suggestions">
                     <div className="suggestion-head">Suggestions for you</div>
