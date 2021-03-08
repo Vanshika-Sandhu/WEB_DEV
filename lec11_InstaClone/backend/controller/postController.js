@@ -75,6 +75,37 @@ async function deleteMyPost(req, res){
     };
 };
 
+async function likePost(req , res){
+    try {
+        let uid = req.params.uid;
+        let pid = req.params.pid;
+        let likedPost = await postModel.findById(pid).exec();
+        likedPost.likes.push(uid);
+        let updatedPost = await likedPost.save();
+        // console.log(likedPost);
+        // console.log(updatedPost);
+        res.json({
+            message:"post liked successfully",
+            updatedPost
+        });
+    } 
+    catch (error) {
+        res.json({
+            message:"Failed to like post",
+            error
+        });
+    }
+    
+
+
+};
+
+async function commentOnPost(req, res){
+    console.log("Inside comment on post function");
+};
+
+module.exports.commentOnPost = commentOnPost;
+module.exports.likePost = likePost;
 module.exports.deleteMyPost = deleteMyPost;
 module.exports.getMyPosts = getMyPosts;
 module.exports.getAllPosts = getAllPosts;
