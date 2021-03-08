@@ -270,21 +270,24 @@ async function getAllSuggestions(req, res) {
   try {
     let uid = req.params.uid;
     let myFollowing = await getFollowingHelper(uid);
+    console.log(myFollowing);
     let checkList = myFollowing.map( function(user){
         return user["_id"]+"";
     });
-    checkList.push(uid); 
+    checkList.push(uid);
+    console.log(checkList); 
     let suggestions = [];
     for(let i=0 ; i<myFollowing.length ; i++){
         let followingOfMyFollowings = await getFollowingHelper(myFollowing[i]["_id"]);
+        console.log(followingOfMyFollowings);
         for(let j=0 ; j<followingOfMyFollowings.length ; j++){
-            if(!(checkList.includes(followingOfMyFollowings[j]["_id"])) &&( followingOfMyFollowings[j]["_id"]!=uid)){
+            if(!checkList.includes(followingOfMyFollowings[j]["_id"]+"")){
                 suggestions.push(followingOfMyFollowings[j]);
                 checkList.push(followingOfMyFollowings[j]["_id"]+"");
             }
         }
     }
-
+    console.log(checkList);
     res.json({
         message:"Succesfully got all suggestions !",
         suggestions
