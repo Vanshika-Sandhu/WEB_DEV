@@ -10,7 +10,8 @@ class Post extends Component {
         caption:"",
         postImage:"",
         comments:[],
-        likes:[]
+        likes:[],
+        commentInput:""
      };
 
      componentDidMount(){
@@ -24,7 +25,8 @@ class Post extends Component {
                 caption: post.caption,
                 postImage: post.postImage,
                 comments: post.comments,
-                likes: post.likes
+                likes: post.likes,
+                commentInput:""
             })
          });
      }
@@ -36,9 +38,15 @@ class Post extends Component {
             this.setState({
                 likes:updatePost.likes
             });
-            
+
         });
      };
+
+     onCommentTypeHandler = (value) =>{
+        this.setState({
+            commentInput:value
+        })
+    }
 
 
 
@@ -74,7 +82,7 @@ class Post extends Component {
                             <div className="comment">AHAHAHA hope it does!</div>
                     </div>
                     <div className="comment-input">
-                        <input type="text" placeholder="Add a comment"/>
+                        <input type="text" placeholder="Add a comment" value={this.state.commentInput} onChange={ (e) => {this.onCommentTypeHandler(e.target.value)}}/>
                         <div className="add-comment">POST</div>
                     </div>
                 </div>

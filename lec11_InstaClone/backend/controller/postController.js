@@ -96,8 +96,6 @@ async function likePost(req , res){
             likedPost.likes.push(uid);
         }
         let updatedPost = await likedPost.save();
-        // console.log(likedPost);
-        // console.log(updatedPost);
         res.json({
             message:"post liked successfully",
             updatedPost
@@ -108,14 +106,33 @@ async function likePost(req , res){
             message:"Failed to like post",
             error
         });
-    }
-    
-
-
+    };
 };
 
 async function commentOnPost(req, res){
-    console.log("Inside comment on post function");
+    try {
+        console.log("Inside comment on post function");
+        let commentInfo = req.body;
+        let uid = commentInfo.uid;
+        let comment = commentInfo.comment;
+        let pid = commentInfo.pid;
+        let commentedPost = await postModel.findById(pid).exec();
+        commentedPost.comments.push({uid, comment});
+        console.log(commentedPost.comments);
+        let updatedPost = await commentedPost.save();
+        console.log(updatedPost);
+        res.json({
+            message:"Commented on post successfully",
+            updatedPost
+        });
+    } 
+    catch (error) {
+        res.json({
+            message:"Failed to comment on the post",
+            error
+        });
+    };
+
 };
 
 module.exports.commentOnPost = commentOnPost;
