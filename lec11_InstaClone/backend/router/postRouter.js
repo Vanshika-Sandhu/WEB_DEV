@@ -37,7 +37,7 @@ postRouter.route("").post( upload.single('post') , createPost).get(getAllPosts);
 postRouter.route("/:uid").get(getMyPosts);
 postRouter.route("/:pid").delete(deleteMyPost);
 postRouter.route("/like/:uid/:pid").get(likePost);
-postRouter.route("/comment/:uid/:pid").patch(commentOnPost);
+postRouter.route("/comment/:uid/:pid").get(commentOnPost);
 
 
 module.exports = postRouter;

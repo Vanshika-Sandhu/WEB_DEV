@@ -80,7 +80,21 @@ async function likePost(req , res){
         let uid = req.params.uid;
         let pid = req.params.pid;
         let likedPost = await postModel.findById(pid).exec();
-        likedPost.likes.push(uid);
+        if(likedPost.likes.length){
+            for(let i=0 ; i<likedPost.likes.length ; i++){
+                if(likedPost.likes[i]==uid){
+                    likedPost.likes.splice(i, 1); 
+                    break;
+                }
+                else{
+                    likedPost.likes.push(uid);
+                    break;
+                }
+            }
+        }
+        else{
+            likedPost.likes.push(uid);
+        }
         let updatedPost = await likedPost.save();
         // console.log(likedPost);
         // console.log(updatedPost);

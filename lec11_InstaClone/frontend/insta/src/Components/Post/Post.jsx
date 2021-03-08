@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import "./Post.css";
 import axios from "axios";
+import uid from "../../uid";
 
 class Post extends Component {
     state = { 
@@ -28,6 +29,19 @@ class Post extends Component {
          });
      }
 
+     onLikeHandler = () =>{
+        let pid = this.props.post["_id"];
+        axios.get(`api/post/like/${uid}/${pid}`).then(obj=>{
+            let updatePost = obj.data.updatedPost;
+            this.setState({
+                likes:updatePost.likes
+            });
+            
+        });
+     };
+
+
+
     render() { 
         let {username, userPhoto , caption, postImage, comments, likes} = this.state;
         return ( 
@@ -42,11 +56,11 @@ class Post extends Component {
             <div className="post-footer">
                 <div className="reactions">
                     <div className="icons">
-                        <div className="like-icon"><i className="far fa-heart"></i></div>
+                        <div className="like-icon" onClick={this.onLikeHandler} ><i className="far fa-heart"></i></div>
                         <div className="comment-icon"><i className="far fa-comment"></i></div>
                     </div>
                     <div className="numbers">
-                        <div className="like-no">{likes.length} Likes</div>
+                        <div className="like-no" >{likes.length} Likes</div>
                         <div className="comment-no">{comments.length} Comments</div>
                     </div>
                 </div>
