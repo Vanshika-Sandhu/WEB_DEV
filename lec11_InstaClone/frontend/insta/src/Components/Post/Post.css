@@ -1,6 +1,6 @@
 .post{
     border: 1px solid lightgrey;
-    height: 650px;
+    height: 660px;
     width: 550px;
     margin-bottom: 30px;
     background: white;
@@ -51,7 +51,7 @@
 }
 
 .post-footer{
-    height: 190px;
+    height: 200px;
     display: flex;
     flex-direction: column;
 
@@ -103,7 +103,8 @@
     display: flex;
     align-items:flex-start;
     font-size: 15px;
-    height: 40px;
+    height: 30px;
+    overflow: auto;
 
 }
 
@@ -121,14 +122,23 @@
 .comment-box{
     display: flex;
     flex-direction: column;
-    height: 75px;
+    height: 95px;
 
+}
+
+.comment-list{
+    display: flex;
+    font-size: 12px;
+    margin-left: 10px;
+    height: 52px;
+    overflow: auto;
+    align-items:flex-start;
+    flex-direction: column;
 }
 
 .comment-info{
     display: flex;
-    font-size: 12px;
-    margin-left: 10px;
+    align-items:flex-start;
 }
 
 .user-commented{
@@ -168,6 +178,6 @@
     width: 50px;
     margin-left: 15px;
     color: #0999f6;
-    
+    cursor: pointer;
 
 }

@@ -1,4 +1,5 @@
 const postModel = require("../model/postModel");
+const userModel = require("../model/userModel");
 
 async function createPost(req , res){
     try {
@@ -116,11 +117,11 @@ async function commentOnPost(req, res){
         let uid = commentInfo.uid;
         let comment = commentInfo.comment;
         let pid = commentInfo.pid;
+        let commentedUser = await userModel.findById(uid).exec();
         let commentedPost = await postModel.findById(pid).exec();
-        commentedPost.comments.push({uid, comment});
-        console.log(commentedPost.comments);
+        let user = commentedUser.username;
+        commentedPost.comments.push({uid, user, comment});
         let updatedPost = await commentedPost.save();
-        console.log(updatedPost);
         res.json({
             message:"Commented on post successfully",
             updatedPost

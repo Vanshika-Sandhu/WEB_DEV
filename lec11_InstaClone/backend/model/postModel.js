@@ -24,6 +24,7 @@ let postSchema = mongoose.Schema({
     comments:[
         {
             uid:String ,
+            user:String,
             comment:String
         }
     ]
