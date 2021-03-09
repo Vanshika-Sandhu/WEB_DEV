@@ -2,6 +2,7 @@ import axios from 'axios';
 import React, { Component } from 'react';
 import "./HomeProfile.css";
 import {Link} from "react-router-dom";
+import uid from "../../uid.js";
 
 class HomeProfile extends Component {
     state = {  
@@ -15,6 +16,14 @@ class HomeProfile extends Component {
             this.setState({
                 suggestions:suggestions
             })
+        });
+    }
+
+    sendRequestHandler=(suggestion)=>{
+        console.log("Inside send request handler");
+        let followId = suggestion["_id"];
+        axios.post(`/api/request`, {uid, followId}).then( obj =>{
+            this.componentDidMount();
         });
     }
 
@@ -43,14 +52,18 @@ class HomeProfile extends Component {
                             {
                             this.state.suggestions.map( suggestionList => {
                                 return <div key={suggestionList["_id"]} className="suggested-user user-info">
+                                    <Link to="/userProfile" style={{ textDecoration: 'none' }} user={suggestionList}>
                                     <div className="sugg-img user-image">
                                         <img src={suggestionList.profilePic} alt=""/>
                                     </div>
+                                    </Link>
+                                    <Link to="/userProfile" style={{ textDecoration: 'none' }} user={suggestionList}>
                                     <div className="name-info">
                                     <div className="username"><strong>{suggestionList.username}</strong></div>
                                         <div className="name">{suggestionList.name}</div>
                                     </div>
-                                    <div className="follow">
+                                    </Link>
+                                    <div className="follow" onClick={()=>this.sendRequestHandler(suggestionList)}>
                                         <i className="fas fa-user-plus"></i>
                                     </div>
                                 </div>

@@ -190,10 +190,6 @@ class Profile extends Component {
                             : <div className="follow-view-body">You do not follow any user!</div>    
                         )
                     }
-
-
-
-
                    </div>
             </div>
          );

@@ -7,6 +7,7 @@ import Setting from './Components/Setting/Setting';
 import uid from "./uid";
 import axios from "axios";
 import Notifications from './Components/Notifications/Notifications';
+import UserProfile from './Components/UserProfile/UserProfile';
 
 class App extends Component {
   state = { 
@@ -52,6 +53,9 @@ class App extends Component {
               </Route>
               <Route path="/notifications" exact>
                 <Notifications  user={user}/>
+              </Route>
+              <Route path="/userProfile" exact>
+                <UserProfile />
               </Route>
               <Route path="*">
                 <Redirect to="/"></Redirect>

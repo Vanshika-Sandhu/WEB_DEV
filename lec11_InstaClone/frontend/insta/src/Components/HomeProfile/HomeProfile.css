@@ -107,6 +107,7 @@
     align-items: center;
     font-size: 20px;
     color: #0999F6;
+    cursor: pointer;
 }
 
 .name-info .username{
