@@ -7,23 +7,23 @@ class Settings extends Component {
         name:"",
         username:"",
         bio:"",
-        email:"",
         password:"",
         profilePic:"",
+        isPublic: true,
         disabled:true
      }
 
      fileInput = React.createRef();
 
      componentDidMount(){
-        let {name, username, bio, email, password, profilePic} = this.props.user;
-       this.setState({
+        let {name, username, bio, password, profilePic, isPublic} = this.props.user;
+        this.setState({
            name,
            username,
            bio,
-           email,
            password,
-           profilePic
+           profilePic,
+           isPublic
        });
     };
 
@@ -42,25 +42,25 @@ class Settings extends Component {
      };
 
      onCancelHandler = () =>{
-        let {name, username, bio, email, password, profilePic} = this.props.user;
+        let {name, username, bio, password, profilePic, isPublic} = this.props.user;
         this.setState({
             name,
             username,
             bio,
-            email,
             password,
             profilePic,
+            isPublic,
             disabled:true
         });
      };
 
      onSaveHandler = () =>{
          let formData = new FormData();
-         let {name, username, bio, email, password} = this.state;
+         let {name, username, bio, password, isPublic} = this.state;
          formData.append('name' , name);
          formData.append('username' , username);
          formData.append('bio' , bio);
-         formData.append('email' , email);
+         formData.append('isPublic' , isPublic);
          formData.append('password' , password);
         
         let uid = this.props.user["_id"];
@@ -119,8 +119,8 @@ class Settings extends Component {
                         <input type="text" id="bio" value={this.state.bio} onChange={(e)=>{this.onChangeHandler(e)}} disabled={this.state.disabled} />
                     </div>
                     <div className="user-info">
-                        <div className="key">email</div>
-                        <input type="text" id="email"  value={this.state.email} onChange={(e)=>{this.onChangeHandler(e)}} disabled={this.state.disabled} />
+                        <div className="key">Public account</div>
+                        <input type="text" id="isPublic"  value={this.state.isPublic} onChange={(e)=>{this.onChangeHandler(e)}} disabled={this.state.disabled} />
                     </div>
                     <div className="user-info">
                         <div className="key">Password</div>

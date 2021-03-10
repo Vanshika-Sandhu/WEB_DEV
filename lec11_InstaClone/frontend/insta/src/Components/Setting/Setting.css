@@ -133,16 +133,44 @@
     height: 20px;
     width: 80px;
 }
-.setting .edit{
-    
+.setting .edit button{
+    background: white;
+    outline: none;
+    border: 2px solid #5295F6;
+    width: 80px;
+    height: 30px;
+    border-radius: 3px;
+    color: #5295F6;
+    font-size: 15px;
+    font-weight: 600;
+    cursor: pointer;
 }
 
-.setting .cancel{
-   
+.setting .save button{
+    background: #5295F6;
+    outline: none;
+    border: 2px solid #5295F6;
+    width: 80px;
+    height: 30px;
+    border-radius: 3px;
+    color: white;
+    font-size: 15px;
+    font-weight: 600;
+    cursor: pointer;
 }
 
-.setting .save{
-   
+.setting .cancel button{
+    background: red;
+    outline: none;
+    border: 2px solid red;
+    width: 80px;
+    height: 30px;
+    border-radius: 3px;
+    color: white;
+    font-size: 15px;
+    font-weight: 600;  
+    cursor: pointer;
+
 }
 
 .action{
