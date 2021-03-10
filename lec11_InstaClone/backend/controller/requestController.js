@@ -201,6 +201,22 @@ async function cancelRequest(req , res){
   };
 };
 
+async function getAllUsers(Req, res){
+ try {
+   let allUsers = await userModel.find();
+   res.json({
+    message:"Successfully got all users",
+    allUsers
+   })
+ } 
+ catch (error) {
+   res.json({
+     message:"Failed to get all users",
+     error
+   });
+ }
+}
+
 ///completed
 async function getFollowingHelper(uid) {
   try {
@@ -302,7 +318,7 @@ async function getAllSuggestions(req, res) {
 
 
 
-
+module.exports.getAllUsers = getAllUsers;
 module.exports.sendRequest = sendRequest;
 module.exports.acceptRequest = acceptRequest;
 module.exports.pendingRequest = pendingRequest;

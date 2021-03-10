@@ -19,25 +19,23 @@ class App extends Component {
 
   componentDidMount(){
     axios.get("/auth/checkAuth").then(obj=>{
-      // console.log(obj);
-      // let uid = obj.data.user["_id"];
-      // console.log(uid);
       if(obj.data.isAuth){
+        this.setState({
+          user:obj.data.user,
+          isAuth:true 
+        });
         let uid = obj.data.user["_id"];
         axios.get(`/api/request/suggestions/${uid}`)
         .then( obj =>{
               let suggestions = obj.data.suggestions;
               // console.log(suggestions);
               return suggestions;
-            })
-            .then(suggestions=>{
-              this.setState({
-                user:obj.data.user,
-                isAuth:true ,
-                suggestions:suggestions
-              });
-            })
-
+         })
+        .then(suggestions=>{
+            this.setState({
+              suggestions:suggestions
+           });
+         })
         } 
     });
   }
@@ -45,6 +43,7 @@ class App extends Component {
 
 
   login = () =>{
+    window.location="/auth/google";
     // setState : true
     //proxy defined
 
@@ -58,17 +57,20 @@ class App extends Component {
   //     })
   // });
   //can't uuse axios here
-    window.location="/auth/google";
   };
 
   logout = () =>{
     // setState : false
-    this.setState({
-      user:null,
-      isAuth: false,
-      suggestions:[]
+    axios.get("/auth/destroyCookie").then(obj=>{
+      this.setState({
+        user:null,
+        isAuth: false,
+        suggestions:[],
+        clickedUser:null
+      });
     });
   };
+    
 
 
   updateUser = (updatedUser) =>{
@@ -102,7 +104,7 @@ class App extends Component {
     return ( 
       <Router>
         <div className ="app">
-          <Header isAuth = {this.state.isAuth} logout = {this.logout}/>
+          <Header isAuth = {this.state.isAuth} logout = {this.logout}  UserClickedHandler = {this.UserClickedHandler} />
             <Switch>
               <Route path="/" exact>
                 {this.state.isAuth ? <Home user={user} suggestions={suggestions} UserClickedHandler = {this.UserClickedHandler}/> : <Login login = {this.login}/> }

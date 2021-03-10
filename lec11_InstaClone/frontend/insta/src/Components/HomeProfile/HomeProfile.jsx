@@ -32,7 +32,6 @@ class HomeProfile extends Component {
 
     render() { 
         let { name , username, profilePic} = this.props.user;
-        let clickedUser = this.state.clickedUser;
         return ( 
             <div className="home-profile">
                 <div className="user-info">

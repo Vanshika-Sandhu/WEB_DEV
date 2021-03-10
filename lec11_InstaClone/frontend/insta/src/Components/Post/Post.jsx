@@ -48,7 +48,7 @@ class Post extends Component {
         let clickedUser =  postUser;
         let user = this.props.user;
         let destination = this.state.destination;
-        if(user["_id"]==clickedUser["_id"]){
+        if(user["_id"]===clickedUser["_id"]){
             destination="/profile";
         }
         else{

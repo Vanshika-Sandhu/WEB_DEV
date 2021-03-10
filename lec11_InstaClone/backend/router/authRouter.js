@@ -33,5 +33,13 @@ authRouter
          }
     });
 
+//logout
+authRouter.route("/destroyCookie").get(function(req , res){
+    req.session = null;
+    res.json({
+      messaged:"LOGGED OUT"
+    })
+  });
+
 
 module.exports = authRouter;
