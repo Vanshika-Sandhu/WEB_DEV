@@ -67,7 +67,7 @@ class Feeds extends Component {
                 <div className="feed-body">
                     {
                         this.state.posts.map( post =>{
-                            return <Post post={post} user={this.props.user} key={post["_id"]}/>
+                            return <Post post={post} user={this.props.user} key={post["_id"]} UserClickedHandler = {this.props.UserClickedHandler} />
                         })
                     }
                 </div>

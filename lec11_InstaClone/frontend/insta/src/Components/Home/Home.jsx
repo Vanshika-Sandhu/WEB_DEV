@@ -14,7 +14,6 @@ class Home extends Component {
             user: this.props.user,
             suggestions:this.props.suggestions
         });
-        console.log(this.state.suggestions);
     }
 
     render() { 
@@ -22,7 +21,7 @@ class Home extends Component {
             <div className="home">
                 { this.state.user ? 
                 (<div className="home-body">
-                    <Feeds user = {this.state.user}/>
+                    <Feeds user = {this.state.user}  UserClickedHandler = {this.props.UserClickedHandler} />
                     <HomeProfile user = {this.state.user} suggestions={this.state.suggestions} UserClickedHandler = {this.props.UserClickedHandler} /> 
                 </div>
                 )

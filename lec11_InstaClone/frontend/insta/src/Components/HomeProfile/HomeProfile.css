@@ -35,7 +35,7 @@
 
 .name-info{
     margin-left: 15px;
-    width: 130px;
+    width: 170px;
 }
 .name-info div{
     font-size: 18px;
@@ -105,9 +105,10 @@
     display: flex;
     justify-content: center;
     align-items: center;
-    font-size: 20px;
+    font-size: 25px;
     color: #0999F6;
     cursor: pointer;
+    margin-left: -40px;
 }
 
 .name-info .username{

@@ -17,18 +17,6 @@ class HomeProfile extends Component {
         })
      }
 
-    // UserClickedHandler=(suggestion)=>{
-        
-    //     let clickedUser = this.state.clickedUser;
-    //     let followId = suggestion["_id"];
-    //     clickedUser = suggestion;
-    //     // console.log(clickedUser);
-    //     this.setState({
-    //         clickedUser
-    //     });
-    //     // console.log(clickedUser);
-    // }
-
     sendRequestHandler=(suggestion)=>{
         let uid = this.props.user["_id"];
         console.log("Inside send request handler");

@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import "./Post.css";
 import axios from "axios";
+import {Link} from "react-router-dom";
 
 class Post extends Component {
     state = { 
@@ -11,12 +12,16 @@ class Post extends Component {
         comments:[],
         likes:[],
         commentInput:"",
+        postUser:null,
+        user:null,
+        destination:""
      };
 
      componentDidMount(){
          let postUserUid = this.props.post.uid;
         //  console.log(postUserUid);
          let post = this.props.post;
+         let user = this.props.user;
          axios.get(`/api/user/${postUserUid}`).then(obj=>{
             // console.log(obj.data.user);
 
@@ -31,10 +36,31 @@ class Post extends Component {
                 postImage: post.postImage,
                 comments: post.comments,
                 likes: post.likes,
-                commentInput:""
+                commentInput:"",
+                postUser,
+                user
             });
          });
      }
+
+     onclickHandler=(postUser)=>{
+        console.log("Inside on clicked handler");
+        let clickedUser =  postUser;
+        let user = this.props.user;
+        let destination = this.state.destination;
+        if(user["_id"]==clickedUser["_id"]){
+            destination="/profile";
+        }
+        else{
+            destination="/userProfile";
+        }
+        this.props.UserClickedHandler(clickedUser);
+        this.setState({
+            clickedUser,
+            destination
+        })
+     }
+
 
      onLikeHandler = () =>{
         let pid = this.props.post["_id"];
@@ -73,12 +99,17 @@ class Post extends Component {
 
 
     render() { 
-        let {username, userPhoto , caption, postImage, comments, likes} = this.state;
+        let {username, userPhoto , caption, postImage, comments, likes, postUser, user} = this.state;
+        let destination= this.state.destination;
         return ( 
         <div className="post">
             <div className="post-header">
-                <div className="user-photo"><img src={userPhoto} alt=""/></div>
-                <div className="username">{username}</div>
+                <div className="user-photo" onClick = {()=>this.onclickHandler(postUser)}>
+                <Link to={destination} style={{ textDecoration: 'none' }}><img src={userPhoto} alt=""/></Link>
+                </div>
+                <Link to={destination} style={{ textDecoration: 'none' }}>
+                <div className="username"  onClick = {()=>this.onclickHandler(postUser)} >{username}</div>
+                </Link>
             </div>
             <div className="post-image">
                 <img src={postImage} alt=""/>
