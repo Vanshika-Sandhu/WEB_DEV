@@ -30,9 +30,7 @@ class Header extends Component {
                     </div>
                 </div>
                 </React.Fragment> 
-                :  <div className="nav-links" >
-                    <Link to="/login" style={{ textDecoration: 'none' }} >LOGIN</Link>
-                </div>
+                :  <div className="nav-links" ></div>
                 }
             </div>
         );
