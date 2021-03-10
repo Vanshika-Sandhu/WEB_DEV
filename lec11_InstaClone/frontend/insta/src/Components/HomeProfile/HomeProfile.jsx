@@ -26,6 +26,7 @@ class HomeProfile extends Component {
         axios.post(`/api/request`, {uid, followId}).then( obj =>{
             console.log(obj);
             // this.componentDidMount();
+            console.log("request sent");
         });
     }
 

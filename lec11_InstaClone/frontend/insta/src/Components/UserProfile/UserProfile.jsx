@@ -18,13 +18,28 @@ class UserProfile extends Component {
 
     componentDidMount(){
         console.log("inside user profile");
-        let uid = this.props.profileUser["_id"];
+        console.log(this.props);
+        let pid = this.props.profileUser["_id"];
+        let uid = this.props.user["_id"];
          console.log(uid);
+
+        axios.get(`/api/request/following/${uid}`).then(obj=>{
+            let myFollowing = obj.data.myFollowing;
+            for(let i=0; i<myFollowing.length; i++){
+                if(myFollowing[i]["_id"]==pid){
+                    this.setState({
+                        isFollowed:true
+                    });
+                    break;
+                }
+            }
+        });
+
          let posts=[];
          let followers=[];
          let following=[];
 
-         axios.get(`/api/post/${uid}`).then(obj=>{
+         axios.get(`/api/post/${pid}`).then(obj=>{
             // console.log(obj);
             let Userposts = obj.data.myposts;
             console.log(Userposts);
@@ -52,6 +67,7 @@ class UserProfile extends Component {
                 following = Userfollowing;
             }
             this.setState({
+                isPublic : this.props.profileUser.isPublic,
                 posts,
                 followers,
                 following
@@ -76,6 +92,21 @@ class UserProfile extends Component {
            view:"FOLLOWING"
        });
    }
+
+   sendRequestHandler=(profileUser)=>{
+    let uid = this.props.user["_id"];
+    console.log("Inside send request handler");
+    let followId = profileUser["_id"];
+    // clickedUser = suggestion;
+    // console.log(clickedUser);
+    axios.post(`/api/request`, {uid, followId}).then( obj =>{
+        console.log(obj);
+        // this.componentDidMount();
+        console.log("request sent");
+    });
+    }
+
+    
 
      
 
@@ -102,7 +133,7 @@ class UserProfile extends Component {
                         </div>
                     </div>
                     <div className="profile-follow-action-button">
-                        <div className="action-btn">FOLLOW</div>
+                        <div className="action-btn" onClick={()=>this.sendRequestHandler(this.props.profileUser)}>FOLLOW</div>
                     </div>
                 </div>
 
