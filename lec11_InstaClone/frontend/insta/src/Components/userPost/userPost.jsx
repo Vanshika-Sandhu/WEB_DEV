@@ -20,7 +20,7 @@ class UserPost extends Component {
 
 
     render() { 
-        let { caption, postImage} = this.state;
+        let {caption, postImage} = this.state;
         return (  
             <div className="profile-user-post">
                 <img src={postImage} alt=""/>

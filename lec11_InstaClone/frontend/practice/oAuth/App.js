@@ -15,7 +15,7 @@ let userModel = require("../../../backend/model/userModel"); // {name, username,
 app.use(express.static("public"));
 app.use(cookie({
     maxAge : 24*24*100,
-    keys : ["That's what she said!!"]
+    keys : ["That's what she said!!"]  // userInfo + keys  => id cokkie save hoti hai => cookie id + keys => userInfo
 }));
 
 // middleware

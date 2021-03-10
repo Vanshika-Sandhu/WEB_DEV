@@ -1,7 +1,6 @@
 import React, { Component } from 'react';
 import axios from "axios";
 import './Setting.css';
-import uid from '../../uid';
 
 class Settings extends Component {
     state = { 
@@ -63,6 +62,8 @@ class Settings extends Component {
          formData.append('bio' , bio);
          formData.append('email' , email);
          formData.append('password' , password);
+        
+        let uid = this.props.user["_id"];
 
          axios.patch(`api/user/${uid}` , formData).then( obj =>{
             if( obj.data.updatedUser)
@@ -79,6 +80,7 @@ class Settings extends Component {
      
      onUpdateProfileHandler = () =>{
         let fileObject = this.fileInput.current.files[0] ;
+        let uid = this.props.user["_id"];
         //console.log(fileObject);
         let formData = new FormData();
         formData.append('user' , fileObject);

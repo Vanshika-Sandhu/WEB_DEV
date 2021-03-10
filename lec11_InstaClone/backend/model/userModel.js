@@ -30,7 +30,7 @@ let userSchema = mongoose.Schema({
     },
     profilePic:{
         type:String,
-        default:"/images/users/default.png"
+        default:"../../frontend/insta/public/default.jpg"
     }
 });
 

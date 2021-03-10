@@ -34,7 +34,7 @@ class Feeds extends Component {
         let formData = new FormData();
 
         formData.append(`post` , fileObject);
-        formData.append(`uid` , uid);
+        formData.append(`uid` , this.props.user["_id"]);
         formData.append(`caption` , this.state.captionInput);
 
         axios.post("/api/post" , formData).then( obj =>{
@@ -68,7 +68,7 @@ class Feeds extends Component {
                 <div className="feed-body">
                     {
                         this.state.posts.map( post =>{
-                            return <Post post={post} key={post["_id"]}/>
+                            return <Post post={post} user={this.props.user} key={post["_id"]}/>
                         })
                     }
                 </div>

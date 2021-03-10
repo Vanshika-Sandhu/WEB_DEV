@@ -2,7 +2,6 @@ import axios from 'axios';
 import React, { Component } from 'react';
 import "./HomeProfile.css";
 import {Link} from "react-router-dom";
-import uid from "../../uid.js";
 
 class HomeProfile extends Component {
     state = {  
@@ -10,7 +9,7 @@ class HomeProfile extends Component {
     }
     componentDidMount(){
         //suggestions
-        let uid = this.props.user["_id"]
+        let uid = this.props.user["_id"];
         axios.get(`/api/request/suggestions/${uid}`).then( obj =>{
             let suggestions = obj.data.suggestions;
             this.setState({
@@ -20,6 +19,7 @@ class HomeProfile extends Component {
     }
 
     sendRequestHandler=(suggestion)=>{
+        let uid = this.props.user["_id"];
         console.log("Inside send request handler");
         let followId = suggestion["_id"];
         axios.post(`/api/request`, {uid, followId}).then( obj =>{

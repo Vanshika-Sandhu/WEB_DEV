@@ -1,7 +1,6 @@
 import React, { Component } from 'react';
 import "./Post.css";
 import axios from "axios";
-import uid from "../../uid";
 
 class Post extends Component {
     state = { 
@@ -16,9 +15,15 @@ class Post extends Component {
 
      componentDidMount(){
          let postUserUid = this.props.post.uid;
+        //  console.log(postUserUid);
          let post = this.props.post;
          axios.get(`/api/user/${postUserUid}`).then(obj=>{
+             console.log(obj.data.user);
+
+            //  issue idhar aa rha hai 
+
             let postUser = obj.data.user;
+            console.log(postUser);
             this.setState({
                 userPhoto: postUser.profilePic,
                 username:postUser.username,
@@ -27,12 +32,15 @@ class Post extends Component {
                 comments: post.comments,
                 likes: post.likes,
                 commentInput:""
-            })
+            });
          });
      }
 
      onLikeHandler = () =>{
         let pid = this.props.post["_id"];
+        let uid = this.props.user["_id"];
+        console.log(pid);
+        console.log(uid);
         axios.get(`api/post/like/${uid}/${pid}`).then(obj=>{
             let updatePost = obj.data.updatedPost;
             this.setState({
@@ -50,6 +58,7 @@ class Post extends Component {
 
      onPostCommentHandler = ()=>{
         let pid = this.props.post["_id"];
+        let uid = this.props.user["_id"];
         let comment = this.state.commentInput;
         let commentObj = {uid, pid, comment};
         axios.post(`api/post/comment/${uid}/${pid}` , commentObj).then(obj=>{

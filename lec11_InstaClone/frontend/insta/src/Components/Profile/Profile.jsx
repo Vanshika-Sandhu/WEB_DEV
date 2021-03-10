@@ -3,7 +3,6 @@ import axios from "axios";
 import "./Profile.css";
 import UserPost from '../userPost/userPost';
 import Follow from '../Follow/Follow';
-import uid from '../../uid';
 
 class Profile extends Component {
     state = { 
@@ -15,12 +14,15 @@ class Profile extends Component {
 
      componentDidMount(){
          let uid = this.props.user["_id"];
+         console.log(uid);
          let posts=[];
          let followers=[];
          let following=[];
 
          axios.get(`/api/post/${uid}`).then(obj=>{
+            // console.log(obj);
             let Myposts = obj.data.myposts;
+            console.log(Myposts);
             if(Myposts){
                 posts= Myposts;
                 let sortedPosts = posts.sort( (a,b)=>{
@@ -86,6 +88,7 @@ class Profile extends Component {
         // console.log(uid);
         let followerId = follower["_id"];
         //console.log(followerId);
+        let uid = this.props.user["_id"];
 
         axios.delete(`api/request/delete/follower/${uid}/${followerId}`).then(obj=>{
             if(obj.data.deletedFollower){
@@ -97,7 +100,7 @@ class Profile extends Component {
 
     onUnfollowHandler=(following)=>{
         let followingId = following["_id"];
-
+        let uid = this.props.user["_id"];
         axios.delete(`api/request/delete/following/${uid}/${followingId}`).then(obj=>{
             if(obj.data.deletedFollowing){
                 console.log("Unfollowed user successfully");
