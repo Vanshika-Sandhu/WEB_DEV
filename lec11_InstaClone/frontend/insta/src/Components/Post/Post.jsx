@@ -18,12 +18,12 @@ class Post extends Component {
         //  console.log(postUserUid);
          let post = this.props.post;
          axios.get(`/api/user/${postUserUid}`).then(obj=>{
-             console.log(obj.data.user);
+            // console.log(obj.data.user);
 
             //  issue idhar aa rha hai 
 
             let postUser = obj.data.user;
-            console.log(postUser);
+            // console.log(postUser);
             this.setState({
                 userPhoto: postUser.profilePic,
                 username:postUser.username,

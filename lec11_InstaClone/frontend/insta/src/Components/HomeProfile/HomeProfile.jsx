@@ -4,31 +4,46 @@ import "./HomeProfile.css";
 import {Link} from "react-router-dom";
 
 class HomeProfile extends Component {
-    state = {  
-        suggestions:[]
-    }
-    componentDidMount(){
-        //suggestions
-        let uid = this.props.user["_id"];
-        axios.get(`/api/request/suggestions/${uid}`).then( obj =>{
-            let suggestions = obj.data.suggestions;
-            this.setState({
-                suggestions:suggestions
-            })
-        });
-    }
+    state = { 
+        clickedUser:null
+     }
+    
+     onclickHandler=(suggestion)=>{
+        console.log("Inside on clicked handler");
+        let clickedUser =  suggestion;
+        this.props.UserClickedHandler(clickedUser);
+        this.setState({
+            clickedUser
+        })
+     }
+
+    // UserClickedHandler=(suggestion)=>{
+        
+    //     let clickedUser = this.state.clickedUser;
+    //     let followId = suggestion["_id"];
+    //     clickedUser = suggestion;
+    //     // console.log(clickedUser);
+    //     this.setState({
+    //         clickedUser
+    //     });
+    //     // console.log(clickedUser);
+    // }
 
     sendRequestHandler=(suggestion)=>{
         let uid = this.props.user["_id"];
         console.log("Inside send request handler");
         let followId = suggestion["_id"];
+        // clickedUser = suggestion;
+        // console.log(clickedUser);
         axios.post(`/api/request`, {uid, followId}).then( obj =>{
-            this.componentDidMount();
+            console.log(obj);
+            // this.componentDidMount();
         });
     }
 
     render() { 
         let { name , username, profilePic} = this.props.user;
+        let clickedUser = this.state.clickedUser;
         return ( 
             <div className="home-profile">
                 <div className="user-info">
@@ -47,19 +62,19 @@ class HomeProfile extends Component {
                 <div className="user-suggestions">
                     <div className="suggestion-head">Suggestions for you</div>
                     {
-                        this.state.suggestions.length ? 
+                        this.props.suggestions.length ? 
                         <div className="suggestion-body">
                             {
-                            this.state.suggestions.map( suggestionList => {
+                            this.props.suggestions.map( suggestionList => {
                                 return <div key={suggestionList["_id"]} className="suggested-user user-info">
-                                    <Link to="/userProfile" style={{ textDecoration: 'none' }} user={suggestionList}>
-                                    <div className="sugg-img user-image">
+                                    <Link to="/userProfile" style={{ textDecoration: 'none' }} >
+                                    <div className="sugg-img user-image" onClick = {()=>this.onclickHandler(suggestionList)}>
                                         <img src={suggestionList.profilePic} alt=""/>
                                     </div>
                                     </Link>
-                                    <Link to="/userProfile" style={{ textDecoration: 'none' }} user={suggestionList}>
-                                    <div className="name-info">
-                                    <div className="username"><strong>{suggestionList.username}</strong></div>
+                                    <Link to="/userProfile" style={{ textDecoration: 'none' }} >
+                                    <div className="name-info" onClick = {()=>this.onclickHandler(suggestionList)}>
+                                        <div className="username"><strong>{suggestionList.username}</strong></div>
                                         <div className="name">{suggestionList.name}</div>
                                     </div>
                                     </Link>

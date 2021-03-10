@@ -2,7 +2,6 @@ import React, { Component } from 'react';
 import axios from "axios";
 import Post from '../Post/Post';
 import "./Feeds.css";
-import uid from "../../uid";
 
 class Feeds extends Component {
     state = { 
