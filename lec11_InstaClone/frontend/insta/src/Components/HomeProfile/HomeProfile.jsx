@@ -11,6 +11,7 @@ class HomeProfile extends Component {
      }
 
      componentDidMount(){
+         console.log("Inside component did mount")
         let uid = this.props.user["_id"];
         axios.get(`/api/request/suggestions/${uid}`).then( obj =>{
             console.log(obj.data.suggestions);
@@ -52,10 +53,10 @@ class HomeProfile extends Component {
         // console.log(clickedUser);
         axios.post(`/api/request`, {uid, followId}).then( obj =>{
             console.log(obj);
-            // this.componentDidMount();
+            this.componentDidMount();
             console.log("request sent");
             this.setState({
-                isRequestSent:true
+                isRequestSent:true,
             })
         });
     }
@@ -63,6 +64,7 @@ class HomeProfile extends Component {
     render() { 
         let { name , username, profilePic} = this.props.user;
         let suggestions = this.state.suggestions;
+
         console.log(suggestions);
         return ( 
             <div className="home-profile">
@@ -99,7 +101,7 @@ class HomeProfile extends Component {
                                     </div>
                                     </Link>
                                     <div className="follow" onClick={()=>this.sendRequestHandler(suggestionList)}>
-                                        <i className="fas fa-user-plus"></i>
+                                        <i className="fas fa-user-plus" ></i>
                                     </div>                           
                                 </div>
                             })

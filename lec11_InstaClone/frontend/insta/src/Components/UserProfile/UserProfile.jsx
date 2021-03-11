@@ -26,12 +26,14 @@ class UserProfile extends Component {
 
         axios.get(`/api/request/following/${uid}`).then(obj=>{
             let myFollowing = obj.data.myFollowing;
-            for(let i=0; i<myFollowing.length; i++){
-                if(myFollowing[i]["_id"]===pid){
-                    this.setState({
-                        isFollowed:true,
-                    });
-                    break;
+            if(myFollowing){
+                for(let i=0; i<myFollowing.length; i++){
+                    if(myFollowing[i]["_id"]===pid){
+                        this.setState({
+                            isFollowed:true,
+                        });
+                        break;
+                    }
                 }
             }
         });
