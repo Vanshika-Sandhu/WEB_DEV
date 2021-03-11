@@ -41,20 +41,19 @@ class Header extends Component {
             }  
         }
         if(isFound){
+            console.log("User found");
+            this.props.UserClickedHandler(searchedUser);
             this.setState({
                 searchedUser,
                 searchInput:""
             });
-            console.log("User found");
-            // window.location="/userProfile";
-            //relocation wala kaam pending hai
         }  
         else{
+            console.log("User not found");
             this.setState({
                 searchedUser:null,
                 searchInput:""
             });
-            console.log("User not found");
         } 
         console.log(searchedUser);
 
@@ -73,7 +72,18 @@ class Header extends Component {
                 <React.Fragment>
                 <div className="search-box">
                     <input type="text" name="" id="" placeholder="Search" value={this.state.searchInput} onChange={ (e) => {this.inputBoxHandler(e.target.value)}}></input>
-                    <div className="search-icon"><i className="fas fa-search" onClick={this.onSearchClickHandler} ></i></div>
+                    {
+                        this.state.searchedUser ? 
+                        (<Link to="/" style={{ textDecoration: 'none' }} >
+                        <div className="search-icon"><i className="fas fa-search" onClick={this.onSearchClickHandler} ></i></div>
+                        </Link>)
+                        :
+                        (<Link to="/userProfile" style={{ textDecoration: 'none' }} >
+                        <div className="search-icon"><i className="fas fa-search" onClick={this.onSearchClickHandler} ></i></div>
+                        </Link>)
+                        
+                    }
+                    
                 </div>
                 <div className="nav-links">
                     <div>
