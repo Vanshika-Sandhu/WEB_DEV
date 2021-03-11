@@ -81,16 +81,19 @@ async function likePost(req , res){
         let uid = req.params.uid;
         let pid = req.params.pid;
         let likedPost = await postModel.findById(pid).exec();
+        let isLiked = false;
+        let i=0;
         if(likedPost.likes.length){
-            for(let i=0 ; i<likedPost.likes.length ; i++){
-                if(likedPost.likes[i]==uid){
-                    likedPost.likes.splice(i, 1); 
+            for( ; i<likedPost.likes.length ; i++){
+                if(likedPost.likes[i]===uid){
+                    isLiked = true;
                     break;
                 }
-                else{
-                    likedPost.likes.push(uid);
-                    break;
-                }
+            }
+            if(isLiked){
+                likedPost.likes.splice(i, 1);            }
+            else{
+                likedPost.likes.push(uid);
             }
         }
         else{

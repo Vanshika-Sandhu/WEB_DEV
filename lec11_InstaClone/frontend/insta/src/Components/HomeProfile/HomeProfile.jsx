@@ -6,7 +6,8 @@ import {Link} from "react-router-dom";
 class HomeProfile extends Component {
     state = { 
         clickedUser:null,
-        suggestions:[]
+        suggestions:[],
+        isRequestSent:false
      }
 
      componentDidMount(){
@@ -29,6 +30,20 @@ class HomeProfile extends Component {
         })
      }
 
+     onCancelRequestHandler = (suggestion)=>{
+        console.log("inside cancel request handler");
+        let uid = this.props.user["_id"];
+        let followId = suggestion["_id"];
+        axios.delete(`/api/request/cancel/${followId}/${uid}`).then(obj=>{
+            if(obj.data.message === "Request cancelled successfully" ){
+                console.log("Request cancelled successfully");
+                this.setState({
+                    isRequestSent:false
+                });
+            }
+        })
+    }
+
     sendRequestHandler=(suggestion)=>{
         let uid = this.props.user["_id"];
         console.log("Inside send request handler");
@@ -39,6 +54,9 @@ class HomeProfile extends Component {
             console.log(obj);
             // this.componentDidMount();
             console.log("request sent");
+            this.setState({
+                isRequestSent:true
+            })
         });
     }
 
@@ -82,7 +100,7 @@ class HomeProfile extends Component {
                                     </Link>
                                     <div className="follow" onClick={()=>this.sendRequestHandler(suggestionList)}>
                                         <i className="fas fa-user-plus"></i>
-                                    </div>
+                                    </div>                           
                                 </div>
                             })
                             }

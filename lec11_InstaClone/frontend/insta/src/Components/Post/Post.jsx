@@ -14,7 +14,8 @@ class Post extends Component {
         commentInput:"",
         postUser:null,
         user:null,
-        destination:""
+        destination:"",
+        isLiked:false
      };
 
      componentDidMount(){
@@ -22,13 +23,18 @@ class Post extends Component {
         //  console.log(postUserUid);
          let post = this.props.post;
          let user = this.props.user;
+         let uid = user["_id"];
          axios.get(`/api/user/${postUserUid}`).then(obj=>{
-            // console.log(obj.data.user);
-
-            //  issue idhar aa rha hai 
-
+            for(let i=0 ; i< post.likes.length ; i++){
+                if(post.likes[i]===uid){
+                    this.setState({
+                        isLiked:true
+                    });
+                    break;
+                }
+            }
             let postUser = obj.data.user;
-            // console.log(postUser);
+            let isLiked = this.state.isLiked;
             this.setState({
                 userPhoto: postUser.profilePic,
                 username:postUser.username,
@@ -38,7 +44,8 @@ class Post extends Component {
                 likes: post.likes,
                 commentInput:"",
                 postUser,
-                user
+                user,
+                isLiked
             });
          });
      }
@@ -69,6 +76,17 @@ class Post extends Component {
         console.log(uid);
         axios.get(`api/post/like/${uid}/${pid}`).then(obj=>{
             let updatePost = obj.data.updatedPost;
+            console.log(updatePost);
+            if(this.state.isLiked===true){
+                this.setState({
+                    isLiked:false
+                })
+            }
+            else{
+                this.setState({
+                    isLiked:true
+                })
+            }
             this.setState({
                 likes:updatePost.likes
             });
@@ -117,7 +135,12 @@ class Post extends Component {
             <div className="post-footer">
                 <div className="reactions">
                     <div className="icons">
-                        <div className="like-icon" onClick={this.onLikeHandler} ><i className="far fa-heart"></i></div>
+                        {
+                            this.state.isLiked===true ? 
+                            <div className="active-icon" onClick={this.onLikeHandler} ><i class="fab fa-gratipay"></i></div>
+                            : <div className="like-icon" onClick={this.onLikeHandler} ><i class="fab fa-gratipay"></i></div>
+
+                        }
                     </div>
                     <div className="numbers">
                         <div className="like-no" >{likes.length} Likes</div>
