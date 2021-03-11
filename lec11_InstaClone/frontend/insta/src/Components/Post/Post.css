@@ -82,6 +82,7 @@
 
 .like-icon{
     margin-left: 10px;
+    cursor: pointer;
 }
 
 
@@ -186,4 +187,5 @@
 .active-icon{
     margin-left: 10px;
     color: red;
+    cursor: pointer;
 }

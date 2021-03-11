@@ -1,5 +1,5 @@
 .profile-user-post{
-    height: 240px;
+    height: 300px;
     width: 300px;
 }
 
@@ -10,7 +10,7 @@
     object-fit: cover;
 }
 
-.profile-caption-username{
+.profile-caption{
     font-size: 13px;
     font-weight: bolder;
     margin-left: 5px ;
@@ -26,12 +26,14 @@
 
 .profile-post-image-caption{
     font-size: 15px;
-    font-weight: lighter;
-    margin-left: 5px ;
-    height: 50px;
+    /* font-weight: lighter; */
+    margin-left: 5px;
+    height: 30px;
+    overflow: auto;
 }
 
 .profile-post-delete{
+    margin-top: -60px;
     height: 20px;
     width: 50px;
     font-size: 13px;
@@ -42,6 +44,48 @@
     justify-content: center;
     border-radius: 3px;
     border: 1.5px solid red;
-    margin-left: 243px;
+    margin-left: 240px;
     cursor: pointer;
+}
+
+.profile-post-reaction-tab{
+display: flex;
+font-size: 11px;
+font-weight: bolder;
+margin-left: 5px;
+}
+
+
+.post-likes{
+    margin-right: 10px;
+}
+
+.post-comments{
+
+}
+
+.profile-comments{
+    height: 90px;
+    font-size: 12px;
+    display: flex;
+    flex-direction: column;
+}
+
+.profile-comment-info{
+    display: flex;
+    margin-right: 5px;
+    margin-left: 5px;
+    max-height: 25px;
+}
+
+
+.profile-user-commented{
+
+   max-width: 60px;
+
+}
+
+.profile-comment{
+    margin-left: 2px;
+
 }
