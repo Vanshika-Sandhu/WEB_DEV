@@ -216,7 +216,7 @@ class UserProfile extends Component {
                                 {
                                     this.state.posts.map( post =>{
                                     return <div className="post-entity">
-                                        <UserPost post={post} key={post["_id"]}/>
+                                        <UserPost post={post} user={this.props.user} key={post["_id"]}/>
                                     </div>
                                     })
                                 }

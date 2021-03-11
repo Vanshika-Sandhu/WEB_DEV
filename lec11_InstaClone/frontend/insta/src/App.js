@@ -96,7 +96,7 @@ class App extends Component {
                 {this.state.isAuth ? <Home user={user} UserClickedHandler = {this.UserClickedHandler}/> : <Login login = {this.login}/> }
               </Route>
               <Route path="/profile" exact>
-                {this.state.isAuth ? <Profile user={user} /> : <Login login = {this.login}/> }
+                {this.state.isAuth ? <Profile user={user} clickedUser={clickedUser} /> : <Login login = {this.login}/> }
               </Route>
               <Route path="/setting" exact>
                 {this.state.isAuth ? <Setting user={user} updateUser = {this.updateUser}/> : <Login login = {this.login}/> }

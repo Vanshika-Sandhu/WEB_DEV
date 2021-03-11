@@ -156,7 +156,7 @@ class Post extends Component {
                             {
                                 comments.length ?(
                                     this.state.comments.map(commentInfo=>{
-                                    return <div className="comment-info" key={commentInfo["id"]}>
+                                    return <div className="comment-info" key={commentInfo["_id"]}>
                                                 <div className="user-commented username">{commentInfo.user}</div>
                                                 <div className="comment">{commentInfo.comment}</div>
                                             </div>

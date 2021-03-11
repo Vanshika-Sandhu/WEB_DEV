@@ -144,7 +144,7 @@ class Profile extends Component {
                             {
                                 this.state.posts.map( post =>{
                                 return <div className="post-entity">
-                                    <UserPost post={post} key={post["_id"]}/>
+                                    <UserPost post={post} key={post["_id"]} user={this.props.user}/>
                                     <div className="profile-post-delete" onClick={()=>this.onDeletePostHandler(post)}>Delete</div>
                                 </div>
                                 })
