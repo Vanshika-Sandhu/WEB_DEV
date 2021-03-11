@@ -5,14 +5,12 @@ import "./Home.css"
 
 class Home extends Component {
     state = { 
-        user : null,
-        suggestions:[]
+        user : null
      }
 
     componentDidMount(){
         this.setState({
-            user: this.props.user,
-            suggestions:this.props.suggestions
+            user: this.props.user
         });
     }
 
@@ -22,7 +20,7 @@ class Home extends Component {
                 { this.state.user ? 
                 (<div className="home-body">
                     <Feeds user = {this.state.user}  UserClickedHandler = {this.props.UserClickedHandler} />
-                    <HomeProfile user = {this.state.user} suggestions={this.state.suggestions} UserClickedHandler = {this.props.UserClickedHandler} /> 
+                    <HomeProfile user = {this.state.user} UserClickedHandler = {this.props.UserClickedHandler} /> 
                 </div>
                 )
                 : (<h1>Loading Data</h1> )

@@ -67,3 +67,6 @@
     color: red;
 }
 
+.notifications .follow-request-header .follow{
+    margin-left: -10px;
+}

@@ -59,5 +59,7 @@
     height: 25px;
     border-radius: 3px;
     border: 2px solid #0999f6;
+    background:white;
+    outline: none;
 }
 

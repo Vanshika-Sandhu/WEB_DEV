@@ -7,8 +7,9 @@ import Follow from '../Follow/Follow';
 
 class UserProfile extends Component {
     state = { 
+        isRequestAcccepted:false,
         isFollowed:false,
-        isPublic:true,
+        isPublic:false,
         view:"POSTS",
         posts:[],
         followers:[],
@@ -28,12 +29,30 @@ class UserProfile extends Component {
             for(let i=0; i<myFollowing.length; i++){
                 if(myFollowing[i]["_id"]===pid){
                     this.setState({
-                        isFollowed:true
+                        isFollowed:true,
                     });
                     break;
                 }
             }
         });
+
+        axios.get(`/api/request/isAccepted/${pid}/${uid}`).then(obj=>{
+            let requestStatus = obj.data.message;
+            // console.log(requestStatus);
+            if(!this.state.isFollowed){
+                if(requestStatus==="Request pending"){
+                    this.setState({
+                        isRequestAcccepted:false
+                    });
+                }
+                else{
+                    this.setState({
+                        isRequestAcccepted:true
+                    });
+                }
+                console.log(this.state.isRequestAcccepted);
+            }
+        })
 
          let posts=[];
          let followers=[];
@@ -97,16 +116,54 @@ class UserProfile extends Component {
     let uid = this.props.user["_id"];
     console.log("Inside send request handler");
     let followId = profileUser["_id"];
-    // clickedUser = suggestion;
-    // console.log(clickedUser);
     axios.post(`/api/request`, {uid, followId}).then( obj =>{
         console.log(obj);
         // this.componentDidMount();
         console.log("request sent");
+        if(this.state.isPublic){
+            this.setState({
+                isFollowed:true,
+                isRequestAcccepted:true
+            });
+        }
+        else{
+            this.setState({
+                isRequestAcccepted:false
+            });
+        }
     });
+    };
+
+    onUnfollowHandler=(following)=>{
+        let followingId = following["_id"];
+        let uid = this.props.user["_id"];
+        axios.delete(`api/request/delete/following/${uid}/${followingId}`).then(obj=>{
+            if(obj.data.deletedFollowing){
+                console.log("Unfollowed user successfully");
+                this.setState({
+                    isFollowed:false,
+                    isRequestAcccepted:false
+                });
+            }
+        });
+
+    };
+
+    onCancelRequestHandler = (profileUser)=>{
+        console.log("inside cancel request handler");
+        let uid = this.props.user["_id"];
+        let followId = profileUser["_id"];
+        axios.delete(`/api/request/cancel/${followId}/${uid}`).then(obj=>{
+            if(obj.data.message === "Request cancelled successfully" ){
+                console.log("Request cancelled successfully");
+                this.setState({
+                    isFollowed:false,
+                    isRequestAcccepted:true
+                });
+            }
+        })
     }
 
-    
 
      
 
@@ -133,7 +190,17 @@ class UserProfile extends Component {
                         </div>
                     </div>
                     <div className="profile-follow-action-button">
-                        <div className="action-btn" onClick={()=>this.sendRequestHandler(this.props.profileUser)}>FOLLOW</div>
+                        {
+                            this.state.isFollowed ? 
+                            <div className="action-btn unfollow" onClick={()=>this.onUnfollowHandler(this.props.profileUser)}>UNFOLLOW</div>
+                            :
+                            (
+                            this.state.isRequestAcccepted ? 
+                            <div className="action-btn" onClick={()=>this.sendRequestHandler(this.props.profileUser)}>FOLLOW</div>
+                            :
+                            <div className="action-btn" onClick={()=>this.onCancelRequestHandler(this.props.profileUser)}>REQUESTED</div>
+                            )
+                        }
                     </div>
                 </div>
 

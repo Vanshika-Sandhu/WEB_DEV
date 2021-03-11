@@ -201,7 +201,7 @@ async function cancelRequest(req , res){
   };
 };
 
-async function getAllUsers(Req, res){
+async function getAllUsers(req, res){
  try {
    let allUsers = await userModel.find();
    res.json({
@@ -215,7 +215,36 @@ async function getAllUsers(Req, res){
      error
    });
  }
-}
+};
+
+async function isRequestAccepted(req , res){
+  // console.log("Inside is request accepted function");
+  try {
+    let uid = req.params.uid;
+    let followId = req.params.followId;
+    let requestStatus = await followingModel.find({isAccepted:false , followId , uid}).exec();
+    // console.log(requestStatus);
+    if(requestStatus.length){
+      res.json({
+        message:"Request pending",
+        requestStatus
+      });
+    }
+    else{
+      res.json({
+        message:"Request accepted",
+        requestStatus
+      })
+    }
+  } 
+  catch (error) {
+    res.json({
+      message:"Failed to get request status",
+      error
+    })
+  }
+
+};
 
 ///completed
 async function getFollowingHelper(uid) {
@@ -318,6 +347,7 @@ async function getAllSuggestions(req, res) {
 
 
 
+module.exports.isRequestAccepted = isRequestAccepted;
 module.exports.getAllUsers = getAllUsers;
 module.exports.sendRequest = sendRequest;
 module.exports.acceptRequest = acceptRequest;

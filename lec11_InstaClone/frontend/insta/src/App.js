@@ -13,7 +13,6 @@ class App extends Component {
   state = { 
     user:null,
     isAuth:false,
-    suggestions:[],
     clickedUser:null
    };
 
@@ -24,20 +23,8 @@ class App extends Component {
           user:obj.data.user,
           isAuth:true 
         });
-        let uid = obj.data.user["_id"];
-        axios.get(`/api/request/suggestions/${uid}`)
-        .then( obj =>{
-              let suggestions = obj.data.suggestions;
-              // console.log(suggestions);
-              return suggestions;
-         })
-        .then(suggestions=>{
-            this.setState({
-              suggestions:suggestions
-           });
-         })
-        } 
-    });
+       }
+   });
   }
 
 
@@ -99,7 +86,6 @@ class App extends Component {
 
   render() { 
     let user = this.state.user;
-    let suggestions = this.state.suggestions;
     let clickedUser = this.state.clickedUser;
     return ( 
       <Router>
@@ -107,7 +93,7 @@ class App extends Component {
           <Header isAuth = {this.state.isAuth} logout = {this.logout}  UserClickedHandler = {this.UserClickedHandler} />
             <Switch>
               <Route path="/" exact>
-                {this.state.isAuth ? <Home user={user} suggestions={suggestions} UserClickedHandler = {this.UserClickedHandler}/> : <Login login = {this.login}/> }
+                {this.state.isAuth ? <Home user={user} UserClickedHandler = {this.UserClickedHandler}/> : <Login login = {this.login}/> }
               </Route>
               <Route path="/profile" exact>
                 {this.state.isAuth ? <Profile user={user} /> : <Login login = {this.login}/> }

@@ -1,7 +1,7 @@
 .profile-follow-action-button{
     background: #5295f6;
     height: 40px;
-    width: 100px;
+    width: 120px;
     font-size: 20px;
     color: white;
     display: flex;
@@ -12,7 +12,4 @@
     cursor: pointer;
     margin-left: -210px;
     margin-top: -60px;
-}
-.action-btn{
-
 }

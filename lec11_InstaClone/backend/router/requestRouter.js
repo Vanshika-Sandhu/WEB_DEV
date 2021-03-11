@@ -1,4 +1,5 @@
 const requestRouter = require("express").Router();
+const { request } = require("express");
 const {
         sendRequest , 
         acceptRequest, 
@@ -10,10 +11,9 @@ const {
         deleteRequest, 
         deleteFollower, 
         cancelRequest, 
-        getAllUsers
+        getAllUsers,
+        isRequestAccepted
     } = require("../controller/requestController");
-
-
 
 
 
@@ -21,6 +21,7 @@ const {
 
 requestRouter.route("").post(sendRequest).get(getAllUsers);
 requestRouter.route("/accept").post(acceptRequest);
+requestRouter.route("/isAccepted/:followId/:uid").get(isRequestAccepted);
 requestRouter.route("/delete/:followId/:uid").delete(deleteRequest);
 requestRouter.route("/cancel/:followId/:uid").delete(cancelRequest);
 requestRouter.route("/:uid").get(pendingRequest);

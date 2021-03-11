@@ -5,8 +5,20 @@ import {Link} from "react-router-dom";
 
 class HomeProfile extends Component {
     state = { 
-        clickedUser:null
+        clickedUser:null,
+        suggestions:[]
      }
+
+     componentDidMount(){
+        let uid = this.props.user["_id"];
+        axios.get(`/api/request/suggestions/${uid}`).then( obj =>{
+            console.log(obj.data.suggestions);
+              let suggestions = obj.data.suggestions;
+              this.setState({
+                suggestions
+              });
+         });
+     };
     
      onclickHandler=(suggestion)=>{
         console.log("Inside on clicked handler");
@@ -32,6 +44,8 @@ class HomeProfile extends Component {
 
     render() { 
         let { name , username, profilePic} = this.props.user;
+        let suggestions = this.state.suggestions;
+        console.log(suggestions);
         return ( 
             <div className="home-profile">
                 <div className="user-info">
@@ -50,10 +64,10 @@ class HomeProfile extends Component {
                 <div className="user-suggestions">
                     <div className="suggestion-head">Suggestions for you</div>
                     {
-                        this.props.suggestions.length ? 
+                        suggestions.length ? 
                         <div className="suggestion-body">
                             {
-                            this.props.suggestions.map( suggestionList => {
+                            suggestions.map( suggestionList => {
                                 return <div key={suggestionList["_id"]} className="suggested-user user-info">
                                     <Link to="/userProfile" style={{ textDecoration: 'none' }} >
                                     <div className="sugg-img user-image" onClick = {()=>this.onclickHandler(suggestionList)}>
