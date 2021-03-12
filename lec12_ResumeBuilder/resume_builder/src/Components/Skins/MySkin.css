@@ -1,0 +1,319 @@
+.resume-skin{
+    border: 1px solid lightgrey;
+    width: 826.77px;     /* original width = 2,480.31px */
+    height: 1169.29px;   /* original height = 3507.87px */
+    margin: 50px;
+    display: flex;
+    position: absolute;
+    /* color: darkslategray; */
+}
+
+.resume-left-strap{
+    height: 100%;
+    width: 33%;
+    margin-left: 25px;
+    margin-right: 27px;
+    background-color: #BFDBC8;
+
+}
+
+.resume-header{
+    height: 170px;
+    width: 791.77px;
+    background-color: white;
+    border: 3px solid #BFDBC8;
+    margin-left: -325px;
+    margin-top: 29px;
+    /* position: relative; */
+    z-index: 1;
+    display: flex;
+    align-items: center;
+}
+
+.resume-body{
+    /* border: 1px solid lightgray; */
+    height: 78.3%;
+    width: 57%;
+    margin-top: 222px;
+    /* position: initial; */
+    /* z-index: 0; */
+    margin-left: -473.5px;
+    /* position: relative;*/
+    /* z-index: 2;*/
+}
+
+
+.edutation-details{ 
+}
+
+.college-details{
+    margin-bottom: 10px;
+
+}
+
+.college-name{
+    height: 20px;
+
+}
+
+.school-name{
+    height: 20px;
+
+}
+
+.degree{
+
+}
+
+.cgpa{
+    font-size: 14px;
+
+}
+
+.grad-year-details{
+    margin-right: 6px;
+    font-size: 13px;
+
+}
+
+.grad-month{
+    margin-right: 6px;
+
+}
+
+.grad-year{
+    margin-right: 6px;
+
+}
+
+.college-city-details{
+    font-size: 13px;
+}
+
+.city{
+    margin-right: 8px;
+}
+
+.state{
+
+}
+
+.school-details{
+margin-bottom: 10px;
+}
+
+.passing-year{  
+   
+
+}
+
+.class{
+    display: flex;
+}
+
+.class div{
+    margin-right: 5px;
+}
+.class-head{
+    font-weight: 600;
+}
+
+.experience-details{
+
+}
+
+.experience{
+
+}
+
+.company-name{
+
+}
+
+.duration{
+
+}
+
+.position{
+
+}
+
+.project{
+    margin-bottom: 5px ;
+}
+
+.project-name{
+
+}
+.project-link{
+    width: 250px;
+    font-size: 10px;
+    height: 25px;
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+}
+
+.project-techstack{
+
+}
+
+.project-summary{
+
+}
+
+.POR-details{
+
+}
+
+.por{
+
+}
+
+.position-name{
+
+}
+
+.por-summary{
+
+}
+
+
+.resume-left-strap .heading{
+    background: white;
+}
+
+.skills{
+    margin-top: 225px;
+    height: 330px;
+    width: 220px;
+    font-size: 14px;
+    margin-left: 25px;
+    color: darkslategray;
+}
+
+.achievements{
+    height: 250px;
+    width: 220px;
+    font-size: 14px;
+    margin-left: 25px;
+    color: darkslategray;
+}
+
+.interests{
+    height: 150px;
+    width: 220px;
+    font-size: 14px;
+    margin-left: 25px;
+    color: darkslategray;
+}
+
+.contact-details{
+    height: 220px;
+    width: 220px;
+    font-size: 14px;
+    margin-left: 25px;
+    color: darkslategray;
+}
+
+.basic-user-details{
+    display: flex;
+    align-items: center;
+    height: 65%;
+}
+
+.div-line{
+    height: 3px;
+    width: 440px;
+    margin-left: 90px;
+    background: #BFDBC8;
+}
+
+.user-info{
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    color: #303030;
+}
+
+.name{
+    font-size: 50px;
+    font-weight: 500;
+    margin-left: 80px;
+    /* color: darkslategray; */
+    color: #303030;
+
+}
+
+.profession{
+    margin-left: 90px;
+    font-size: 25px;
+    /* color: darkslategray; */
+}
+
+.user-summary{
+    height: 100%;
+    background: #BFDBC8;
+    width: 258px;
+    margin-left: -30px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 14px;
+    color: darkslategrey;
+}
+
+
+
+.details{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-around;
+}
+
+.content-body{
+    display: flex;
+    flex-direction: column;
+    width: 90%;
+    margin-bottom: 15px;
+}
+
+.head{
+    font-size: 17px;
+    font-weight: 700;
+    width: 100%;
+    margin-bottom: 5px;
+    height: 20px;
+
+}
+
+.summary{
+    font-size: 13px;
+    font-weight: 400;
+}
+
+.subhead{
+
+    font-size: 17px;
+    font-weight: 450;
+}
+
+.heading{
+    background: #BFDBC8;
+    text-align: center;
+    width: 100%;
+    height: 30px;
+    font-size: 20px;
+    font-weight: 700;
+    margin-bottom: 10px;
+    color: #303030;
+}
+
+.body{
+    display: flex;
+    width: 100%;
+}
+
+

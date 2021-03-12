@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import Login from './Components/Login/Login';
 import Navbar from './Components/NavBar/Navbar';
+import MySkin from './Components/Skins/MySkin';
 import firebaseApp from "./firebase/firebaseConfig";
 
 class App extends Component {
@@ -40,10 +41,11 @@ class App extends Component {
   render() { 
     let {isAuth} = this.state;
     return (
-      <div className="App">
-        <Navbar isAuth={isAuth} ></Navbar>
-        <Login></Login>
-      </div>
+      // <div className="App">
+      //   <Navbar isAuth={isAuth} ></Navbar>
+      //   <Login></Login>
+      // </div>
+      <MySkin></MySkin>
     );
   }
 }
