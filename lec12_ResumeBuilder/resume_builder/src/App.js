@@ -6,7 +6,8 @@ import firebaseApp from "./firebase/firebaseConfig";
 
 class App extends Component {
   state = { 
-    isAuth:false
+    isAuth:false,
+    user:null
    }
 
   componentDidMount(){
