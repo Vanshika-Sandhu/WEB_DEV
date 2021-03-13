@@ -99,7 +99,7 @@ class MySkin extends Component {
                             <li>Achievement 1</li>
                             <li>Achievement 2</li>
                             <li>Achievement 3</li>
-                            <li>Achievement 4</li>                            <li>Achievement 1</li>
+                            <li>Achievement 4</li>
                             <li>Achievement 5</li>
                         </ul>
                     </div>
@@ -125,9 +125,9 @@ class MySkin extends Component {
                 <div className="resume-header">
                     <div className="basic-user-details">
                         <div className="user-info">
-                        <div className="name">Vanshika Sandhu</div>
+                        <div className="name">{fname}</div>
                         <div className="div-line"></div>
-                        <div className="profession">B.Tech. Student</div>
+                        <div className="profession">Engineering Student</div>
                         </div>   
                         <div className="user-summary">this is my summary</div>
                     </div>
@@ -137,8 +137,8 @@ class MySkin extends Component {
                         <div className="heading">EDUCATION DETAILS</div>
                         <div className="content-body">
                             <div className="college-details">
-                                <div className="college-name head">College name</div>
-                                <div className="degree subhead"> B.Tech. in ECE</div>
+                                <div className="college-name head">NETAJI SUBHAS UNIVERSITY OF TECHNOLOGY</div>
+                                <div className="degree subhead"> Bachelors of Technology ( ECE )</div>
                                 <div className="cgpa">10 CGPA</div>
                                 <div className="grad-year-details body">
                                     <div className="grad-month">August</div>
@@ -150,7 +150,7 @@ class MySkin extends Component {
                                 </div>
                             </div>
                             <div className="school-details">
-                            <div className="school-name head">school name</div>
+                            <div className="school-name head">SHANTI GYAN NIKETAN SR. SEC. SCHOOL</div>
                                 <div className="class">
                                     <div className="class-head subhead">Class 12  |</div>
                                         <div className="passing-year subhead">2019  |</div>
