@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import "./Follow.css";
+import {Link} from "react-router-dom";
 
 class Follow extends Component {
     state = { 
@@ -19,18 +20,32 @@ class Follow extends Component {
          });
      }
 
+     onclickHandler=(follow)=>{
+        console.log("Inside on clicked handler");
+        let clickedUser =  follow;
+        this.props.UserClickedHandler(clickedUser);
+        this.setState({
+            clickedUser
+        })
+     }
+
+
     render() { 
-        
+        let follow = this.props.follow;
         let {username, name, profilePic} = this.props.follow;
         return ( 
             <div className="follow-component-body">
+                <Link to="/userProfile" style={{ textDecoration: 'none' }} >
                 <div className="follow-user-image">
-                    <img src={profilePic} alt=""/>
+                    <img src={profilePic} alt="" onClick = {()=>this.onclickHandler(follow)} />
                 </div>
+                </Link>
+                <Link to="/userProfile" style={{ textDecoration: 'none' }}  >
                 <div className="follow-user-info">
-                    <div className="follow-user-name">{username}</div>
-                    <div className="follow-user-username">{name}</div>
+                    <div className="follow-user-name " onClick = {()=>this.onclickHandler(follow)} >{username}</div>
+                    <div className="follow-user-username " onClick = {()=>this.onclickHandler(follow)}  >{name}</div>
                 </div>
+                </Link>
             </div>
           );
     }

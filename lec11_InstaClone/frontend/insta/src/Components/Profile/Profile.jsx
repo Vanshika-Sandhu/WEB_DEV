@@ -161,7 +161,7 @@ class Profile extends Component {
                                     {
                                     this.state.followers.map( follower =>{
                                     return <div className="follow-entity">
-                                        <Follow follow={follower} key={follower["_id"]}/>
+                                        <Follow follow={follower} key={follower["_id"]}  UserClickedHandler={this.props.UserClickedHandler} />
                                         <div className="follow-action-btn">
                                             <div className="follow-action" onClick={()=>this.onRemoveFollowerHandler(follower)} >{followerAction}</div>
                                         </div>
@@ -181,7 +181,7 @@ class Profile extends Component {
                                     {
                                         this.state.following.map( following =>{
                                         return <div className="follow-entity">
-                                            <Follow follow={following} key={following["_id"]} />
+                                            <Follow follow={following} key={following["_id"]} UserClickedHandler={this.props.UserClickedHandler}  />
                                             <div className="follow-action-btn">
                                                 <div className="follow-action" onClick={()=>this.onUnfollowHandler(following)} >{followingAction}</div>
                                             </div>

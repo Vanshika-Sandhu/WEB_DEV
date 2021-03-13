@@ -12,7 +12,7 @@ class HomeProfile extends Component {
      }
 
      componentDidMount(){
-         console.log("Inside component did mount")
+        console.log("Inside component did mount")
         let uid = this.props.user["_id"];
         axios.get(`/api/request/suggestions/${uid}`).then( obj =>{
             console.log(obj.data.suggestions);
@@ -22,6 +22,12 @@ class HomeProfile extends Component {
               });
          });
      };
+
+
+     reloadSuggestions = (suggestion)=>{
+         console.log("Inside reload suggestins");
+     }
+
     
      onclickHandler=(suggestion)=>{
         console.log("Inside on clicked handler");
@@ -60,7 +66,7 @@ class HomeProfile extends Component {
                         <div className="suggestion-body">
                             {
                             suggestions.map( suggestionList => {
-                                return <Suggestion suggestion={suggestionList}  user={this.props.user}   UserClickedHandler={this.props.UserClickedHandler}></Suggestion>
+                                return <Suggestion suggestion={suggestionList}  user={this.props.user}  UserClickedHandler={this.props.UserClickedHandler} ></Suggestion>
                             })
                             }
                         </div> 

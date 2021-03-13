@@ -66,9 +66,12 @@ class Suggestion extends Component {
         axios.post(`/api/request`, {uid, followId}).then( obj =>{
             console.log(obj);
             console.log("request sent");
+            // let CDM = this.props.HomeProfileCDM();
+            // CDM();
             this.setState({
                 isRequestSent:true,
             })
+            // this.props.reloadSuggestion(suggestion);
         });
     }
 

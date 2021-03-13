@@ -166,6 +166,16 @@ class UserProfile extends Component {
         })
     }
 
+    onclickHandler=(follow)=>{
+        console.log("Inside on clicked handler");
+        let clickedUser =  follow;
+        this.props.UserClickedHandler(clickedUser);
+        this.componentDidMount();
+        this.setState({
+            clickedUser
+        })
+     }
+
 
      
 
@@ -218,7 +228,7 @@ class UserProfile extends Component {
                                 {
                                     this.state.posts.map( post =>{
                                     return <div className="post-entity">
-                                        <UserPost post={post} user={this.props.user} key={post["_id"]}/>
+                                        <UserPost post={post} user={this.props.user} key={post["_id"]}  UserClickedHandler={this.props.UserClickedHandler}  />
                                     </div>
                                     })
                                 }
@@ -234,7 +244,7 @@ class UserProfile extends Component {
                                         {
                                         this.state.followers.map( follower =>{
                                         return <div className="follow-entity">
-                                            <Follow follow={follower} key={follower["_id"]}/>
+                                            <Follow follow={follower} key={follower["_id"]} UserClickedHandler={this.props.UserClickedHandler} />
                                         </div>
                                         })
                                         }
@@ -251,7 +261,7 @@ class UserProfile extends Component {
                                         {
                                             this.state.following.map( following =>{
                                             return <div className="follow-entity">
-                                                <Follow follow={following} key={following["_id"]} />
+                                                <Follow follow={following} key={following["_id"]} UserClickedHandler={this.props.UserClickedHandler} />
                                             </div>
                                             })
                                             }

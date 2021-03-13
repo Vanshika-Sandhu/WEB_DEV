@@ -20,8 +20,8 @@ class App extends Component {
     axios.get("/auth/checkAuth").then(obj=>{
       if(obj.data.isAuth){
         this.setState({
+          isAuth:true, 
           user:obj.data.user,
-          isAuth:true 
         });
        }
    });
@@ -57,8 +57,6 @@ class App extends Component {
       });
     });
   };
-    
-
 
   updateUser = (updatedUser) =>{
     this.setState({
@@ -72,14 +70,6 @@ class App extends Component {
     this.setState({
       clickedUser
     })
-    // let clickedUser = this.state.clickedUser;
-    // let followId = suggestion["_id"];
-    // clickedUser = suggestion;
-    // // console.log(clickedUser);
-    // this.setState({
-    //     clickedUser
-    // });
-    // console.log(clickedUser);
 }
 
 
@@ -93,19 +83,19 @@ class App extends Component {
           <Header isAuth = {this.state.isAuth} logout = {this.logout}  UserClickedHandler = {this.UserClickedHandler} />
             <Switch>
               <Route path="/" exact>
-                {this.state.isAuth ? <Home user={user} UserClickedHandler = {this.UserClickedHandler}/> : <Login login = {this.login}/> }
+                {this.state.isAuth ? <Home user={user} UserClickedHandler = {this.UserClickedHandler}  /> : <Login login = {this.login}/> }
               </Route>
               <Route path="/profile" exact>
-                {this.state.isAuth ? <Profile user={user} clickedUser={clickedUser} /> : <Login login = {this.login}/> }
+                {this.state.isAuth ? <Profile user={user} profileUser={clickedUser}  UserClickedHandler = {this.UserClickedHandler}  /> : <Login login = {this.login}/> }
               </Route>
               <Route path="/setting" exact>
                 {this.state.isAuth ? <Setting user={user} updateUser = {this.updateUser}/> : <Login login = {this.login}/> }
               </Route>
               <Route path="/notifications" exact>
-                {this.state.isAuth ? <Notifications  user={user}/> : <Login login = {this.login}/> }
+                {this.state.isAuth ? <Notifications  user={user} profileUser={clickedUser}  UserClickedHandler = {this.UserClickedHandler} /> : <Login login = {this.login}/> }
               </Route>
               <Route path="/userProfile" exact>
-                {this.state.isAuth ? <UserProfile user={user} profileUser={clickedUser}/> : <Login login = {this.login}/> }
+                {this.state.isAuth ? <UserProfile user={user} profileUser={clickedUser}  UserClickedHandler = {this.UserClickedHandler} /> : <Login login = {this.login}/> }
               </Route>
               <Route path="*">
                 <Redirect to="/"></Redirect>
