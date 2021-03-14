@@ -57,6 +57,35 @@ async function getMyPosts(req, res){
     }
 };
 
+async function deleteCommentFromMyPost(req, res){
+    // console.log("Inside delete comment from my post function");
+    let commentId = req.params.commentId;
+    let uid = req.params.uid;
+    let pid = req.params.pid;
+    // console.log(uid);
+    // console.log(commentId);
+
+    let post = await postModel.findById(pid);
+    console.log(post.comments);
+
+    let postComments = post.comments.map(comment=>{
+        if(comment["_id"]!=commentId){
+            return comment;
+        }
+    })
+    post.comments = postComments.mao(comment=>{
+        
+    })
+
+    console.log(postComments)
+    
+    // let updatedPost = await post.save();
+    // console.log(updatedPost.comments);
+
+
+
+}
+
 async function deleteMyPost(req, res){
     try {
         //console.log("inside deletemypost function");
@@ -139,6 +168,9 @@ async function commentOnPost(req, res){
 
 };
 
+
+
+module.exports.deleteCommentFromMyPost = deleteCommentFromMyPost;
 module.exports.commentOnPost = commentOnPost;
 module.exports.likePost = likePost;
 module.exports.deleteMyPost = deleteMyPost;
