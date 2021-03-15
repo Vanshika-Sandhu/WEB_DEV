@@ -80,11 +80,8 @@ margin-left: 5px;
     max-height: 25px;
 }
 
-
 .profile-user-commented{
-
-   max-width: 60px;
-
+    max-width: 100px;
 }
 
 .profile-comment{
@@ -95,7 +92,8 @@ margin-left: 5px;
 }
 
 .remove-comment{
-    color: red;
+    color: grey;
     margin-left: 5px;
+    cursor: pointer;
 
 }

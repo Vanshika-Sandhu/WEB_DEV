@@ -38,6 +38,10 @@ class HomeProfile extends Component {
         })
      }
 
+     refreshSuggestions = () =>{
+         this.componentDidMount();
+     }
+
 
     render() { 
         let { name , username, profilePic} = this.props.user;
@@ -66,7 +70,7 @@ class HomeProfile extends Component {
                         <div className="suggestion-body">
                             {
                             suggestions.map( suggestionList => {
-                                return <Suggestion suggestion={suggestionList}  user={this.props.user}  UserClickedHandler={this.props.UserClickedHandler} ></Suggestion>
+                                return <Suggestion suggestion={suggestionList}  user={this.props.user}  UserClickedHandler={this.props.UserClickedHandler} refreshSuggestions = {this.refreshSuggestions} ></Suggestion>
                             })
                             }
                         </div> 

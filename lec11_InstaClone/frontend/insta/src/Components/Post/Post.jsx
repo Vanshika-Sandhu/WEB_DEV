@@ -114,6 +114,19 @@ class Post extends Component {
         });
      };
 
+     deleteMyComment = (commentId) =>{
+        console.log("Inside delete comment from my post function");
+        let pid = this.props.post["_id"];
+        let uid = this.props.user["_id"];
+        axios.delete(`/api/post/comment//${pid}/${commentId}`).then(obj=>{
+            let updatedPost = obj.data.updatedPost;
+           this.setState({
+                comments:updatedPost.comments
+            });
+        })
+
+     }
+
 
 
     render() { 
@@ -159,6 +172,15 @@ class Post extends Component {
                                     return <div className="comment-info" key={commentInfo["_id"]}>
                                                 <div className="user-commented username">{commentInfo.user}</div>
                                                 <div className="comment">{commentInfo.comment}</div>
+                                                {
+                                                    user["_id"]===commentInfo.uid
+                                                    ?
+                                                    <div className="remove-comment">
+                                                        <i class="fas fa-minus-circle" onClick={() =>{this.deleteMyComment(commentInfo["_id"])}}></i>
+                                                    </div>
+                                                    :
+                                                    <div></div>
+                                                }
                                             </div>
                                     })
                                 )

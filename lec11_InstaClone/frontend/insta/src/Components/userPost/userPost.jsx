@@ -1,3 +1,4 @@
+import axios from 'axios';
 import React, { Component } from 'react';
 import './userPost.css';
 
@@ -26,6 +27,17 @@ class UserPost extends Component {
      }
 
 
+     deleteCommentFromMyPost = (commentId) =>{
+         console.log("Inside delete comment from my post function");
+         let pid = this.props.post["_id"];
+         axios.delete(`/api/post/comment/${pid}/${commentId}`).then(obj=>{
+            let updatedPost = obj.data.updatedPost;
+            this.setState({
+                comments: updatedPost.comments
+            })
+         })
+     }
+
     render() { 
         let {caption, postImage , likes, comments} = this.state;
         return (  
@@ -44,6 +56,9 @@ class UserPost extends Component {
                             return <div className="profile-comment-info" key={commentInfo["id"]}>
                                         <div className="profile-user-commented username">{commentInfo.user}:</div>
                                         <div className="profile-comment">{commentInfo.comment}</div>
+                                        <div className="remove-comment">
+                                            <i class="fas fa-minus-circle" onClick={() =>{this.deleteCommentFromMyPost(commentInfo["_id"])}}></i>
+                                        </div>
                                     </div>
                                 })
                             )

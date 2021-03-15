@@ -57,33 +57,34 @@ async function getMyPosts(req, res){
     }
 };
 
-async function deleteCommentFromMyPost(req, res){
-    // console.log("Inside delete comment from my post function");
-    let commentId = req.params.commentId;
-    let uid = req.params.uid;
-    let pid = req.params.pid;
-    // console.log(uid);
-    // console.log(commentId);
+async function deleteComment(req, res){
+    try {
 
-    let post = await postModel.findById(pid);
-    console.log(post.comments);
-
-    let postComments = post.comments.map(comment=>{
-        if(comment["_id"]!=commentId){
-            return comment;
-        }
-    })
-    post.comments = postComments.mao(comment=>{
-        
-    })
-
-    console.log(postComments)
+        let commentId = req.params.commentId;
+        let pid = req.params.pid;
     
-    // let updatedPost = await post.save();
-    // console.log(updatedPost.comments);
-
-
-
+        let post = await postModel.findById(pid);
+        let comments= post.comments;
+    
+        let postComments = comments.filter(comment=>{
+            return comment["_id"]!=commentId;
+        })
+    
+        post.comments = postComments;
+        
+        let updatedPost = await post.save();
+        res.json({
+            message:"Successfully deleted the comment",
+            updatedPost
+        });
+        
+    } 
+    catch (error) {
+        res.json({
+            message:"Couldn't delete the comment", 
+            error
+        });
+    }
 }
 
 async function deleteMyPost(req, res){
@@ -169,8 +170,7 @@ async function commentOnPost(req, res){
 };
 
 
-
-module.exports.deleteCommentFromMyPost = deleteCommentFromMyPost;
+module.exports.deleteComment = deleteComment;
 module.exports.commentOnPost = commentOnPost;
 module.exports.likePost = likePost;
 module.exports.deleteMyPost = deleteMyPost;

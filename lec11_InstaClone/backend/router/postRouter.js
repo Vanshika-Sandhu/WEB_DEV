@@ -5,7 +5,7 @@
 //deletePost => delete post by id
 //getAllMyPost => get only my posts => profile pic
 
-const { createPost, getAllPosts, getMyPosts, deleteMyPost, commentOnPost, likePost, deleteCommentFromMyPost } = require("../controller/postController");
+const { createPost, getAllPosts, getMyPosts, deleteMyPost, commentOnPost, likePost, deleteComment } = require("../controller/postController");
 const postRouter = require("express").Router();
 const multer = require("multer");
 const path = require("path");
@@ -38,7 +38,7 @@ postRouter.route("/:uid").get(getMyPosts);
 postRouter.route("/:pid").delete(deleteMyPost);
 postRouter.route("/like/:uid/:pid").get(likePost);
 postRouter.route("/comment/:uid/:pid").post(commentOnPost)
-postRouter.route("/comment/:uid/:pid/:commentId").delete(deleteCommentFromMyPost);
+postRouter.route("/comment/:pid/:commentId").delete(deleteComment);
 
 
 module.exports = postRouter;
