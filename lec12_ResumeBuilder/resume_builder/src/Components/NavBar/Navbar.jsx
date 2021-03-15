@@ -1,35 +1,54 @@
-import React, { Component } from 'react';
+import React, { Component } from "react";
+import {Link} from "react-router-dom";
+
 import "./Navbar.css";
 
 class Navbar extends Component {
-    state = {  }
-    render() { 
-        let isAuth = this.props.isAuth;
-        return ( <div className="navbar">
-            <div className="logo"></div>
-            {
-            isAuth
-            ? 
-            (<div className="nav-links">
-                <ul>
-                    <li><a href="/templates"> Templates </a></li>
-                    <li><a href="/about"> About </a></li>
-                    <li><a href="/profile"> Profile </a></li>
-                    <li><a href="/logout"> Logout </a></li>
-                </ul>
-            </div> )
-            :
-            (<div className="nav-links">
-                <ul>
-                    <li><a href="/about"> About </a></li>
-                    <li><a href="/signup"> Sign Up </a></li>
-                    <li><a href="/signin"> Sign In </a></li>
-                </ul>
-            </div>)
-            }
-            
-        </div> );
-    }
+  state = {};
+  render() {
+    return (
+      <div className="navbar">
+        
+        <div className="logo">
+        <Link to="/">
+          <img src="./images/logo.png" alt=""/>
+        </Link>
+        </div>
+        {this.props.isAuth ? (
+          <div className="navlinks">
+            <ul>
+              <li>
+                <Link to="/templates">Templates</Link>
+              </li>
+              <li>
+                <Link to="/about">About</Link>
+              </li>
+              <li>
+                <Link to ="/profile">Profile</Link>
+              </li>
+              <li>
+                <Link to="#" onClick={this.props.logout}>Logout</Link>
+              </li>
+            </ul>
+          </div>
+        ) : (
+          <div className="navlinks">
+            <ul>
+             <li>
+             <Link to="/about">About</Link>
+              </li>
+              <li>
+                <Link to="/signin">Sign In</Link>
+              </li>
+              <li>
+              <Link to="/signup">Sign Up</Link>
+              </li>
+            </ul>
+          </div>
+        )}
+      </div>
+    );
+  }
 }
- 
+
 export default Navbar;
