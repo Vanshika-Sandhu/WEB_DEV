@@ -6,18 +6,20 @@
 }
 
 .btn{
-    width: 400px;
+    width: 300px;
     height: 50px;
-    border: 1px solid #9b59b6;
+    border: 2px solid #FF3465;
     background: none;
-    color: #9b59b6;
-    font-size: 20px;
+    color: #FF3465;
+    font-size: 25px;
+    font-weight: 600;
     border-radius: 25px;  
     outline: none;
     transition: 0.5s background; 
 }
 
 .btn:hover{
-  background: #9b59b6;
+  background: #FF3465;
   color:white;
+  cursor: pointer;
 }

@@ -8,6 +8,7 @@
 
 .logo{
     height: 90%;
+    margin-left: 150px;
 }
 
 .logo img{
@@ -16,8 +17,9 @@
 }
 
 .navlinks{
-/* background:lightcoral; */
-width: 40%;
+    /* background:lightcoral; */
+    width: 40%;
+    margin-right: 100px;
 }
 
 .navlinks ul{
@@ -30,5 +32,8 @@ width: 40%;
 }
 
 .navlinks ul li a{
-text-decoration: none;
+    text-decoration: none;
+    color: #262A35;
+    font-size: 17px;
+    font-weight: 600;
 }
