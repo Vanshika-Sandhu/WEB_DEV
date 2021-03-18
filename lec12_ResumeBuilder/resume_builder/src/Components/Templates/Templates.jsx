@@ -1,5 +1,7 @@
 import React, { Component } from 'react';
 import "./Templates.css";
+import firebaseApp from "../../firebase/firebaseConfig";
+
 
 class Templates extends Component {
     state = { 
@@ -15,7 +17,68 @@ class Templates extends Component {
             {id:"skin9" , path:"./images/skin9.jpg"},
             {id:"skin10" , path:"./images/skin10.jpg"},
         ]
+     };
+
+
+     handleChooseTemplate = (e) =>{
+         let skinId = e.target.id;
+        // set document in resumes collection
+        firebaseApp.firestore().collection("Resumes").doc().set({
+            skinId : skinId ,
+            contactDetails: {
+              fname: "",
+              lname: "",
+              summary: "",
+              email: "",
+              phone: "",
+              profession: "",
+              street: "",
+              city: "",
+              state: "",
+              country: "",
+              pin: "",
+            },
+            educationDetails: {
+              collegeName: "",
+              degree: "",
+              cgpa: "",
+              collegeCity: "",
+              collegeState: "",
+              graduationMonth: "",
+              graduationYear: "",
+            },
+            experienceDetails: [
+            ],
+            projects: [],
+            skills : {
+                language : [] ,
+                frameworks : [] ,
+                software : [] ,
+                ide : []
+            } ,
+            profileLinks : {
+                linkedIn : "" ,
+                github : "" 
+            } ,
+            achievements : [] ,
+            hobbies : [] 
+          }).then( obj =>{
+            console.log("inside then");
+            console.log(obj);
+          })
+          .catch(error =>{
+            console.log("Inside catch !!!")
+            console.log(error);
+          });
+
+        // this.props.history.push("/contact");
+
+        //window.location = "/contact";  => this will force the page to reload
      }
+
+
+
+
     render() { 
         return ( 
             <div className="templates">
@@ -26,7 +89,7 @@ class Templates extends Component {
                             <div className="template-image">
                                 <img src={skin.path} alt=""/>
                             </div>
-                            <div className="choose-template">Choose template</div>
+                            <div className="choose-template" id={skin.id} onClick={(e)=>this.handleChooseTemplate(e)}>Choose template</div>
                         </div>
                     })
                 }

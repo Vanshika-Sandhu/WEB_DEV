@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 
 class SignIn extends Component {
     state = { 
-        id:"",
+        email:"",
         pw:""
      };
 
@@ -18,16 +18,14 @@ class SignIn extends Component {
         return ( 
             <div className="signin">
                 <div>
-                    <h2>Id</h2>
-                    <input type="text" id="id" value={this.state.id} onChange={ (e) =>{this.onChangeHandler(e)}} />
+                    <h2>Email</h2>
+                    <input type="text" id="email" value={this.state.email} onChange={ (e) =>{this.onChangeHandler(e)}} />
                 </div>
                 <div>
                     <h2>Password</h2>
                     <input type="text" id="pw" value={this.state.pw} onChange={ (e) =>{this.onChangeHandler(e)}} />
                 </div>
-                <div className="signin-button">
-                    <button onClick={ () => {this.props.login(this.state.id, this.state.pw) }}>Sign In</button>
-                </div>
+                <button className ="btn" onClick={ () => {this.props.login(this.state.email, this.state.pw) }}>Sign In</button>
             </div>
          );
     }
