@@ -26,7 +26,7 @@ class Templates extends Component {
                             <div className="template-image">
                                 <img src={skin.path} alt=""/>
                             </div>
-                            <button className="choose-template">Choose template</button>
+                            <div className="choose-template">Choose template</div>
                         </div>
                     })
                 }
