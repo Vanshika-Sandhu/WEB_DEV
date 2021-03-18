@@ -15,12 +15,12 @@ async function createUser(req , res){
             let profilePicPath = req.file.destination.substring(6) + "/" + req.file.filename;
             userObject.profilePic = profilePicPath;
             console.log(userObject);
+        }
             let userCreated = await userModel.create(userObject);
             res.json({
                 message:"User created successfully!!",
                 userCreated
-            })
-        }
+            });
     } 
     catch (error) {
         res.json({

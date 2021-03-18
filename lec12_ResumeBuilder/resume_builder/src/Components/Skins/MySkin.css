@@ -80,25 +80,28 @@
 }
 .user-info{
     height: 100%;
-    width: 450px;
+    min-width: 400px;
     display: flex;
     flex-direction: column;
-    justify-content: space-between;
+    justify-content: center;
     color: #303030;
-    margin-left: 40px;
+    margin-left: 35px;
 }
 .name{
-    font-size: 43px;
-    font-weight: 500;
+    font-size: 36px;
+    font-weight: 600;
     /* color: darkslategray; */
     color: #303030;
-    max-width:100% ;
+    max-width: 100%;
     min-width: 50%;
+    margin-right: 20px;
 }
 .div-line{
     height: 3px;
-    width:100%;
+    width: 100%;
     background: #BFDBC8;
+    margin-top: 5px;
+    margin-bottom: 5px;
 }
 .profession{
     font-size: 20px;
@@ -107,14 +110,17 @@
     min-width: 50%;
 }
 .user-summary{
-    height: 100%;
+    height: 125%;
     background: #BFDBC8;
-    width: 258px;
+    max-width: 340px;
     display: flex;
     align-items: center;
     justify-content: center;
-    font-size: 14px;
+    font-size: 12px;
     color: darkslategrey;
+    padding: 5px;
+    text-align: center;
+    margin-left: -10px;
 }
 
 
@@ -162,8 +168,8 @@ margin-bottom: 10px;
 }
 .experience{
     margin-bottom: 5px;
-    height: 50px;
-    font-size: 13px;
+    max-height: 65px;
+    font-size: 12.5px;
 }
 .company-name .head{
     font-size: 14px;
@@ -195,7 +201,7 @@ a {
 max-height: 200px;
 }
 .por{
-    height: 40px;
+    max-height: 40px;
     margin-top: 10px;
     font-size: 13px;
 

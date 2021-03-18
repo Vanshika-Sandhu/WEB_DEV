@@ -22,7 +22,6 @@ class UserProfile extends Component {
         console.log(this.props);
         let pid = this.props.profileUser["_id"];
         let uid = this.props.user["_id"];
-         console.log(uid);
 
         axios.get(`/api/request/following/${uid}`).then(obj=>{
             let myFollowing = obj.data.myFollowing;
@@ -71,19 +70,22 @@ class UserProfile extends Component {
                 })
                 posts= sortedPosts;
             }
-            let followerObjecPromise = axios.get(`/api/request/follower/${uid}`);
+            let followerObjecPromise = axios.get(`/api/request/follower/${pid}`);
             return followerObjecPromise;
          })
          .then(obj=>{
             let Userfollowers = obj.data.myFollowers;
+            console.log(Userfollowers);
             if(Userfollowers){
                 followers = Userfollowers;
             }
-            let followingObjecPromise = axios.get(`/api/request/following/${uid}`);
+
+            let followingObjecPromise = axios.get(`/api/request/following/${pid}`);
             return followingObjecPromise;
          })
          .then(obj=>{
             let Userfollowing = obj.data.myFollowing;
+            console.log(Userfollowing);
             if(Userfollowing){
                 following = Userfollowing;
             }
@@ -170,11 +172,12 @@ class UserProfile extends Component {
         console.log("Inside on clicked handler");
         let clickedUser =  follow;
         this.props.UserClickedHandler(clickedUser);
-        this.componentDidMount();
-        this.setState({
-            clickedUser
-        })
      }
+
+     componentDidUpdate(){
+        this.componentDidMount();
+     }
+
 
 
      

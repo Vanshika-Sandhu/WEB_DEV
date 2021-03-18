@@ -1,12 +1,13 @@
 import React, { Component } from 'react';
 import "./Follow.css";
-import {Link} from "react-router-dom";
+import {Link, Redirect} from "react-router-dom";
 
 class Follow extends Component {
     state = { 
         username:"",
         name:"",
-        profilePic:""
+        profilePic:"",
+        clickedUser:null
      }
 
      componentDidMount(){
@@ -27,6 +28,7 @@ class Follow extends Component {
         this.setState({
             clickedUser
         })
+        this.componentDidMount();
      }
 
 
@@ -40,7 +42,7 @@ class Follow extends Component {
                     <img src={profilePic} alt="" onClick = {()=>this.onclickHandler(follow)} />
                 </div>
                 </Link>
-                <Link to="/userProfile" style={{ textDecoration: 'none' }}  >
+                <Link to="/userProfile" style={{ textDecoration: 'none' }}>
                 <div className="follow-user-info">
                     <div className="follow-user-name " onClick = {()=>this.onclickHandler(follow)} >{username}</div>
                     <div className="follow-user-username " onClick = {()=>this.onclickHandler(follow)}  >{name}</div>

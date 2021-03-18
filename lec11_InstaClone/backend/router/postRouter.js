@@ -5,7 +5,7 @@
 //deletePost => delete post by id
 //getAllMyPost => get only my posts => profile pic
 
-const { createPost, getAllPosts, getMyPosts, deleteMyPost, commentOnPost, likePost, deleteComment } = require("../controller/postController");
+const { createPost, getAllPosts, getMyPosts, deleteMyPost, commentOnPost, likePost, deleteComment, getAllMyFollowingPost } = require("../controller/postController");
 const postRouter = require("express").Router();
 const multer = require("multer");
 const path = require("path");
@@ -34,6 +34,7 @@ const upload = multer({storage:storage , fileFilter : fileFilter});
 
 
 postRouter.route("").post( upload.single('post') , createPost).get(getAllPosts);
+postRouter.route("/feeds/:uid").get(getAllMyFollowingPost);
 postRouter.route("/:uid").get(getMyPosts);
 postRouter.route("/:pid").delete(deleteMyPost);
 postRouter.route("/like/:uid/:pid").get(likePost);

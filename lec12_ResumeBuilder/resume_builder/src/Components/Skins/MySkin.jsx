@@ -5,51 +5,49 @@ class MySkin extends Component {
 
     state = { 
          contactDetails: {
-            fname: "VANSHIKA",
-            lname: "SANDHU",
-            summary: "this is my summary",
-            email: "vanshika@gmail.com",
-            phone: "+91-12345678",
-            profession: "Engineering Student",
+            fname: "TONY",
+            lname: "ALMEIDA",
+            summary: "4+ years experienced Software Engineer highly skilled in software development, testing, documentation etc. across the complete development life cycle of a product. Adept at end to end software design & development including requirement gathering, documentation, infrastructure setup, coding & unit & integration testing. Handles complex project management & coordination work very efficiently to deliver results. ",
+            email: "tony@gmail.com",
+            phone: "+1 (333)5557777",
+            profession: "Software Engineer",
             houseNo:"123",
             street: "xyz",
-            city: "New Delhi",
-            state: "Delhi",
-            country: "India",
-            pin: "110001",
+            city: "SF",
+            state: "CA",
+            country: "USA",
+            pin: "123456",
           },
           educationDetails: {
-            collegeName: "NETAJI SUBHAS UNIVERSITY OF TECHNOLOGY",
-            degree: "Bachelors of Technology ( ECE )",
-            cgpa: "10",
-            collegeCity: "New Delhi",
-            collegeState: "Delhi",
+            collegeName: "UC Berkeley",
+            degree: "B.E. Computer Science",
+            cgpa: "8",
+            collegeCity: "Berkeley",
+            collegeState: "CA",
             graduationMonth: "August",
             graduationYear: "2023",
-            schoolName: "SHANTI GYAN NIKETAN SR. SEC. SCHOOL",
+            schoolName: "ABC SR. SEC. SCHOOL",
             class12: { percentage: "95%" , year:"2019"},
             class10: { cgpa : "10" , year:"2017"}
           },
           experienceDetails: [
-            { companyName: "ABC company", duration: "3 months", position: "intern" },
-            { companyName: "PQR company", duration: "2.5 month", position: "intern" },
-            { companyName: "XYZ company", duration: "2 months", position: "intern" },
+            { companyName: "Stay Great Hotels", duration: "2 years", position: "Full time employee as a Web Developer and Mobile Application engineer" },
+            { companyName: "Stark Tech LLC ", duration: "3 months", position: "Worked as a Web Developer & Mobile Application Intern " }
           ],
           projects: [
-            { projectName: "project1", techStack: ["a", "b", "c"], summary: "this is the summary of my project" , projectLink:"project link" },
-            { projectName: "project2", techStack: ["a", "b", "c"], summary: "this is the summary of my project" , projectLink:"project link" },            
-            { projectName: "project3", techStack: ["a", "b", "c"], summary: "this is the summary of my project" , projectLink:"project link" },            
-            { projectName: "project4", techStack: ["a", "b", "c"], summary: "this is the summary of my project" , projectLink:"project link" }
+            { projectName: "project1", techStack: ["a", "b", "c"], summary: "this is the summary of my project" , projectLink:"linkToMyProject" },
+            { projectName: "project2", techStack: ["a", "b", "c"], summary: "this is the summary of my project" , projectLink:"linkToMyProject" },            
+            { projectName: "project3", techStack: ["a", "b", "c"], summary: "this is the summary of my project" , projectLink:"linkToMyProject" }
           ],
           POR : [
               {position: "POR 1" , summary:"POR summary"},
               {position: "POR 2" , summary:"POR summary"},
               {position: "POR 3" , summary:"POR summary"}
           ],
-          skills : ["C++" , "JavaScript" , "HTML" , "React" , "CSS" , "JQuery"] ,
+          skills : ["C++" , "JavaScript" ,"Python", "NodeJS", "HTML" , "React" , "CSS" , "JQuery","MongoDB"] ,
           profileLinks : {
-              linkedIn : "linkedIn profile" ,
-              github : "github profile" 
+              linkedIn : "myLinkedInProfile" ,
+              github : "myGitHUbProfile" 
           } ,
           achievements : ["Achievement 1" ,"Achievement 2" ,"Achievement 3" , "Achievement 4" ,"Achievement 5"] ,
           hobbies : ["hobby 1" , "hobby 2" , "hobby 3" , "hobby 4" ]

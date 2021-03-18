@@ -1,5 +1,7 @@
 const postModel = require("../model/postModel");
 const userModel = require("../model/userModel");
+const followingModel = require("../model/followingModel");
+const { all } = require("../router/postRouter");
 
 async function createPost(req , res){
     try {
@@ -38,6 +40,40 @@ async function getAllPosts(req , res){
         });
     }
 };
+
+async function getAllMyFollowingPost(req, res){
+    console.log("Inside get all my following posts");
+    try {
+        let uid = req.params.uid;
+        let following = await followingModel.find({ uid: uid, isAccepted: true }).exec();
+        let followingIds = following.map(ids =>{
+            return ids.followId;
+        })
+        console.log(followingIds);
+        followingIds.push(uid);
+        let myFollowingPosts=[];
+        for (let i = 0; i < followingIds.length; i++) {
+            let post = await postModel.find({uid:followingIds[i]});
+            if(post.length){
+                for(let j=0 ; j<post.length; j++){
+                    myFollowingPosts.push(post[j]);
+                }
+            }
+          }
+
+    res.json({
+        message:"Successfully got all the feed posts",
+        myFollowingPosts
+        });
+    } 
+    catch (error) {
+       res.json({
+           message:"Failed to get all posts",
+           error
+       }) ;
+    }
+}
+
 
 async function getMyPosts(req, res){
     try {
@@ -169,7 +205,7 @@ async function commentOnPost(req, res){
 
 };
 
-
+module.exports.getAllMyFollowingPost = getAllMyFollowingPost;
 module.exports.deleteComment = deleteComment;
 module.exports.commentOnPost = commentOnPost;
 module.exports.likePost = likePost;

@@ -13,8 +13,9 @@ class Feeds extends Component {
      fileInput = React.createRef();
 
     componentDidMount(){
-        axios.get("/api/post").then( obj=>{
-            let posts = obj.data.allPosts;
+        let uid = this.props.user["_id"];
+        axios.get(`/api/post/feeds/${uid}`).then( obj=>{
+            let posts = obj.data.myFollowingPosts;
             let sortedPosts = posts.sort( (a,b)=>{
                 return new Date(b.createdOn) - new Date(a.createdOn) ;
             })

@@ -23,11 +23,6 @@ class HomeProfile extends Component {
          });
      };
 
-
-     reloadSuggestions = (suggestion)=>{
-         console.log("Inside reload suggestins");
-     }
-
     
      onclickHandler=(suggestion)=>{
         console.log("Inside on clicked handler");

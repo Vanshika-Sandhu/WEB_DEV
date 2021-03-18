@@ -20,7 +20,6 @@ class Suggestion extends Component {
                     return request;
                 }
             });
-            console.log(Myrequest);
             if(Myrequest.length){
                 this.setState({
                         isRequestSent:true
@@ -67,10 +66,23 @@ class Suggestion extends Component {
             console.log(obj);
             console.log("request sent");
             this.props.refreshSuggestions();
-            this.setState({
-                isRequestSent:true,
-            })
-            this.props.refreshSuggestions();
+            axios.get(`/api/request/${followId}`).then( obj =>{
+                let Myrequest = obj.data.requests.map( request =>{
+                    if(request["_id"]===uid) {
+                        return request;
+                    }
+                });
+                if(Myrequest.length){
+                    this.setState({
+                            isRequestSent:true
+                    });
+                }
+                else{
+                    this.setState({
+                        isRequestSent:false
+                });
+                }
+            });
         });
     }
 

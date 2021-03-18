@@ -255,6 +255,7 @@ async function getFollowingHelper(uid) {
       let user = await userModel.findById(following[i].followId);
       myFollowing.push(user);
     }
+    console.log(myFollowing);
     return myFollowing;
   } catch (error) {
     return error;
@@ -319,8 +320,20 @@ async function getAllSuggestions(req, res) {
     let checkList = myFollowing.map( function(user){
         return user["_id"]+"";
     });
+
+    // let followerIds = await followerModel.find({ uid: uid });
+    // if (followerIds.length) {
+    //   let myFollowers = [];
+    //   for (let i = 0; i < followerIds.length; i++) {
+    //     let user = await userModel.findById(followerIds[i].followerId);
+    //     myFollowers.push(user);
+    //   }
+    // }
+    // for(let i=0; i<myFollowing.length; i++){
+    //   checkList.push(myFollowing[i]["_id"]+"");
+    // }
+
     checkList.push(uid);
-    console.log(checkList); 
     let suggestions = [];
     for(let i=0 ; i<myFollowing.length ; i++){
         let followingOfMyFollowings = await getFollowingHelper(myFollowing[i]["_id"]);
@@ -332,7 +345,15 @@ async function getAllSuggestions(req, res) {
             }
         }
     }
-    console.log(checkList);
+    // for(let i=0; i<myFollowers.length ; i++){
+    //   if(!checkList.includes(myFollowers[i]["_id"]+"")){
+    //     suggestions.push(myFollowers[i]);
+    //     checkList.push(myFollowers[i]["_id"]+"");
+    //   }
+    // }
+    // console.log("sugegstions");
+    // console.log(suggestions);
+    // console.log(checkList);
     res.json({
         message:"Succesfully got all suggestions !",
         suggestions

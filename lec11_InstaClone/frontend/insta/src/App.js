@@ -68,8 +68,9 @@ class App extends Component {
     console.log("Inside user clicked handler");
     console.log(clickedUser);
     this.setState({
-      clickedUser
-    })
+      clickedUser : clickedUser
+    });
+    // console.log(this.state.clickedUser);
 }
 
 
@@ -77,6 +78,7 @@ class App extends Component {
   render() { 
     let user = this.state.user;
     let clickedUser = this.state.clickedUser;
+    console.log(clickedUser);
     return ( 
       <Router>
         <div className ="app">
