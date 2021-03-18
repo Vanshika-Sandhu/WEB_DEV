@@ -12,6 +12,7 @@ class Navbar extends Component {
         <div className="logo">
         <Link to="/">
           <img src="./images/logo.png" alt=""/>
+          <img src="./images/appName.png" alt=""/>
         </Link>
         </div>
         {this.props.isAuth ? (
