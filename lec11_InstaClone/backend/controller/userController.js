@@ -1,4 +1,5 @@
 const userModel = require("../model/userModel");
+const fs = require('fs');
 
 // createUser
 // get all users
@@ -69,12 +70,21 @@ async function updateUserById(req , res){
         let updateObject = req.body;
         let id = req.params.id;
         let user = await userModel.findById(id);
+        // let oldProfilePicPath = user.profilePic;
+        // console.log(oldProfilePicPath);
+
         for(let key in updateObject){
             user[key] = updateObject[key];
         }
         if(req.file){
             let profilePicPath = req.file.destination.substring(6) + "/" + req.file.filename;
             user.profilePic = profilePicPath;
+            // fs.unlink("" + oldProfilePicPath, function (err) {            
+            //     if (err) {                                                 
+            //         console.error(err);                                    
+            //     }                                                          
+            //    console.log('File has been Deleted');                           
+            // });    
         }
 
         let updatedUser = await user.save();
