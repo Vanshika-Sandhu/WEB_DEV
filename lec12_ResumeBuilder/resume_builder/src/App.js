@@ -10,6 +10,7 @@ import Templates from "./Components/Templates/Templates";
 import  Profile from "./Components/Profile/Profile";
 import SignUp from "./Components/SignUp/SignUp";
 import SignIn from "./Components/SignIn/SignIn";
+// import Skin2 from './Components/Skins/Skin2';
 
 class App extends Component {
   state = { 
@@ -101,6 +102,7 @@ class App extends Component {
         </Switch>
       </div>
       </Router>
+      // <MySkin/>
     );
   }
 }

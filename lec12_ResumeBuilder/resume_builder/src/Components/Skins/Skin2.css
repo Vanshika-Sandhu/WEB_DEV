@@ -1,0 +1,159 @@
+.skin2{
+    border: 1px solid lightgrey;
+    width: 826.77px;     /* original width = 2,480.31px */
+    height: 1169.29px;   /* original height = 3507.87px */
+    margin: 50px;
+    display: flex;
+}
+
+
+
+.left-strap{   
+    width: 30%;
+    margin: 2.5%;
+    position: relative;
+}
+.bg-design{
+    height: 100%;
+    position: relative;
+    width: 100%;
+}
+.r1{
+    height: 22%;
+}
+.rect1{
+    height: 50%;
+    background: #403F44;
+
+}
+.tri1{
+    height: 0px;
+    width: 0px;
+    border-right:116.5px solid transparent;
+    border-left: 116.5px solid transparent;
+    border-top: 125px solid #403F44;
+    position: absolute;
+    z-index: 2;
+    top: 124px;
+    left: 0.5px;
+}
+.tri{
+    height: 0px;
+    width: 0px;
+    border-right:116.5px solid transparent;
+    border-left: 116.5px solid transparent;
+    border-top: 125px solid white;
+    position: absolute;
+    z-index: 1;
+    top: 160px;
+    left: 0.5px;
+}
+.r2{
+    height: 33%;
+    background: #E4A299;
+    margin-top: -87px;
+}
+.rect2{
+    background: #E4A299;
+    height: 75%;
+}
+.tri2{
+    height: 0px;
+    width: 0px;
+    border-right:116.5px solid transparent;
+    border-left: 116.5px solid transparent;
+    border-top: 125px solid #E4A299;
+    position: absolute;
+    z-index: 2;
+    top: 532.5px;
+    left: 0.5px;
+}
+.r2 .tri{
+    top: 578px;
+}
+.r3{
+    height: 48.5%;
+    background: #F1F1F3;
+    margin-top: 46px;
+}
+.left-strap-content{
+    height: 100%;
+    width: 100%;
+    position: absolute;
+    background: none;
+    top: 0px;
+    z-index: 3;
+}
+.contact{
+    height: 12%;
+    width: 70%;
+    margin: 15%;
+    margin-top: 5%;
+}
+.contact-header{
+    color: white;  
+}
+.contact-body{
+    margin-top: 5px;
+    height: 110px;
+}
+.contact-body p{
+    height: 20%;
+    display: flex;
+    color: white;
+    font-size: 10px;
+}
+.contact-body p i{
+    font-size: 14px;
+}
+.contact-body p a{
+    color: white;
+}
+.summary{
+    margin-top: 45%;
+    height: 25%;
+    width: 85%;
+    margin-left:7.5% ;
+    background: orange;
+}
+.interest{
+    background: yellow;
+    margin-top: 60%;
+    height: 38%;
+    width: 85%;
+    margin-left: 7.5%;
+}
+
+
+.header{
+    font-size: 16px;
+    text-align: center;
+    font-weight: 700;
+    margin-bottom: 5%;
+}
+.body{
+    display: flex;
+    flex-direction: column;
+
+}
+
+
+
+
+
+
+
+.right-content{
+    /* background: grey; */
+    border: 1px solid grey;
+    width: 67.5%;
+    margin: 2.5%;
+    margin-left: 0%;
+
+}
+.header{
+
+}
+.body{
+
+}

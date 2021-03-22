@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import firebaseApp from '../../firebase/firebaseConfig';
+import "./SignUp.css";
 
 class SignUp extends Component {
     state = { 
@@ -26,7 +27,8 @@ class SignUp extends Component {
                 "Last Name" : lname,
                 "Email" : email,
                 "Password" : pw,
-                "uid" : uid
+                "Uid" : uid,
+                "Resumes" : []
             })
             return userCreatedPromise;
         })

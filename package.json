@@ -18,10 +18,12 @@
   },
   "homepage": "https://github.com/Vanshika-Sandhu/Dev#readme",
   "dependencies": {
+    "aws-sdk": "^2.868.0",
     "cheerio": "^1.0.0-rc.5",
     "express": "^4.17.1",
     "jquery": "^3.5.1",
     "multer": "^1.4.2",
+    "multer-s3": "^2.9.0",
     "nodemon": "^2.0.7",
     "puppeteer": "^5.5.0",
     "request": "^2.88.2"

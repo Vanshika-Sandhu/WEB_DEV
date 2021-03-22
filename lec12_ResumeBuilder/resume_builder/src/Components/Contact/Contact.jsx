@@ -16,7 +16,7 @@ class Contact extends Component {
 
     render() { 
         return ( 
-            <div className="contact-details">
+            <div className="contact-details-form">
                 <div className="contact-form">
                     <label htmlFor="">Name</label>
                     <input type="text" id="fname" value={this.state.fname} onChange={ (e) => this.onChangeHandler(e)}/>
