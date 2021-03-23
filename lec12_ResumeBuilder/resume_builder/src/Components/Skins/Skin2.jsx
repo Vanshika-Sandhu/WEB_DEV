@@ -16,7 +16,7 @@ class Skin2 extends Component {
           city: "New Delhi",
           state: "Delhi",
           country: "India",
-          pin: "201001",
+          pin: "110077",
         },
         educationDetails: {
           collegeName: "Netaji Subhas University of Technology",
@@ -25,7 +25,7 @@ class Skin2 extends Component {
           collegeCity: "New Delhi",
           collegeState: "Delhi",
           collegeCountry: "India",
-          duration: "2018 - 2022",
+          duration: "2019 - 2023",
           schoolName : "Shanti Gyan Niketan Sr. Sec. Public School",
           class10marks : "10 CGPA",
           class10PassingYear: "2017",
@@ -92,17 +92,32 @@ class Skin2 extends Component {
           github: "www.github.com/vanshikasandhu",
         },
         achievements: [
-          "Lorem ipsum dolor sit amet consectetur adipisicing elit. Nam optio voluptates minus eaque numquam vero doloremque cumque molestiae, adipisci, sint quod consequatur cupiditate fuga veritatis nemo aperiam. Quasi, incidunt laudantium.",
-          "Lorem ipsum dolor sit amet consectetur adipisicing elit. Nam optio voluptates minus eaque numquam vero doloremque cumque molestiae, adipisci, sint quod consequatur cupiditate fuga veritatis nemo aperiam. Quasi, incidunt laudantium.",
-          "Lorem ipsum dolor sit amet consectetur adipisicing elit. Nam optio voluptates minus eaque numquam vero doloremque cumque molestiae, adipisci, sint quod consequatur cupiditate fuga veritatis nemo aperiam. Quasi, incidunt laudantium.",
-          "Lorem ipsum dolor sit amet consectetur adipisicing elit. Nam optio voluptates minus eaque numquam vero doloremque cumque molestiae, adipisci, sint quod consequatur cupiditate fuga veritatis nemo aperiam. Quasi, incidunt laudantium.",
+          "Lorem ipsum dolor sit amet consectetur adipisicing elit. Nam optio voluptates minus eaque numquam.",
+          "Lorem ipsum dolor sit amet consectetur adipisicing elit. Nam optio voluptates minus eaque numquam.",
+          "Lorem ipsum dolor sit amet consectetur adipisicing elit. Nam optio voluptates minus eaque numquam.",
+          "Lorem ipsum dolor sit amet consectetur adipisicing elit. Nam optio voluptates minus eaque numquam.",
+          "Lorem ipsum dolor sit amet consectetur adipisicing elit. Nam optio voluptates minus eaque numquam.",
+          "Lorem ipsum dolor sit amet consectetur adipisicing elit. Nam optio voluptates minus eaque numquam.",
         ],
+        por:[
+          {
+            porPosition:"frfvngrihvtr",
+            porSummary:"Lorem ipsum dolor sit amet consectetur adipisicing elit. Voluptatum iusto minima distinctio odit, iste animi amet provident, alias iure qui ut excepturi nihil, placeat ea dolore maxime quas dicta quia."
+          },
+          {
+            porPosition:"frfvngrihvtr",
+            porSummary:"Lorem ipsum dolor sit amet consectetur adipisicing elit. Voluptatum iusto minima distinctio odit, iste animi amet provident, alias iure qui ut excepturi nihil, placeat ea dolore maxime quas dicta quia."
+          },
+          {
+            porPosition:"frfvngrihvtr",
+            porSummary:"Lorem ipsum dolor sit amet consectetur adipisicing elit. Voluptatum iusto minima distinctio odit, iste animi amet provident, alias iure qui ut excepturi nihil, placeat ea dolore maxime quas dicta quia."
+          }
+        ], 
         hobbies: [
-          "xquvyutyiomqz hgqwefh",
+          "xquvyut",
           "yavjuwtbhzqd",
           "zqfiuykewiql",
-          "zqerc",
-          "zqfjyuzq zqfdjtyfmjg",
+          "hdbfergjth"
         ],
       };
 
@@ -130,6 +145,7 @@ class Skin2 extends Component {
             collegeCity,
             collegeState,
             collegeCountry,
+            duration,
             schoolName,
             class10marks,
             class10PassingYear,
@@ -140,9 +156,10 @@ class Skin2 extends Component {
             schoolCountry,
           } = this.props.educationDetails ? this.props.educationDetails : this.state.educationDetails;
       
-      
+          
           let experienceDetails = this.state.experienceDetails;
           let projects = this.state.projects;
+          let por = this.state.por;
           let {languages, frameworks,softwares, ides} = this.state.skills;
           let {linkedIn, github} = this.state.profileLinks;
           let achievements = this.state.achievements;
@@ -167,7 +184,7 @@ class Skin2 extends Component {
                     <div className="skills-div">
                         <div className="div-heading">SKILLS</div>
                         <div className="body">
-                          <div className="language-div">
+                          <div className="sub-div">
                             <div className="div-subheading">LANGUAGE</div>
                             <ul className="list">
                               {
@@ -177,13 +194,53 @@ class Skin2 extends Component {
                               }
                             </ul>
                           </div>
-
+                          <div className="sub-div">
+                            <div className="div-subheading">FRAMEWORKS</div>
+                            <ul className="list">
+                              {
+                                frameworks.map((framework)=>{
+                                  return <li>{framework}</li>
+                                })
+                              }
+                            </ul>
+                          </div>
+                          <div className="sub-div">
+                            <div className="div-subheading">SOFTWARES</div>
+                            <ul className="list">
+                              {
+                                softwares.map((software)=>{
+                                  return <li>{software}</li>
+                                })
+                              }
+                            </ul>
+                          </div>
+                          <div className="sub-div">
+                            <div className="div-subheading">IDES</div>
+                            <ul className="list">
+                              {
+                                ides.map((ide)=>{
+                                  return <li>{ide}</li>
+                                })
+                              }
+                            </ul>
+                          </div>
                         </div>
-                          
+                    </div>
+                    <div className="achievement-div">
+                      <div className="div-heading">ACHIEVEMENTS</div>
+                      <div className="body">
+                        < ul className="list">
+                          {
+                            achievements.map((achievement)=>{
+                              return <p className="achievement-li">{achievement}</p>
+                            })
+                          }
+                        </ul>
+                      </div>
 
                     </div>
+                    <div className="l5"></div>
                 </div>
-
 
                 <div className="right-div">
                     <div className="resume-top">
@@ -209,8 +266,63 @@ class Skin2 extends Component {
                         <div className="summary">{summary}</div>
 
                     </div>
+                    <div className="experience-div">
+                      <div className="div-right-heading">EXPERIENCE</div>
+                      <div className="right-body">
+                          {
+                            experienceDetails.map((experienceDetail)=>{
+                              return <div className="right-sub-div">
+                                        <div className="right-head">{experienceDetail.companyName} | {experienceDetail.position} | {experienceDetail.duration}</div>
+                                        <p className="right-p">{experienceDetail.role}</p>
+                                     </div>
+                            })
+                          }
+                      </div>
+                    </div>
+                    <div className="projects-div">
+                    <div className="div-right-heading">PROJECTS</div>
+                      <div className="right-body">
+                          {
+                            projects.map((project)=>{
+                              return <div className="right-sub-div">
+                                        <div className="right-head">{project.projectName} | {project.techStack} | <a className="p-link" href="">{project.projectLink}</a></div>
+                                        <p className="right-p">{project.summary}</p>
+                                     </div>
+                            })
+                          }
+                      </div>
+                    </div>
+                    <div className="education-div">
+                    <div className="div-right-heading">EDUCATION</div>
+                      <div className="right-body"> 
+                        <div className="right-sub-div">
+                          <div className="right-head">{collegeName} | </div>
+                          <div className="right-sub-head">{degree}</div>
+                          <div className="right-sub-head">CGPA {cgpa} | {duration}</div>
+                        </div>
+                        <p className="right-p p1">{collegeCity}, {collegeState} , {collegeCountry}</p>
+                      </div>
+                      <div className="right-body"> 
+                        <div className="right-sub-div">
+                          <div className="right-head">{schoolName} | </div>
+                          <div className="right-sub-head">CLASS 12 | {class12PassingYear} | {class12marks}</div>
+                          <div className="right-sub-head">CLASS 10 | {class10PassingYear} | {class10marks}</div>
+                        </div>
+                        <p className="right-p p2">{schoolCity}, {schoolState} , {schoolCountry}</p>
+                      </div>
 
-
+                    </div>
+                    <div className="hobbies-div">
+                      <div className="div-right-heading">INTERESTS</div>   
+                      <div className="right-body">
+                        {
+                          hobbies.map((hobby)=>{
+                            return <div className="right-p">{hobby}</div>
+                          })
+                        }
+                      </div>   
+                    </div>
+                    <div className="l6"></div>
                 </div>
 
             </div>

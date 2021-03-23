@@ -2,31 +2,26 @@
     width: 794px;
     height: 1123px; 
     margin: 20px;
-    /* box-sizing: border-box; */
 }
 .resume1{
     height: 100%;
     width: 100%;
-    background: lightgray;
     display: flex;
 }
 .resume1 .left-div{
     width: 33%;
     height: 100%;
-    /* background: #1FAED6; */
-    background: #ACF0F2;
+    background: #E6E3F7;
     position: relative;
 }
 .resume1 .right-div{
     width: 67%;
     height: 100%;
-    background: #F3FFE2;
-    /* background: white; */
-    /* background: #ACFEF2; */
+    background: white;
 }
 .resume1 .line{
     height: 1.5px;
-    background: black;
+    background: #421A4C;
     
 }
 .l1{
@@ -41,16 +36,18 @@
 }
 .resume1 .name-info{
     height: 18%;
-    margin-top: 20%;
+    margin-top: 15%;
     margin-bottom: 30%;
     margin-right: 3%;
     margin-left: 3%;
+    color: #421A4C;
+
 
 }
 .resume1 .user-name{
     font-size: 210%;
     text-align: right;
-    font-weight: 800;
+    font-weight:700;
     letter-spacing: 2px;
 
 }
@@ -64,10 +61,10 @@
 }
 .resume1 .quote-icon{
     position: absolute;
-    background: white;
+    background: #421A4C;
     height:6%;
     width: 26%;
-    top: 18%;
+    top: 17%;
     left: 71%;
     border-radius: 50%;
     display: flex;
@@ -76,12 +73,12 @@
 }
 .resume1 .fa-quote-left{
     font-size: 230%;
+    color: #E6E3F7;
 }
 .resume1 .resume-top{
     height: 22%;
-    margin-top: 9.9%;
+    margin-top: 7.4%;
     margin-bottom: 30%;
-    border-bottom: 1px solid black;
 
 }
 .l3{
@@ -113,11 +110,14 @@
     position: absolute;
     left: 7.5%;
     font-size: 170%;
+    color: #421A4C;
 }
 .fa-envelope-square{
     position: absolute;
     left: 50%;
     font-size: 170%;
+    color: #421A4C;
+
 }
 .resume1 .profile-links{
     display: flex;
@@ -128,12 +128,15 @@
     position: absolute;
     left: 7.5%;
     font-size: 170%;
+    color: #421A4C;
+
 
 }
 .fa-github-square{
     position: absolute;
     left: 50%;
     font-size: 170%;
+    color: #421A4C;
 }
 .resume1 .profile-links div{
     width: 48%;  
@@ -150,6 +153,7 @@
     top: 71%;
     left: 9%;
     font-size: 170%;
+    color: #421A4C;
 }
 .resume1 .address{
     height: 35%;
@@ -169,36 +173,179 @@
     text-align: center;
     margin-right: 5%;
     margin-left: 5%;
+    border-bottom: 1.5px solid #421A4C;
+
 }
 .resume1 .skills-div{
     height: 45%;
-    margin-top: -13%;
+    margin-top: -20%;
     margin-left: 7.5%;
     width: 85%;
 }
 .resume1 .div-heading{
-    height: 7%;
-    background: white;
-    font-size: 120%;
+    height: 40px;
+    background:#421A4C;
+    color: #E6E3F7;
+    font-size: 130%;
     font-weight: bold;
     justify-content: center;
+    /* text-align: center; */
     display: flex;
     align-items: center;
     margin-bottom: 2.25%;
     letter-spacing: 4px;
-    /* -moz-text-size-adjust: ; */
 }
 .resume1 .body{
-    height: 92%;
-    background: green;
+    height: 85%;
     display: flex;
-    width: 100%;
+    flex-direction: column;
+    width: 90%;
+    margin-top: 3%;
+    margin-left: 5%;
+    text-align: center;
+    /* background: green; */
 }
-.resume1 .language-div{
+.resume1 .sub-div{
     width: 100%;
+    height: 25%;
+    
 }
 .resume1 .div-subheading{
-    height: 5%;
-    background: white;
+    height: 20%;
+    width: 90%;
+    font-size: 100%;
+    font-weight: 700;
+    letter-spacing: 2px;
+    margin-left: 5%;
+    text-align: center;
+    color: #421A4C;
+}
+.resume1 .list{
+    width: 80%;
+    height: 85%;
+    margin-left: 9%;
+    margin-top: 0%;
+    height: 75%;
+    color: #100011;
+}
+.resume1 .list li{
+    list-style-type: none;
+    height: 10%;
+    font-size: 90%;
+    margin-bottom: -5px;
+}
+.resume1 .achievement-div{
+    height:31%;
+    margin-top: -12%;
+    margin-left: 7.5%;
+    width: 85%;
+}
+.resume1 .achievement-li{
+    font-size: 70%;
+    text-align: left;
+    margin-bottom: 3%;
+    width: 120%;
+    margin-left: -10%;
+}
+.resume1 .projects-div{
+    height: 23%;
+    width: 90%;
+    margin-left: 5%;
+    border-bottom: 1.5px solid #421A4C;
+
+}
+.resume1 .experience-div{
+    height: 24.5%;
+    width: 90%;
+    margin-left: 5%;
+    margin-top: -33%;
+    border-bottom: 1.5px solid #421A4C;
+
+}
+.resume1 .education-div{
+    height: 14.5%;
+    width: 90%;
+    margin-left: 5%;
+    border-bottom: 1.5px solid #421A4C;
+    position: relative;
+}
+.resume1 .hobbies-div{
+    /* border-bottom: 1.5px solid black; */
+    height: 10%;
+    width: 90%;
+    margin-left: 5%;
+}
+.resume1 .div-right-heading{
+    height: 33px;
+    /* background: white; */
+    color: #421A4C;
+    font-size: 135%;
+    font-weight:900;
+    justify-content: left;
+    /* text-align: center; */
+    display: flex;
+    align-items: center;
+    margin-bottom: 2.25%;
+    letter-spacing: 4px;
+}
+.resume1 .right-body{
     width: 100%;
+    margin-top: -1%;
+}
+.resume1 .right-sub-div{
+    height: 20%;
+    width: 100%;
+    margin-bottom: 2%;
+}
+.resume1 .right-head{
+    font-size: 100%;
+    font-weight: bolder;
+    letter-spacing: 0.5px;
+    color: #180319;
+}
+
+.resume1 .right-p{
+    font-size: 75%;
+}
+.resume1 a{
+    font-size: 70%;
+    font-weight: lighter;
+    text-align: right;
+    color: #180319;
+}
+.resume1 .right-sub-head{
+    font-size: 90%;
+    font-weight: lighter;
+}
+
+.education-div .right-p{
+    position: absolute;
+}
+
+.p1{
+    left: 63%;
+    top: 26%;
+}
+.p2{
+    top: 62.5%;
+    left: 67.5%;
+}
+.hobbies-div .right-body{
+    margin-top: -3%;
+    font-size: 110%;
+
+}
+.l5{
+    height: 1px;
+    width: 90%;
+    margin-left: 10%;
+    background: #421A4C;
+
+}
+.l6{
+    height: 1px;
+    margin-top: 2%;
+    width: 95%;
+    background: #421A4C;
+
 }
