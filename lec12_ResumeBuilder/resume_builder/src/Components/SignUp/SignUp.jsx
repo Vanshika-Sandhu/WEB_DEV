@@ -76,7 +76,7 @@ class SignUp extends Component {
 
                 <button className ="btn" onClick={this.signUpHandler}>Sign Up</button>
 
-                <p>{this.state.error}</p>
+                <p className="error-message">{this.state.error}</p>
             </div>
             );
     }

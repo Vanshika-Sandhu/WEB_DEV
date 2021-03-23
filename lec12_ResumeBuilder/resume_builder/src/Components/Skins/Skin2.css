@@ -1,159 +1,204 @@
-.skin2{
-    border: 1px solid lightgrey;
-    width: 826.77px;     /* original width = 2,480.31px */
-    height: 1169.29px;   /* original height = 3507.87px */
-    margin: 50px;
-    display: flex;
+.page{
+    width: 794px;
+    height: 1123px; 
+    margin: 20px;
+    /* box-sizing: border-box; */
 }
-
-
-
-.left-strap{   
-    width: 30%;
-    margin: 2.5%;
-    position: relative;
-}
-.bg-design{
-    height: 100%;
-    position: relative;
-    width: 100%;
-}
-.r1{
-    height: 22%;
-}
-.rect1{
-    height: 50%;
-    background: #403F44;
-
-}
-.tri1{
-    height: 0px;
-    width: 0px;
-    border-right:116.5px solid transparent;
-    border-left: 116.5px solid transparent;
-    border-top: 125px solid #403F44;
-    position: absolute;
-    z-index: 2;
-    top: 124px;
-    left: 0.5px;
-}
-.tri{
-    height: 0px;
-    width: 0px;
-    border-right:116.5px solid transparent;
-    border-left: 116.5px solid transparent;
-    border-top: 125px solid white;
-    position: absolute;
-    z-index: 1;
-    top: 160px;
-    left: 0.5px;
-}
-.r2{
-    height: 33%;
-    background: #E4A299;
-    margin-top: -87px;
-}
-.rect2{
-    background: #E4A299;
-    height: 75%;
-}
-.tri2{
-    height: 0px;
-    width: 0px;
-    border-right:116.5px solid transparent;
-    border-left: 116.5px solid transparent;
-    border-top: 125px solid #E4A299;
-    position: absolute;
-    z-index: 2;
-    top: 532.5px;
-    left: 0.5px;
-}
-.r2 .tri{
-    top: 578px;
-}
-.r3{
-    height: 48.5%;
-    background: #F1F1F3;
-    margin-top: 46px;
-}
-.left-strap-content{
+.resume1{
     height: 100%;
     width: 100%;
-    position: absolute;
-    background: none;
-    top: 0px;
-    z-index: 3;
-}
-.contact{
-    height: 12%;
-    width: 70%;
-    margin: 15%;
-    margin-top: 5%;
-}
-.contact-header{
-    color: white;  
-}
-.contact-body{
-    margin-top: 5px;
-    height: 110px;
-}
-.contact-body p{
-    height: 20%;
+    background: lightgray;
     display: flex;
-    color: white;
-    font-size: 10px;
 }
-.contact-body p i{
-    font-size: 14px;
+.resume1 .left-div{
+    width: 33%;
+    height: 100%;
+    /* background: #1FAED6; */
+    background: #ACF0F2;
+    position: relative;
 }
-.contact-body p a{
-    color: white;
+.resume1 .right-div{
+    width: 67%;
+    height: 100%;
+    background: #F3FFE2;
+    /* background: white; */
+    /* background: #ACFEF2; */
 }
-.summary{
-    margin-top: 45%;
-    height: 25%;
-    width: 85%;
-    margin-left:7.5% ;
-    background: orange;
+.resume1 .line{
+    height: 1.5px;
+    background: black;
+    
 }
-.interest{
-    background: yellow;
-    margin-top: 60%;
-    height: 38%;
-    width: 85%;
-    margin-left: 7.5%;
-}
-
-
-.header{
-    font-size: 16px;
-    text-align: center;
-    font-weight: 700;
+.l1{
+    width: 95%;
+    margin-left: 10%;
     margin-bottom: 5%;
 }
-.body{
+.l2{
+    width: 93%;
+    margin-left: 10%;
+    margin-top: 17%;
+}
+.resume1 .name-info{
+    height: 18%;
+    margin-top: 20%;
+    margin-bottom: 30%;
+    margin-right: 3%;
+    margin-left: 3%;
+
+}
+.resume1 .user-name{
+    font-size: 210%;
+    text-align: right;
+    font-weight: 800;
+    letter-spacing: 2px;
+
+}
+.resume1 .profession{
+    font-size: 110%;
+    text-align: right;
+    margin-top:3%;
+    font-weight: 500;
+    letter-spacing: 0.5px;
+
+}
+.resume1 .quote-icon{
+    position: absolute;
+    background: white;
+    height:6%;
+    width: 26%;
+    top: 18%;
+    left: 71%;
+    border-radius: 50%;
     display: flex;
-    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+.resume1 .fa-quote-left{
+    font-size: 230%;
+}
+.resume1 .resume-top{
+    height: 22%;
+    margin-top: 9.9%;
+    margin-bottom: 30%;
+    border-bottom: 1px solid black;
 
 }
-
-
-
-
-
-
-
-.right-content{
-    /* background: grey; */
-    border: 1px solid grey;
-    width: 67.5%;
-    margin: 2.5%;
-    margin-left: 0%;
+.l3{
+    width: 95%;
+    margin-bottom: 2%;
+}
+.resume1 .contact-info{
+    height: 47%;
+    margin-right: 2%;
+    margin-left: 2%;
+    font-size: 75%;
+    position: relative;
+}
+.resume1 .links{
+    height: 50%;
+    width: 85%;
+    margin-left: 7.5% ;
+}
+.resume1 .contact{
+    display: flex;
+    align-items: center;
+    height: 50%;
+}
+.resume1 .contact div{
+    width: 48%;  
+    margin-left: 5%;
+}
+.fa-phone-square-alt{
+    position: absolute;
+    left: 7.5%;
+    font-size: 170%;
+}
+.fa-envelope-square{
+    position: absolute;
+    left: 50%;
+    font-size: 170%;
+}
+.resume1 .profile-links{
+    display: flex;
+    align-items: center;
+    height: 50%;
+}
+.fa-linkedin{
+    position: absolute;
+    left: 7.5%;
+    font-size: 170%;
 
 }
-.header{
-
+.fa-github-square{
+    position: absolute;
+    left: 50%;
+    font-size: 170%;
 }
-.body{
-
+.resume1 .profile-links div{
+    width: 48%;  
+    margin-left: 5%;
+}
+.l4{
+    margin-top: 1.5%;
+    width: 87%;
+    margin-left: 5% ;
+    margin-right: 5%;
+}
+.resume1 .fa-home{
+    position: absolute;
+    top: 71%;
+    left: 9%;
+    font-size: 170%;
+}
+.resume1 .address{
+    height: 35%;
+    width: 75%;
+    margin-left: 15.5%;
+    margin-top: 1%;
+    display: flex;
+    align-items: center;
+}
+.resume1 .summary{
+    height: 39%;
+    margin-top: 1%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 80%;
+    text-align: center;
+    margin-right: 5%;
+    margin-left: 5%;
+}
+.resume1 .skills-div{
+    height: 45%;
+    margin-top: -13%;
+    margin-left: 7.5%;
+    width: 85%;
+}
+.resume1 .div-heading{
+    height: 7%;
+    background: white;
+    font-size: 120%;
+    font-weight: bold;
+    justify-content: center;
+    display: flex;
+    align-items: center;
+    margin-bottom: 2.25%;
+    letter-spacing: 4px;
+    /* -moz-text-size-adjust: ; */
+}
+.resume1 .body{
+    height: 92%;
+    background: green;
+    display: flex;
+    width: 100%;
+}
+.resume1 .language-div{
+    width: 100%;
+}
+.resume1 .div-subheading{
+    height: 5%;
+    background: white;
+    width: 100%;
 }

@@ -10,6 +10,7 @@ import Templates from "./Components/Templates/Templates";
 import  Profile from "./Components/Profile/Profile";
 import SignUp from "./Components/SignUp/SignUp";
 import SignIn from "./Components/SignIn/SignIn";
+import Skin2 from './Components/Skins/Skin2';
 // import Skin2 from './Components/Skins/Skin2';
 
 class App extends Component {
@@ -74,35 +75,39 @@ class App extends Component {
   render() { 
     let {isAuth} = this.state;
     return (
-      <Router>
-      <div className="App">
-        <Navbar isAuth={isAuth} logout={this.logout}  ></Navbar>
-        <Switch>
-          <Route path="/" exact>
-            <LandingPage isAuth={isAuth} ></LandingPage>
-          </Route>
-          <Route path="/about" exact>
-            <About></About>
-          </Route>
-          <Route path="/templates" exact component={ isAuth ? Templates : SignIn}>
-            {/* {isAuth ? <Templates></Templates> : <Redirect to="/login"></Redirect>} */}
-          </Route>
-          <Route path="/contact" exact>
-            <Contact></Contact>
-          </Route>
-          <Route path="/profile" exact>
-            {isAuth ? <Profile></Profile> : <Redirect to="/login"></Redirect>}
-          </Route>
-          <Route path="/signup">
-            {isAuth ? <Redirect to="/"></Redirect> : <SignUp signup = {this.signup} ></SignUp>}
-          </Route>
-          <Route part="/signin">
-          {isAuth ? <Redirect to="/"></Redirect> : <SignIn login={this.login}></SignIn>}
-          </Route>
-        </Switch>
-      </div>
-      </Router>
+      // <Router>
+      // <div className="App">
+      //   <Navbar isAuth={isAuth} logout={this.logout}  ></Navbar>
+      //   <Switch>
+      //     <Route path="/" exact>
+      //       <LandingPage isAuth={isAuth} ></LandingPage>
+      //     </Route>
+      //     <Route path="/about" exact>
+      //       <About></About>
+      //     </Route>
+      //     <Route path="/templates" exact component={ isAuth ? Templates : SignIn}>
+      //       {/* {isAuth ? <Templates></Templates> : <Redirect to="/login"></Redirect>} */}
+      //     </Route>
+      //     <Route path="/contact" exact>
+      //       <Contact></Contact>
+      //     </Route>
+      //     <Route path="/profile" exact>
+      //       {isAuth ? <Profile></Profile> : <Redirect to="/login"></Redirect>}
+      //     </Route>
+      //     <Route path="/signup">
+      //       {isAuth ? <Redirect to="/"></Redirect> : <SignUp signup = {this.signup} ></SignUp>}
+      //     </Route>
+      //     <Route part="/signin">
+      //     {isAuth ? <Redirect to="/"></Redirect> : <SignIn login={this.login}></SignIn>}
+      //     </Route>
+      //   </Switch>
+      // </div>
+      // </Router>
+
       // <MySkin/>
+
+      <Skin2></Skin2>
+      
     );
   }
 }
