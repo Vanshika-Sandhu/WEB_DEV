@@ -175,7 +175,84 @@ class UserProfile extends Component {
      }
 
      componentDidUpdate(){
-        this.componentDidMount();
+        // this.componentDidMount();
+        let pid = this.props.profileUser["_id"];
+        let uid = this.props.user["_id"];
+
+        axios.get(`/api/request/following/${uid}`).then(obj=>{
+            let myFollowing = obj.data.myFollowing;
+            if(myFollowing){
+                for(let i=0; i<myFollowing.length; i++){
+                    if(myFollowing[i]["_id"]===pid){
+                        this.setState({
+                            isFollowed:true,
+                        });
+                        break;
+                    }
+                }
+            }
+        });
+
+        axios.get(`/api/request/isAccepted/${pid}/${uid}`).then(obj=>{
+            let requestStatus = obj.data.message;
+            // console.log(requestStatus);
+            if(!this.state.isFollowed){
+                if(requestStatus==="Request pending"){
+                    this.setState({
+                        isRequestAcccepted:false
+                    });
+                }
+                else{
+                    this.setState({
+                        isRequestAcccepted:true
+                    });
+                }
+                console.log(this.state.isRequestAcccepted);
+            }
+        })
+
+         let posts=[];
+         let followers=[];
+         let following=[];
+
+         axios.get(`/api/post/${pid}`).then(obj=>{
+            // console.log(obj);
+            let Userposts = obj.data.myposts;
+            console.log(Userposts);
+            if(Userposts){
+                posts= Userposts;
+                let sortedPosts = posts.sort( (a,b)=>{
+                    return new Date(b.createdOn) - new Date(a.createdOn) ;
+                })
+                posts= sortedPosts;
+            }
+            let followerObjecPromise = axios.get(`/api/request/follower/${pid}`);
+            return followerObjecPromise;
+         })
+         .then(obj=>{
+            let Userfollowers = obj.data.myFollowers;
+            console.log(Userfollowers);
+            if(Userfollowers){
+                followers = Userfollowers;
+            }
+
+            let followingObjecPromise = axios.get(`/api/request/following/${pid}`);
+            return followingObjecPromise;
+         })
+         .then(obj=>{
+            let Userfollowing = obj.data.myFollowing;
+            console.log(Userfollowing);
+            if(Userfollowing){
+                following = Userfollowing;
+            }
+            this.setState({
+                isPublic : this.props.profileUser.isPublic,
+                posts,
+                followers,
+                following
+            });
+         });
+
      }
 
 

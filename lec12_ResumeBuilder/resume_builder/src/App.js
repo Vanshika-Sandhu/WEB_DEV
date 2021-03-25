@@ -63,7 +63,7 @@ class App extends Component {
 
   componentDidMount(){
     // event attached to auth state changed
-    firebaseApp.auth().onAuthStateChanged((user)=>{
+    firebaseApp.auth().onAuthStateChanged(async (user)=>{
       console.log("Inside auth state changed!!!");
           this.setState({
             isAuth: user ? true : false,
@@ -75,38 +75,39 @@ class App extends Component {
   render() { 
     let {isAuth} = this.state;
     return (
-      // <Router>
-      // <div className="App">
-      //   <Navbar isAuth={isAuth} logout={this.logout}  ></Navbar>
-      //   <Switch>
-      //     <Route path="/" exact>
-      //       <LandingPage isAuth={isAuth} ></LandingPage>
-      //     </Route>
-      //     <Route path="/about" exact>
-      //       <About></About>
-      //     </Route>
-      //     <Route path="/templates" exact component={ isAuth ? Templates : SignIn}>
-      //       {/* {isAuth ? <Templates></Templates> : <Redirect to="/login"></Redirect>} */}
-      //     </Route>
-      //     <Route path="/contact" exact>
-      //       <Contact></Contact>
-      //     </Route>
-      //     <Route path="/profile" exact>
-      //       {isAuth ? <Profile></Profile> : <Redirect to="/login"></Redirect>}
-      //     </Route>
-      //     <Route path="/signup">
-      //       {isAuth ? <Redirect to="/"></Redirect> : <SignUp signup = {this.signup} ></SignUp>}
-      //     </Route>
-      //     <Route part="/signin">
-      //     {isAuth ? <Redirect to="/"></Redirect> : <SignIn login={this.login}></SignIn>}
-      //     </Route>
-      //   </Switch>
-      // </div>
-      // </Router>
+      <Router>
+      <div className="App">
+        <Navbar isAuth={isAuth} logout={this.logout}  ></Navbar>
+        <Switch>
+          <Route path="/" exact>
+            <LandingPage isAuth={isAuth} ></LandingPage>
+          </Route>
+          <Route path="/about" exact>
+            <About></About>
+          </Route>
+          {/* <Route path="/templates" exact component={ isAuth ? Templates : SignIn}> */}
+            {/* {isAuth ? <Templates></Templates> : <Redirect to="/login"></Redirect>} */}
+          {/* </Route> */}
+          <Route path="/templates" exact render={ (props) => this.state.isAuth ? <Templates  {...props} uid={this.state.user}></Templates> : <Redirect to="/signin"></Redirect>} ></Route>
+          <Route path="/contact" exact>
+            <Contact></Contact>
+          </Route>
+          <Route path="/profile" exact>
+            {isAuth ? <Profile></Profile> : <Redirect to="/login"></Redirect>}
+          </Route>
+          <Route path="/signup">
+            {isAuth ? <Redirect to="/"></Redirect> : <SignUp signup = {this.signup} ></SignUp>}
+          </Route>
+          <Route part="/signin">
+          {isAuth ? <Redirect to="/"></Redirect> : <SignIn login={this.login}></SignIn>}
+          </Route>
+        </Switch>
+      </div>
+      </Router>
 
       // <MySkin/>
 
-      <Skin2></Skin2>
+      // <Skin2></Skin2>
       
     );
   }

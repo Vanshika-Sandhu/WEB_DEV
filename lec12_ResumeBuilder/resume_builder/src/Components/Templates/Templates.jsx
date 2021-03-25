@@ -1,13 +1,15 @@
 import React, { Component } from 'react';
 import "./Templates.css";
 import firebaseApp from "../../firebase/firebaseConfig";
+import initialState from "../../util/initialState";
+import firebase from "firebase";
 
 
 class Templates extends Component {
     state = { 
         skins: [
             {id:"skin1" , path:"./images/skin1.png"},
-            {id:"skin2" , path:"./images/skin2.jpg"},
+            {id:"skin2" , path:"./images/skin2.png"},
             {id:"skin3" , path:"./images/skin3.jpg"},
             {id:"skin4" , path:"./images/skin4.png"},
             {id:"skin5" , path:"./images/skin5.png"},
@@ -20,58 +22,18 @@ class Templates extends Component {
      };
 
 
-     handleChooseTemplate = (e) =>{
-         let skinId = e.target.id;
-        // set document in resumes collection
-        firebaseApp.firestore().collection("Resumes").doc().set({
-            skinId : skinId ,
-            contactDetails: {
-              fname: "",
-              lname: "",
-              summary: "",
-              email: "",
-              phone: "",
-              profession: "",
-              street: "",
-              city: "",
-              state: "",
-              country: "",
-              pin: "",
-            },
-            educationDetails: {
-              collegeName: "",
-              degree: "",
-              cgpa: "",
-              collegeCity: "",
-              collegeState: "",
-              graduationMonth: "",
-              graduationYear: "",
-            },
-            experienceDetails: [
-            ],
-            projects: [],
-            skills : {
-                language : [] ,
-                frameworks : [] ,
-                software : [] ,
-                ide : []
-            } ,
-            profileLinks : {
-                linkedIn : "" ,
-                github : "" 
-            } ,
-            achievements : [] ,
-            hobbies : [] 
-          }).then( obj =>{
-            console.log("inside then");
-            console.log(obj);
-          })
-          .catch(error =>{
-            console.log("Inside catch !!!")
-            console.log(error);
-          });
+     handleChooseTemplate = async (e) =>{
+        let skinId = e.target.id;
+        console.log(skinId);
+        // get skinId
+        let addObj = await firebaseApp.firestore().collection("Resumes").add({skinId:skinId , ...initialState });
+        // console.log(addObj);
+        let resumeId = addObj.id;
+        await firebaseApp.firestore().collection("Users").doc(this.props.uid).update({
+            Resumes: firebase.firestore.FieldValue.arrayUnion(resumeId)
+        }); //returns nothing, just updates the document
 
-        // this.props.history.push("/contact");
+        this.props.history.push("/contact");
 
         //window.location = "/contact";  => this will force the page to reload
      }

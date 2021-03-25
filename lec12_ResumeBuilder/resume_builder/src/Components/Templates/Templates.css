@@ -12,6 +12,7 @@
     /* margin:auto; */
     margin: 49px;
     position: relative;
+    border-radius: 5px;
     display: flex;
     align-items: center;
     justify-content: center;

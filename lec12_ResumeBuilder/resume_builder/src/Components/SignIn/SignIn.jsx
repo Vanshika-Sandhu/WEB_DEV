@@ -27,6 +27,8 @@ class SignIn extends Component {
                     <input type="text" id="pw" value={this.state.pw} onChange={ (e) =>{this.onChangeHandler(e)}} />
                 </div>
                 <button className ="btn" onClick={ () => {this.props.login(this.state.email, this.state.pw) }}>Sign In</button>
+
+                {/* <p className="error-message">{this.state.error}</p> */}
             </div>
          );
     }
