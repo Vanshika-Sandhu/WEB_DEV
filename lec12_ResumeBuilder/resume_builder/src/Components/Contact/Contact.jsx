@@ -1,12 +1,29 @@
 import React, { Component } from 'react';
 import "./Contact.css";
+import {contactCodes} from "../../util/codes";
+
 
 class Contact extends Component {
     state = { 
-        fname:""
+        codes:["fname", "lname", "summary", "email","phone","profession","houseNo","street","city","state","country","pin" ],
+        contactDetails: {
+            fname: "",
+            lname: "",
+            summary: "",
+            email: "",
+            phone: "",
+            profession: "",
+            houseNo:"",
+            street: "",
+            city: "",
+            state: "",
+            country: "",
+            pin: "",
+          }
      }
 
     onChangeHandler = (e) =>{
+        // console.log(contactCodes);
         let id = e.target.id;
         let value = e.target.value;
         this.setState({
@@ -18,11 +35,18 @@ class Contact extends Component {
         return ( 
             <div className="contact-details-form">
                 <div className="contact-form">
-                    <label htmlFor="">Name</label>
-                    <input type="text" id="fname" value={this.state.fname} onChange={ (e) => this.onChangeHandler(e)}/>
+                    {
+                        this.state.codes.map(code=>{
+                            return <div className="contact-form-element" key={code}>
+                                <label htmlFor="">{contactCodes[code]}</label>
+                                <input type="text" id={code} value={this.state.code} onChange={ (e) => this.onChangeHandler(e)}/>
+                            </div>
+
+                        })
+                    }
                 </div>
                 <div className="resume-viewer">
-                    <h1>{this.state.fname}</h1>
+                    <h1>{this.state.code}</h1>
                 </div>
             </div>
          );
