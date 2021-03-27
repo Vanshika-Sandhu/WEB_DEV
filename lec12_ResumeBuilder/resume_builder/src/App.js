@@ -16,7 +16,14 @@ import Skin2 from './Components/Skins/Skin2';
 class App extends Component {
   state = { 
     isAuth:false,
-    user:null
+    user:null,
+    selectedResumeId:null
+   };
+
+   setResumeId = (id) =>{
+      this.setState({
+        selectedResumeId:id
+      });
    };
 
    logout = () =>{
@@ -65,9 +72,32 @@ class App extends Component {
     // event attached to auth state changed
     firebaseApp.auth().onAuthStateChanged(async (user)=>{
       console.log("Inside auth state changed!!!");
+      let selectedResumeId = null;
+      console.log(user);
+      // check if logged in ??
+      if (user) {
+        // get selected resumeId
+        let doc = await firebaseApp
+          .firestore()
+          .collection("Users")
+          .doc(user.uid)
+          .get();
+        let resumes = doc.data()["Resumes"];
+        console.log(resumes);
+        for (let i = 0; i < resumes.length; i++) {
+          if (resumes[i].isSelected) {
+            selectedResumeId = resumes[i].resumeId;
+            break;
+          }
+        }
+        // console.log(doc.data());
+      //   let resumes = doc.data()["Resumes"];
+      // console.log(resumes);     
+     }
           this.setState({
             isAuth: user ? true : false,
-            user: user ? user.uid : null
+            user: user ? user.uid : null,
+            selectedResumeId:selectedResumeId
           })
     })
   };
@@ -88,10 +118,8 @@ class App extends Component {
           {/* <Route path="/templates" exact component={ isAuth ? Templates : SignIn}> */}
             {/* {isAuth ? <Templates></Templates> : <Redirect to="/login"></Redirect>} */}
           {/* </Route> */}
-          <Route path="/templates" exact render={ (props) => this.state.isAuth ? <Templates  {...props} uid={this.state.user}></Templates> : <Redirect to="/signin"></Redirect>} ></Route>
-          <Route path="/contact" exact>
-            <Contact></Contact>
-          </Route>
+          <Route path="/templates" exact render={ (props) => <Templates  {...props} uid={this.state.user} isAuth={this.state.isAuth} setResumeId = {this.setResumeId} resumeId={this.state.selectedResumeId}  ></Templates>} ></Route>
+          <Route path="/contact" exact render={ (props) =>this.state.isAuth ? <Contact {...props} uid={this.state.user} resumeId={this.state.selectedResumeId} ></Contact> : <Redirect to="/signin"></Redirect> }></Route>
           <Route path="/profile" exact>
             {isAuth ? <Profile></Profile> : <Redirect to="/login"></Redirect>}
           </Route>

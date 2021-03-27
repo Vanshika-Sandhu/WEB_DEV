@@ -1,6 +1,9 @@
 import React, { Component } from 'react';
 import "./Contact.css";
 import {contactCodes} from "../../util/codes";
+import firebaseApp from '../../firebase/firebaseConfig';
+import Skin2 from '../Skins/Skin2';
+import Skin from '../Skins/Skin';
 
 
 class Contact extends Component {
@@ -19,34 +22,69 @@ class Contact extends Component {
             state: "",
             country: "",
             pin: "",
-          }
+          },
+          skinId:null
      }
 
     onChangeHandler = (e) =>{
         // console.log(contactCodes);
         let id = e.target.id;
         let value = e.target.value;
+        let oldContactDetails = this.state.contactDetails;
         this.setState({
-            [id]:value
+            contactDetails:{
+                ...oldContactDetails,
+                [id]:value
+            }
         })
+    };
+
+    componentDidMount(){
+        // get contact details of the selected resume
+        firebaseApp.firestore().collection("Resumes").doc(this.props.resumeId).get().then(doc=>{
+            // console.log("Inside component did mount of contact");
+            let {contactDetails, skinId} = doc.data();
+            // console.log(skinId);
+            // console.log(contactDetails);
+            this.setState({
+                contactDetails:contactDetails,
+                skinId:skinId
+            })
+        });
+
+        
+    };
+
+    NextButtonHandler=()=>{
+        console.log("inside next button handler");
+
+    };
+
+    BackButtonHandler =()=>{
+        console.log("inside back button handler");
     };
 
     render() { 
         return ( 
             <div className="contact-details-form">
+                <div className="div-layer"></div>
                 <div className="contact-form">
                     {
                         this.state.codes.map(code=>{
                             return <div className="contact-form-element" key={code}>
                                 <label htmlFor="">{contactCodes[code]}</label>
-                                <input type="text" id={code} value={this.state.code} onChange={ (e) => this.onChangeHandler(e)}/>
+                                <input type="text" id={code} value={this.state.contactDetails[code]} onChange={ (e) => this.onChangeHandler(e)}/>
                             </div>
 
                         })
                     }
                 </div>
+                <button className="btn back" onClick={this.BackButtonHandler} >Back</button>
+                <button className="btn next" onClick={this.NextButtonHandler} >Next</button>
                 <div className="resume-viewer">
-                    <h1>{this.state.code}</h1>
+                    {/* get skin according to skinId */}
+                    {/* <Skin skinId={this.state.skinId} contactDetails={this.state.contactDetails}></Skin> */}
+                    <Skin2 skinId={this.state.skinId} contactDetails={this.state.contactDetails}></Skin2>
                 </div>
             </div>
          );

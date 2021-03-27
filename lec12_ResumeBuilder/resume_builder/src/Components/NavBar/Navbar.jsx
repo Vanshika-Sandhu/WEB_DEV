@@ -39,6 +39,9 @@ class Navbar extends Component {
              <Link to="/about">About</Link>
               </li>
               <li>
+                <Link to="/templates">Templates</Link>
+              </li>
+              <li>
                 <Link to="/signin">Sign In</Link>
               </li>
               <li>

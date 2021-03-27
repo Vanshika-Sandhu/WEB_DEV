@@ -7,6 +7,7 @@ import firebase from "firebase";
 
 class Templates extends Component {
     state = { 
+
         skins: [
             {id:"skin1" , path:"./images/skin1.png"},
             {id:"skin2" , path:"./images/skin2.png"},
@@ -23,18 +24,29 @@ class Templates extends Component {
 
 
      handleChooseTemplate = async (e) =>{
-        let skinId = e.target.id;
-        console.log(skinId);
-        // get skinId
-        let addObj = await firebaseApp.firestore().collection("Resumes").add({skinId:skinId , ...initialState });
-        // console.log(addObj);
-        let resumeId = addObj.id;
-        await firebaseApp.firestore().collection("Users").doc(this.props.uid).update({
-            Resumes: firebase.firestore.FieldValue.arrayUnion(resumeId)
-        }); //returns nothing, just updates the document
+         if(!this.props.isAuth){
+            this.props.history.push("/signin");
+         }
+         else{
 
-        this.props.history.push("/contact");
-
+             let skinId = e.target.id;
+             console.log(skinId);
+             let resumeId;
+             // get skinId
+             if(this.props.resumeId){
+                 let addObj = await firebaseApp.firestore().collection("Resumes").add({skinId:skinId , ...initialState });
+                 // console.log(addObj);
+                 resumeId = addObj.id;
+                 await firebaseApp.firestore().collection("Users").doc(this.props.uid).update({
+                     Resumes: firebase.firestore.FieldValue.arrayUnion(resumeId)
+                    }); //returns nothing, just updates the document
+                    this.props.history.push("/contact");
+                    this.props.setResumeId(resumeId);
+                }
+                else{
+                    this.props.history.push("/contact");
+                }
+            }
         //window.location = "/contact";  => this will force the page to reload
      }
 
