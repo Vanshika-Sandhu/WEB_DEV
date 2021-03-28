@@ -1,0 +1,10 @@
+.finalize{
+    display: flex;
+    margin-left: 250px;
+    margin-right: auto;
+}
+.finalize-viewer{
+    margin-top: 120px;
+    margin-bottom: 50px;
+    box-shadow:4px 4px 20px 4px rgba(0,0,0,0.15);
+}

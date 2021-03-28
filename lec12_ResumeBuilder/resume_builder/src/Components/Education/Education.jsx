@@ -94,7 +94,7 @@ class Education extends Component {
         await firebaseApp.firestore().collection("Resumes").doc(this.props.resumeId).update({
             educationDetails: this.state.educationDetails
         });
-        // this.props.history.push("/education");
+        this.props.history.push("/finalize");
     };
 
     BackButtonHandler =()=>{

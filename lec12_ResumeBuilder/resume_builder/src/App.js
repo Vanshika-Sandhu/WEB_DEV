@@ -12,6 +12,7 @@ import SignUp from "./Components/SignUp/SignUp";
 import SignIn from "./Components/SignIn/SignIn";
 import Skin2 from './Components/Skins/Skin2';
 import Education from './Components/Education/Education';
+import Finalize from './Components/Finalize/Finalize';
 // import Skin2 from './Components/Skins/Skin2';
 
 class App extends Component {
@@ -115,6 +116,7 @@ class App extends Component {
           <Route path="/templates" exact render={ (props) => <Templates  {...props} uid={this.state.user} isAuth={this.state.isAuth} setResumeId = {this.setResumeId} resumeId={this.state.selectedResumeId}  ></Templates>} ></Route>
           <Route path="/contact" exact render={ (props) =>this.state.isAuth ? <Contact {...props} uid={this.state.user} resumeId={this.state.selectedResumeId} ></Contact> : <Redirect to="/signin"></Redirect> }></Route>
           <Route path="/education" exact render={ (props) =>this.state.isAuth ? <Education {...props} uid={this.state.user} resumeId={this.state.selectedResumeId} ></Education> : <Redirect to="/signin"></Redirect> }></Route>
+          <Route path="/finalize" exact render={ (props) =>this.state.isAuth ? <Finalize {...props} uid={this.state.user} resumeId={this.state.selectedResumeId} ></Finalize> : <Redirect to="/signin"></Redirect> }></Route>
           <Route path="/profile" exact>
             {isAuth ? <Profile></Profile> : <Redirect to="/login"></Redirect>}
           </Route>
