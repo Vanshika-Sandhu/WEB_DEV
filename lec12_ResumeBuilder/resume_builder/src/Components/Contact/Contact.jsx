@@ -61,7 +61,7 @@ class Contact extends Component {
         await firebaseApp.firestore().collection("Resumes").doc(this.props.resumeId).update({
             contactDetails: this.state.contactDetails
         });
-        this.props.history.pus("/education");
+        this.props.history.push("/education");
     };
 
     BackButtonHandler =()=>{
