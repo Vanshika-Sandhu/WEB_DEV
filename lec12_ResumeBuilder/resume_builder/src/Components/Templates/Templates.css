@@ -1,4 +1,5 @@
 .templates{
+    margin-top: 70px;
     display: flex;
     /* justify-content: space-evenly; */
     flex-wrap: wrap;
@@ -8,9 +9,9 @@
 
 .template{
     height: 212.5px;
-    width: 153px;
+    width: 148px;
     /* margin:auto; */
-    margin: 49px;
+    margin: 52px;
     position: relative;
     border-radius: 5px;
     display: flex;

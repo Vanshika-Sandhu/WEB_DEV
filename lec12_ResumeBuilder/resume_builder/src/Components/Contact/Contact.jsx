@@ -40,12 +40,13 @@ class Contact extends Component {
     };
 
     componentDidMount(){
+        console.log(this.props.resumeId);
         // get contact details of the selected resume
         firebaseApp.firestore().collection("Resumes").doc(this.props.resumeId).get().then(doc=>{
-            // console.log("Inside component did mount of contact");
+            console.log("Inside component did mount of contact");
             let {contactDetails, skinId} = doc.data();
-            // console.log(skinId);
-            // console.log(contactDetails);
+            console.log(skinId);
+            console.log(contactDetails);
             this.setState({
                 contactDetails:contactDetails,
                 skinId:skinId
@@ -55,13 +56,17 @@ class Contact extends Component {
         
     };
 
-    NextButtonHandler=()=>{
-        console.log("inside next button handler");
-
+    NextButtonHandler= async ()=>{
+        // save contactDetails object in doc
+        await firebaseApp.firestore().collection("Resumes").doc(this.props.resumeId).update({
+            contactDetails: this.state.contactDetails
+        });
+        this.props.history.pus("/education");
     };
 
     BackButtonHandler =()=>{
-        console.log("inside back button handler");
+        // console.log("inside back button handler");
+        this.props.history.goBack();
     };
 
     render() { 

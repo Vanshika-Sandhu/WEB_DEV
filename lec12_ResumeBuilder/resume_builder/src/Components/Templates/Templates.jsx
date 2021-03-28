@@ -28,15 +28,15 @@ class Templates extends Component {
             this.props.history.push("/signin");
          }
          else{
-
              let skinId = e.target.id;
              console.log(skinId);
-             let resumeId;
              // get skinId
-             if(this.props.resumeId){
+             let resumeId;
+             if(!this.props.resumeId){
                  let addObj = await firebaseApp.firestore().collection("Resumes").add({skinId:skinId , ...initialState });
-                 // console.log(addObj);
+                 console.log(addObj);
                  resumeId = addObj.id;
+                 console.log(resumeId);
                  await firebaseApp.firestore().collection("Users").doc(this.props.uid).update({
                      Resumes: firebase.firestore.FieldValue.arrayUnion(resumeId)
                     }); //returns nothing, just updates the document
