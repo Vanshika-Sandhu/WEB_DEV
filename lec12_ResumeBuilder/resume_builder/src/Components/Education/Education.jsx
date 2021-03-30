@@ -100,15 +100,6 @@ class Education extends Component {
             <div className="education-details-form">
                 <div className="div-layer"></div>
                 <div className="education-form">
-                    {/* {
-                        this.state.codes.map(code=>{
-                            return <div className="contact-form-element" key={code}>
-                                <label htmlFor="">{contactCodes[code]}</label>
-                                <input type="text" id={code} value={this.state.contactDetails[code]} onChange={ (e) => this.onChangeHandler(e)}/>
-                            </div>
-
-                        })
-                    } */}
                     <div className="form-input-box">
                         <div className="form-main-element form-element single-element">
                             <label htmlFor="">College Name</label>
@@ -151,7 +142,7 @@ class Education extends Component {
                         <div className="form-main-element">
                             <div className="form-element">
                                 <label htmlFor="">Class 10 %</label>
-                                <input type="text" id="class10makrs" value={this.state.educationDetails.class10marks} onChange={ (e) => this.onChangeHandler(e)}/>
+                                <input type="text" id="class10marks" value={this.state.educationDetails.class10marks} onChange={ (e) => this.onChangeHandler(e)}/>
                             </div>
                             <div className="form-element">
                                 <label htmlFor="">Passing Year</label>

@@ -51,3 +51,19 @@
 .choose-templates{
 
 }
+.btn {
+    width: 300px;
+    height: 50px;
+    border: 2px solid #FF3465;
+    background: none;
+    color: #FF3465;
+    font-size: 25px;
+    font-weight: 600;
+    border-radius: 25px;
+    outline: none;
+    transition: 0.5s background;
+    text-align: center;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
