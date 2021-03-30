@@ -50,7 +50,12 @@ class Finalize extends Component {
                 contactDetails
             })
         })
-    }
+    };
+
+    BackButtonHandler =()=>{
+        // console.log("inside back button handler");
+        this.props.history.goBack();
+    };
 
     render() { 
         let {skinId, contactDetails, educationDetails} = this.state;
@@ -59,6 +64,7 @@ class Finalize extends Component {
             <div className="finalize-viewer">
                 <Skin2 contactDetails={contactDetails} educationDetails={educationDetails} ></Skin2>
             </div>
+            <button className="btn back" onClick={this.BackButtonHandler} >Back</button>
         </div> 
          );
     }

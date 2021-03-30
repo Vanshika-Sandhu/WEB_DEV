@@ -7,39 +7,35 @@ import firebaseApp from '../../firebase/firebaseConfig';
 
 class Education extends Component {
     state = {  
-        codes:[
-            "collegeName",
-            "degree",
-            "cgpa",
-            "collegeCity",
-            "collegeState",
-            "collegeCountry",
-            "duration",
-            "schoolName",
-            "class10marks",
-            "class10PassingYear",
-            "class12marks",
-            "class12PassingYear",
-            "schoolCity",
-            "schoolState",
-            "schoolCountry"
-        ],
+        // codes:[
+        //     "collegeName",
+        //     "degree",
+        //     "cgpa",
+        //     "collegeCity",
+        //     "collegeState",
+        //     "collegeCountry",
+        //     "duration",
+        //     "schoolName",
+        //     "class10marks",
+        //     "class10PassingYear",
+        //     "class12marks",
+        //     "class12PassingYear",
+        //     "schoolCity",
+        //     "schoolState",
+        //     "schoolCountry"
+        // ],
         educationDetails: {
             collegeName:"",
             degree:"",
             cgpa:"",
-            collegeCity:"",
             collegeState:"",
-            collegeCountry:"",
             duration:"",
             schoolName:"",
             class10marks:"",
             class10PassingYear:"",
             class12marks:"",
             class12PassingYear:"",
-            schoolCity:"",
             schoolState:"",
-            schoolCountry:""
           },
           contactDetails: {
             fname: "",
@@ -48,8 +44,7 @@ class Education extends Component {
             email: "",
             phone: "",
             profession: "",
-            houseNo:"",
-            street: "",
+            address:"",
             city: "",
             state: "",
             country: "",
@@ -87,8 +82,6 @@ class Education extends Component {
 
         
     };
-
-
     NextButtonHandler= async ()=>{
         // save contactDetails object in doc
         await firebaseApp.firestore().collection("Resumes").doc(this.props.resumeId).update({
@@ -107,15 +100,65 @@ class Education extends Component {
             <div className="education-details-form">
                 <div className="div-layer"></div>
                 <div className="education-form">
-                    {
+                    {/* {
                         this.state.codes.map(code=>{
-                            return <div className="education-form-element" key={code}>
-                                <label htmlFor="">{educationCodes[code]}</label>
-                                <input type="text" id={code} value={this.state.educationDetails[code]} onChange={ (e) => this.onChangeHandler(e)}/>
+                            return <div className="contact-form-element" key={code}>
+                                <label htmlFor="">{contactCodes[code]}</label>
+                                <input type="text" id={code} value={this.state.contactDetails[code]} onChange={ (e) => this.onChangeHandler(e)}/>
                             </div>
 
                         })
-                    }
+                    } */}
+                    <div className="form-input-box">
+                        <div className="form-main-element form-element single-element">
+                            <label htmlFor="">College Name</label>
+                            <input type="text" id="collegeName" value={this.state.educationDetails.collegeName} onChange={ (e) => this.onChangeHandler(e)}/>
+                        </div>
+                        <div className="form-main-element">
+                            <div className="form-element">
+                                <label htmlFor="">Degree</label>
+                                <input type="text" id="degree" value={this.state.educationDetails.degree} onChange={ (e) => this.onChangeHandler(e)}/>
+                            </div>
+                            <div className="form-element">
+                                <label htmlFor="">CGPA</label>
+                                <input type="text" id="cgpa" value={this.state.educationDetails.cgpa} onChange={ (e) => this.onChangeHandler(e)}/>
+                            </div>
+                        </div>
+                        <div className="form-main-element">
+                            <div className="form-element">
+                                <label htmlFor="">Duration</label>
+                                <input type="text" id="duration" value={this.state.educationDetails.duration} onChange={ (e) => this.onChangeHandler(e)}/>
+                            </div>
+                            <div className="form-element">
+                                <label htmlFor="">State</label>
+                                <input type="text" id="collegeState" value={this.state.educationDetails.collegeState} onChange={ (e) => this.onChangeHandler(e)}/>
+                            </div>
+                        </div>  
+                        <div className="form-main-element form-element single-element">
+                            <label htmlFor="">School Name</label>
+                            <input type="text" id="schoolName" value={this.state.educationDetails.schoolName} onChange={ (e) => this.onChangeHandler(e)}/>
+                        </div>
+                        <div className="form-main-element">
+                            <div className="form-element">
+                                <label htmlFor="">Class 12 %</label>
+                                <input type="text" id="class12marks" value={this.state.educationDetails.class12marks} onChange={ (e) => this.onChangeHandler(e)}/>
+                            </div>
+                            <div className="form-element">
+                                <label htmlFor="">Passing Year</label>
+                                <input type="text" id="class12PassingYear" value={this.state.educationDetails.class12PassingYear} onChange={ (e) => this.onChangeHandler(e)}/>
+                            </div>
+                        </div>
+                        <div className="form-main-element">
+                            <div className="form-element">
+                                <label htmlFor="">Class 10 %</label>
+                                <input type="text" id="class10makrs" value={this.state.educationDetails.class10marks} onChange={ (e) => this.onChangeHandler(e)}/>
+                            </div>
+                            <div className="form-element">
+                                <label htmlFor="">Passing Year</label>
+                                <input type="text" id="class10PassingYear" value={this.state.educationDetails.class10PassingYear} onChange={ (e) => this.onChangeHandler(e)}/>
+                            </div>
+                        </div>  
+                    </div>   
                 </div>
                 <button className="btn back" onClick={this.BackButtonHandler} >Back</button>
                 <button className="btn next" onClick={this.NextButtonHandler} >Next</button>

@@ -4,7 +4,10 @@ import {Link} from "react-router-dom";
 import "./Navbar.css";
 
 class Navbar extends Component {
-  state = {};
+  state = {
+    selectedPage:null
+  };
+
   render() {
     return (
       <div className="navbar">
@@ -19,7 +22,14 @@ class Navbar extends Component {
           <div className="navlinks">
             <ul>
               <li>
-                <Link to="/templates">Templates</Link>
+                
+                {
+                  this.props.selectedPage === "templates"
+                  ?
+                  <Link to="/templates" className="selected-page">Templates</Link>
+                  :
+                  <Link to="/templates">Templates</Link>
+                }
               </li>
               <li>
                 <Link to="/about">About</Link>

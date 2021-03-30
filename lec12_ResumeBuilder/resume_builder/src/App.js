@@ -19,13 +19,20 @@ class App extends Component {
   state = { 
     isAuth:false,
     user:null,
-    selectedResumeId:null
+    selectedResumeId:null,
+    selectedPage:null
    };
 
    setResumeId = (id) =>{
       this.setState({
         selectedResumeId:id
       });
+   };
+
+   setPage =(page) =>{
+     this.setState({
+       selectedPage:page
+     });
    };
 
    logout = () =>{
@@ -41,10 +48,10 @@ class App extends Component {
 
    login = (email, pw) =>{
      //log in to firebase !!!
-     firebaseApp.auth().signInWithEmailAndPassword(email, pw).then(obj => {
+     firebaseApp.auth().signInWithEmailAndPassword(email, pw)
+     .then(obj => {
       console.log("Logged In"); 
       console.log(obj);
-
      })
    };
 
@@ -105,7 +112,7 @@ class App extends Component {
     return (
       <Router>
       <div className="App">
-        <Navbar isAuth={isAuth} logout={this.logout}  ></Navbar>
+        <Navbar isAuth={isAuth} logout={this.logout} selectedPage={this.state.selectedPage} setPage={this.setPage} ></Navbar>
         <Switch>
           <Route path="/" exact>
             <LandingPage isAuth={isAuth} ></LandingPage>

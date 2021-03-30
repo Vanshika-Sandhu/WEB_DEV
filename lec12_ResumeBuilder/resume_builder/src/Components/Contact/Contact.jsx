@@ -8,7 +8,7 @@ import Skin from '../Skins/Skin';
 
 class Contact extends Component {
     state = { 
-        codes:["fname", "lname", "summary", "email","phone","profession","houseNo","street","city","state","country","pin" ],
+        // codes:["fname", "lname", "summary", "email","phone","profession","houseNo","street","city","state","country","pin" ],
         contactDetails: {
             fname: "",
             lname: "",
@@ -16,8 +16,7 @@ class Contact extends Component {
             email: "",
             phone: "",
             profession: "",
-            houseNo:"",
-            street: "",
+            address:"",
             city: "",
             state: "",
             country: "",
@@ -74,7 +73,7 @@ class Contact extends Component {
             <div className="contact-details-form">
                 <div className="div-layer"></div>
                 <div className="contact-form">
-                    {
+                    {/* {
                         this.state.codes.map(code=>{
                             return <div className="contact-form-element" key={code}>
                                 <label htmlFor="">{contactCodes[code]}</label>
@@ -82,7 +81,61 @@ class Contact extends Component {
                             </div>
 
                         })
-                    }
+                    } */}
+                    <div className="form-input-box">
+                        <div className="form-main-element">
+                            <div className="form-element">
+                                <label htmlFor="">First Name</label>
+                                <input type="text" id="fname" value={this.state.contactDetails.fname} onChange={ (e) => this.onChangeHandler(e)}/>
+                            </div>
+                            <div className="form-element">
+                                <label htmlFor="">Last Name</label>
+                                <input type="text" id="lname" value={this.state.contactDetails.lname} onChange={ (e) => this.onChangeHandler(e)}/>
+                            </div>
+                        </div>
+                        <div className="form-main-element form-element single-element">
+                            <label htmlFor="">Summary</label>
+                            <input type="text" id="summary" value={this.state.contactDetails.summary} onChange={ (e) => this.onChangeHandler(e)}/>
+                        </div>
+                        <div className="form-main-element">
+                            <div className="form-element">
+                                <label htmlFor="">Email</label>
+                                <input type="text" id="email" value={this.state.contactDetails.email} onChange={ (e) => this.onChangeHandler(e)}/>
+                            </div>
+                            <div className="form-element">
+                                <label htmlFor="">Phone</label>
+                                <input type="text" id="phone" value={this.state.contactDetails.phone} onChange={ (e) => this.onChangeHandler(e)}/>
+                            </div>
+                        </div>
+                        <div className="form-main-element form-element single-element">
+                            <label htmlFor="">Profession</label>
+                            <input type="text" id="profession" value={this.state.contactDetails.profession} onChange={ (e) => this.onChangeHandler(e)}/>
+                        </div>
+                        <div className="form-main-element form-element single-element">
+                            <label htmlFor="">Address</label>
+                            <input type="text" id="address" value={this.state.contactDetails.address} onChange={ (e) => this.onChangeHandler(e)}/>
+                        </div>
+                        <div className="form-main-element">
+                            <div className="form-element">
+                                <label htmlFor="">City</label>
+                                <input type="text" id="city" value={this.state.contactDetails.city} onChange={ (e) => this.onChangeHandler(e)}/>
+                            </div>
+                            <div className="form-element">
+                                <label htmlFor="">State</label>
+                                <input type="text" id="state" value={this.state.contactDetails.state} onChange={ (e) => this.onChangeHandler(e)}/>
+                            </div>
+                        </div>   
+                        <div className="form-main-element">
+                            <div className="form-element">
+                                <label htmlFor="">Country</label>
+                                <input type="text" id="country" value={this.state.contactDetails.country} onChange={ (e) => this.onChangeHandler(e)}/>
+                            </div>
+                            <div className="form-element">
+                                <label htmlFor="">Pin</label>
+                                <input type="text" id="pin" value={this.state.contactDetails.pin} onChange={ (e) => this.onChangeHandler(e)}/>
+                            </div>
+                        </div>
+                    </div>
                 </div>
                 <button className="btn back" onClick={this.BackButtonHandler} >Back</button>
                 <button className="btn next" onClick={this.NextButtonHandler} >Next</button>

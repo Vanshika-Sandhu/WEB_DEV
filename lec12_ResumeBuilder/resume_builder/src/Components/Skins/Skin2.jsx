@@ -11,8 +11,7 @@ class Skin2 extends Component {
           email: "sandhuvanshika01@gmail.com",
           phone: "+91 1234567899",
           profession: "Software Engineer",
-          houseNo: "RZG 595 A",
-          street: "street no. 1, Raj Nagar 2, Palam Colony,",
+          address:"RZG 595 A, Raj Nagar 2, Palam Colony",
           city: "New Delhi",
           state: "Delhi",
           country: "India",
@@ -22,18 +21,14 @@ class Skin2 extends Component {
           collegeName: "Netaji Subhas University of Technology",
           degree: "Bachelor of Technology in Electronics and Communications Engineering",
           cgpa: "8.5",
-          collegeCity: "New Delhi",
           collegeState: "Delhi",
-          collegeCountry: "India",
           duration: "2019 - 2023",
           schoolName : "Shanti Gyan Niketan Sr. Sec. Public School",
           class10marks : "10 CGPA",
           class10PassingYear: "2017",
           class12marks : "95%",
           class12PassingYear: "2019",
-          schoolCity: "New Delhi",
           schoolState: "Delhi",
-          schoolCountry: "India"
         },
         experienceDetails: [
           {
@@ -130,8 +125,7 @@ class Skin2 extends Component {
             email,
             phone,
             profession,
-            houseNo,
-            street,
+            address,
             city,
             state,
             country,
@@ -142,18 +136,14 @@ class Skin2 extends Component {
             collegeName,
             degree,
             cgpa,
-            collegeCity,
             collegeState,
-            collegeCountry,
             duration,
             schoolName,
             class10marks,
             class10PassingYear,
             class12marks,
             class12PassingYear,
-            schoolCity,
             schoolState,
-            schoolCountry,
           } = this.props.educationDetails ? this.props.educationDetails : this.state.educationDetails;
       
           
@@ -165,7 +155,7 @@ class Skin2 extends Component {
           let achievements = this.state.achievements;
           let hobbies = this.state.hobbies;
 
-          let address = `${houseNo}, ${street}, ${city}, ${state}, ${country}, ${pin}.`
+          let userAddress = `${address}, ${city}, ${state}, ${country}, ${pin}.`
 
         return ( 
         <div className="page">
@@ -260,7 +250,7 @@ class Skin2 extends Component {
                                 </div>
                             </div>
                             <div className="line l4"></div>
-                            <div className="address">{address}</div>
+                            <div className="address">{userAddress}</div>
                             <i class="fas fa-home"></i>
                         </div>
                         <div className="summary">{summary}</div>
@@ -300,7 +290,7 @@ class Skin2 extends Component {
                           <div className="right-sub-head">{degree}</div>
                           <div className="right-sub-head">CGPA {cgpa} | {duration}</div>
                         </div>
-                        <p className="right-p p1">{collegeCity}, {collegeState} , {collegeCountry}</p>
+                        <p className="right-p p1">{collegeState}</p>
                       </div>
                       <div className="right-body"> 
                         <div className="right-sub-div">
@@ -308,7 +298,7 @@ class Skin2 extends Component {
                           <div className="right-sub-head">CLASS 12 | {class12PassingYear} | {class12marks}</div>
                           <div className="right-sub-head">CLASS 10 | {class10PassingYear} | {class10marks}</div>
                         </div>
-                        <p className="right-p p2">{schoolCity}, {schoolState} , {schoolCountry}</p>
+                        <p className="right-p p2">{schoolState}</p>
                       </div>
 
                     </div>

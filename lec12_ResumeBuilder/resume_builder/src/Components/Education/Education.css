@@ -4,13 +4,13 @@
     position: relative;
 }
 .education-form{
-    top: 70px;
+    top: 200px;
     background: white;
     /* opacity: 0; */
     margin-top: 5px;
-    width: 45%;
-    margin-left: 27.5%;
-    height: 470px;
+    width: 60%;
+    margin-left: 20%;
+    height: 270px;
     position: fixed;
     z-index: 2;
     /* border: 1px solid grey; */

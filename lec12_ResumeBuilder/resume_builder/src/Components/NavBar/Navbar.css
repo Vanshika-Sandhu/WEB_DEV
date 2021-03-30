@@ -10,10 +10,7 @@
     position: fixed;
     z-index: 2;
     background: white;
-
-
 }
-
 .logo{
     height: 90%;
     margin-left: 150px;
@@ -22,6 +19,10 @@
 .logo img{
     height: 100%;
     object-fit: contain;
+}
+
+.selected-page{
+    color: yellow;
 }
 
 .navlinks{

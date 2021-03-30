@@ -56,27 +56,33 @@ class SignUp extends Component {
 
     render() { 
         return ( 
-            <div className="signup">
-                <div>
-                    <h2>First Name</h2>
-                    <input type="text" id="fname" value={this.state.fname} onChange={ (e) =>{this.onChangeHandler(e)}} />
+            <div className="signup-page">
+                <div className="bg-image">
+                    <img src="/Images/bgImage.jpg" alt=""/>
                 </div>
-                <div>
-                    <h2>Last Name</h2>
-                    <input type="text" id="lname" value={this.state.lname} onChange={ (e) =>{this.onChangeHandler(e)}} />
-                </div>
-                <div>
-                    <h2>Email</h2>
-                    <input type="text" id="email" value={this.state.email} onChange={ (e) =>{this.onChangeHandler(e)}} />
-                </div>
-                <div>
-                    <h2>Password</h2>
-                    <input type="text" id="pw" value={this.state.pw} onChange={ (e) =>{this.onChangeHandler(e)}} />
-                </div>
+                <div className="div-layer"></div>
+                <div className="signup">
+                    <div>
+                        <h2>First Name</h2>
+                        <input type="text" id="fname" value={this.state.fname} onChange={ (e) =>{this.onChangeHandler(e)}} />
+                    </div>
+                    <div>
+                        <h2>Last Name</h2>
+                        <input type="text" id="lname" value={this.state.lname} onChange={ (e) =>{this.onChangeHandler(e)}} />
+                    </div>
+                    <div>
+                        <h2>Email</h2>
+                        <input type="text" id="email" value={this.state.email} onChange={ (e) =>{this.onChangeHandler(e)}} />
+                    </div>
+                    <div>
+                        <h2>Password</h2>
+                        <input type="text" id="pw" value={this.state.pw} onChange={ (e) =>{this.onChangeHandler(e)}} />
+                    </div>
 
-                <button className ="btn" onClick={this.signUpHandler}>Sign Up</button>
+                    <button className ="btn" onClick={this.signUpHandler}>Sign Up</button>
 
-                <p className="error-message">{this.state.error}</p>
+                    <p className="error-message">{this.state.error}</p>
+                </div>
             </div>
             );
     }

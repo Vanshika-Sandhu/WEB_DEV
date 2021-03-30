@@ -22,6 +22,8 @@ class Templates extends Component {
         ]
      };
 
+     
+
 
      handleChooseTemplate = async (e) =>{
          if(!this.props.isAuth){
