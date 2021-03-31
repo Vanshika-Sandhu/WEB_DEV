@@ -1,6 +1,9 @@
 import React, { Component } from 'react';
 import firebaseApp from '../../firebase/firebaseConfig';
 import"./Profile.css";
+import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
+import {faCheckCircle, faEye, faEdit} from "@fortawesome/free-solid-svg-icons";
+
 
 class Profile extends Component {
     state = { 
@@ -57,6 +60,33 @@ class Profile extends Component {
         });
     };
 
+     handleSelectResume = async (e) =>{
+        let selectedResumeId = e.target.id;
+        console.log(selectedResumeId);
+        let allResumes = this.state.myResumeList;
+
+        for(let i=0 ;  i<allResumes.length ; i++){
+            let {isSelected , resumeId} = allResumes[i];
+            if(isSelected == true && this.props.resumeId == selectedResumeId){
+                allResumes[i].isSelected = false;
+            }
+            else if(resumeId == selectedResumeId){
+                allResumes[i].isSelected = true ;
+            }
+            else{
+                allResumes[i].isSelected = false ;
+            }
+        };
+
+        await firebaseApp.firestore().collection("Users").doc(this.props.uid).update({
+            Resumes:allResumes
+        });
+
+        this.setState({
+            myResumeList:allResumes
+        });
+     };
+
 
 
     async componentDidMount(){
@@ -71,7 +101,8 @@ class Profile extends Component {
                 let {isSelected, resumeId} = myResumes[i];
                 let resumeInfo = await firebaseApp.firestore().collection("Resumes").doc(resumeId).get();
                     let resumeDetails = resumeInfo.data();
-                    myResumeList.push({isSelected, resumeId, resumeDetails});
+                    let resumeSkinId = resumeDetails.skinId;
+                    myResumeList.push({isSelected, resumeId, resumeSkinId});
             };
             console.log(myResumeList);
             this.setState({
@@ -91,7 +122,7 @@ class Profile extends Component {
                 <img src="/Images/bgImage.jpg" alt=""/>
             </div>
             <div className="profile-page-info">
-                <h1 className="profile-page-heading">Welcome back Vanshika!</h1>
+                <h1 className="profile-page-heading">Welcome back {this.state.fname}!</h1>
                 <div className="profile-user-info">
                     <div className="form-main-element">
                         <div className="form-element">
@@ -132,21 +163,45 @@ class Profile extends Component {
                     </div>
                 }
                 <h1 className="profile-page-heading your-resumes">Your Resumes</h1>
-                <div className="profile-user-resumes">
+                {
+                    this.state.myResumeList.length
+                    ?
+                    <div className="profile-user-resumes">
                     {
                         this.state.myResumeList.map(Resume=>{
-                            return <div key={Resume.resumeId} className="template">
+                            return <div key={Resume.resumeId} id={Resume.resumeId} className="template">
                                 <div className="template-image">
-                                    <img src={`Images/${Resume.resumeDetails.skinId}.png`} alt=""/>
+                                    <img src={`Images/${Resume.resumeSkinId}.png`} alt=""/>
                                 </div>
                                 {
-                                    Resume.isSelected?<div className="selected-icon"><i class="fas fa-check-circle"></i></div>: <div></div>
+                                    Resume.isSelected
+                                    ?
+                                    <React.Fragment>
+                                        <div className="selected-icon"><FontAwesomeIcon icon={faCheckCircle}></FontAwesomeIcon></div>
+                                        <div className="template-action">
+                                            {/* <FontAwesomeIcon className="action-taken" icon={faEye}></FontAwesomeIcon>
+                                            <FontAwesomeIcon className="action-taken" icon={faEdit}></FontAwesomeIcon> */}
+                                            <div className="action-taken"  onClick={(e)=>this.handleChooseTemplate(e)}>view</div>
+                                            <div className="action-taken"  onClick={(e)=>this.handleChooseTemplate(e)}>edit</div>
+                                        </div>
+                                    </React.Fragment>
+                                    : 
+                                    <React.Fragment>
+                                        <div className="template-action">
+                                        {/* <FontAwesomeIcon className="action-taken" icon={faCheckCircle}></FontAwesomeIcon> */}
+                                        <div className="action-taken" id={Resume.resumeId} onClick={(e)=>this.handleSelectResume(e)}>select</div>
+                                        </div>
+                                    </React.Fragment>
                                 }
-                                {/* <div className="choose-template"  onClick={(e)=>this.handleChooseTemplate(e)}>Choose template</div> */}
                             </div>
                         })
                     }
-                </div>
+                    </div>
+                    :
+                    <React.Fragment>
+                        <p>Sit tight, resumes loading.</p>
+                    </React.Fragment>
+                }   
             </div>
         </div>    
         );
