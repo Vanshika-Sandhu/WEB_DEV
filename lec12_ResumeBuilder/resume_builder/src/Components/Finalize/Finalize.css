@@ -1,10 +1,80 @@
+.finalize-page{
+    display: flex;
+}
 .finalize{
     display: flex;
-    margin-left: 250px;
-    margin-right: auto;
+    margin-left: 50px;
+    /* margin-right: auto; */
 }
 .finalize-viewer{
     margin-top: 120px;
     margin-bottom: 50px;
     box-shadow:4px 4px 20px 4px rgba(0,0,0,0.15);
+}
+.back{
+    position: absolute;
+    top: 120px;
+    left: 895px;
+    z-index: 1;
+
+}
+.download-btn{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: absolute;
+    z-index: 1;
+    top: 120px;
+    right: 60px;
+    width: 150px;
+    font-size: 25px;
+    /* color: #262A35;
+    border: 2px solid #262A35; */
+}
+.download-btn:hover{
+    /* background: #262A35;
+    color: white; */
+}
+.other-templates{
+    position: absolute;
+    z-index: 1;
+    height: 1040px;
+    width: 310px;
+    top: 200px;
+    right: 50px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    overflow-y: auto;
+}
+.other-templates h5{
+    text-align: center;
+    background: #262A35;
+    color: white;
+    width: 100%;
+    height: 30px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 35px;
+    font-weight:100;
+}
+.other-templates-display{
+    margin-top: 20px;
+    height: 1000px;
+    width: 100%;
+    display: flex;
+    flex-wrap: wrap;
+}
+.other-templates-display .template{
+    margin-top: 13px;
+    margin-bottom: 13px;
+    margin-left: 28px;
+    margin-right: 0px;
+    height: 163px;
+    width: 115px;
+}
+.other-templates-display .template-image:hover{
+    opacity: 1;
+    /* transition: 1.1 ; */
 }

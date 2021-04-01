@@ -124,7 +124,7 @@ class App extends Component {
           <Route path="/contact" exact render={ (props) =>this.state.isAuth ? <Contact {...props} uid={this.state.user} resumeId={this.state.selectedResumeId} ></Contact> : <Redirect to="/signin"></Redirect> }></Route>
           <Route path="/education" exact render={ (props) =>this.state.isAuth ? <Education {...props} uid={this.state.user} resumeId={this.state.selectedResumeId} ></Education> : <Redirect to="/signin"></Redirect> }></Route>
           <Route path="/finalize" exact render={ (props) =>this.state.isAuth ? <Finalize {...props} uid={this.state.user} resumeId={this.state.selectedResumeId} ></Finalize> : <Redirect to="/signin"></Redirect> }></Route>
-          <Route path="/profile" exact render={ (props) =>this.state.isAuth ? <Profile {...props} uid={this.state.user} resumeId={this.state.selectedResumeId} ></Profile> : <Redirect to="/signin"></Redirect> }></Route>
+          <Route path="/profile" exact render={ (props) =>this.state.isAuth ? <Profile {...props} uid={this.state.user} resumeId={this.state.selectedResumeId} setResumeId = {this.setResumeId} ></Profile> : <Redirect to="/signin"></Redirect> }></Route>
           <Route path="/signup">
             {isAuth ? <Redirect to="/"></Redirect> : <SignUp signup = {this.signup} ></SignUp>}
           </Route>

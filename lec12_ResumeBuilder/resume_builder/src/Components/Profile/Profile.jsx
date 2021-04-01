@@ -82,9 +82,7 @@ class Profile extends Component {
             Resumes:allResumes
         });
 
-        this.setState({
-            myResumeList:allResumes
-        });
+        this.props.setResumeId(selectedResumeId);
      };
 
 
@@ -181,8 +179,8 @@ class Profile extends Component {
                                         <div className="template-action">
                                             {/* <FontAwesomeIcon className="action-taken" icon={faEye}></FontAwesomeIcon>
                                             <FontAwesomeIcon className="action-taken" icon={faEdit}></FontAwesomeIcon> */}
-                                            <div className="action-taken"  onClick={(e)=>this.handleChooseTemplate(e)}>view</div>
-                                            <div className="action-taken"  onClick={(e)=>this.handleChooseTemplate(e)}>edit</div>
+                                            <div className="action-taken"  onClick={()=>{this.props.history.push("/finalize")}}>view</div>
+                                            <div className="action-taken"  onClick={()=>{this.props.history.push("/contact")}}>edit</div>
                                         </div>
                                     </React.Fragment>
                                     : 

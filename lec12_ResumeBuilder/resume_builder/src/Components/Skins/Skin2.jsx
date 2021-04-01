@@ -158,7 +158,7 @@ class Skin2 extends Component {
           let userAddress = `${address}, ${city}, ${state}, ${country}, ${pin}.`
 
         return ( 
-        <div className="page">
+        <div ref={this.props.refProp} className="page">
             <div className="resume1">
 
 
