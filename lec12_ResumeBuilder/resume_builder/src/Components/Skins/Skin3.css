@@ -1,0 +1,202 @@
+.page{
+    width: 794px;
+    height: 1123px; 
+/* margin: 100px; */
+}
+
+.resume3{
+    height: 100%;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    background:lightgrey;
+}
+.resume3-top{
+    height: 15%;
+    background: #25B4D3;
+    padding: 15px;
+}
+.resume3-body{
+    height:85%;
+    display: flex;
+}
+.resume3-body-left{
+    width: 35%;
+    height: 100%;
+    background: #edeaeb;
+
+}
+.resume3-body-right{
+    width: 65%;
+    height: 100%;
+    background: white;
+    border-right: 1px solid lightgray;
+    border-bottom: 1px solid lightgray;
+}
+.resume3-name{
+    margin-bottom: 10px;
+    height: 50px;
+    font-size: 45px;
+    font-weight: 700;
+    /* color: white; */
+    color: #141518;
+}
+.resume3-profession{
+    /* color: white; */
+    color: #141518;
+    font-size: 20px;
+    margin-bottom: 10px;
+    margin-left: 5px;
+
+}
+.resume3-summary{
+    margin-left: 5px;
+    margin-bottom: 5px;
+    height: 30%;
+    width: 95%;
+    font-size: 13px;
+    color: #141518;
+    /* color: white; */
+    font-weight: lighter;
+}
+.resume3-education-details{
+    height: 19%;
+    width: 90%;
+    margin-left: 5%;
+    margin-bottom: 40px;
+    margin-top: 20px;
+}
+.resume3-left-heading{
+    text-align: center;
+    font-size: 18px;
+    margin: 10px;
+    color: #141518;
+    font-weight:900;
+}
+.resume3-left-details{
+    margin-bottom: 10px;
+}
+.resume3-head{
+    width: 100%;
+    font-size: 14.2px;
+    text-align: center;
+    margin-bottom: 3px;
+    color: #141518;
+}
+.resume3-subhead{
+    text-align: center;
+    font-size: 12px;
+    width: 100%;
+    color: grey;
+    margin-bottom: 1px;
+    /* display: flex; */
+}
+.resume3-content{
+    width: 100%;
+    font-size: 11px;
+    color: #141518;
+    text-align: center;
+}
+.resume3-school-details{
+    display: flex;
+    width: 100%;
+    justify-content: space-evenly;
+}
+.resume3-achievements-details{
+    max-height: 40%;
+    width: 90%;
+    margin-left: 5%;
+    margin-bottom: 40px;
+}
+.resume3-hobbies-details{
+    max-height: 15%;
+    width: 90%;
+    margin-left: 5%;
+    margin-bottom: 50px;
+}
+.resume3-contact-details{
+    height: 20%;
+    width: 90%;
+    margin-left: 5%;
+}
+.resume3-contact-details div{
+    position: relative;
+    margin-top: 10px;
+}
+.resume3-contact-details i{
+    position: absolute;
+    left: 25px;
+    font-size: 20px;
+    color: #141518;   
+}
+.resume3-contact-details p{
+    margin-left: 55px;
+    width: 70%;
+    text-align: left;
+    font-size: 12px;
+    color: #141518;
+    margin-bottom: 8px;
+}
+.resume3-contact-details .fa-home{
+    left: 22px;
+}
+.resume3-experience-details{
+    margin-top: 40px;
+    width: 94%;
+    margin-left: 3%;
+}
+.resume3-experience-details div div{
+    text-align: left;
+}
+.resume3-project-details{
+    margin-top: 20px;
+    width: 94%;
+    margin-left: 3%;
+}
+.resume3-project-details div div{
+    text-align: left;
+}
+.resume3-POR-details{
+    margin-top: 20px;
+    width: 94%;
+    margin-left: 3%;
+}
+.resume3-POR-details div div{
+    text-align: left;
+}
+.resume3-skills-detail{
+    margin-top: 20px;
+    width: 90%;
+    margin-left: 5%;
+    max-height:30%;
+    margin-bottom: 10px;
+}
+.resume3-skill-sub-detail{
+    display: flex;
+    height: 20px;
+    margin-bottom: 10px;
+}
+.resume3-skill-sub-detail .resume3-head{
+    width: 25%;
+    text-align: left;
+}
+.resume3-skills-content{
+    display: flex;
+    width: 80%;
+    justify-content: wrap;
+}
+.resume3-skills-content div{
+    margin-right: 10px;
+    min-width: 70px;
+    background: #25B4D3;
+    font-size: 14px;
+    color: white;
+    text-align: center;
+    border-radius: 3px;
+}
+
+
+
+
+
+

@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import "./Contact.css";
 import {contactCodes} from "../../util/codes";
 import firebaseApp from '../../firebase/firebaseConfig';
-import Skin2 from '../Skins/Skin2';
+import Skin2 from '../Skins/Skin1';
 import Skin from '../Skins/Skin';
 
 

@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import "./Skin.css";
-import Skin2 from "./Skin2";
+import Skin2 from "./Skin1";
 
 class Skin extends Component {
     state = {  }

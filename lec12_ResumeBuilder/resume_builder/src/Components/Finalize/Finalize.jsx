@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import "./Finalize.css";
-import Skin2 from '../Skins/Skin2';
+import Skin2 from '../Skins/Skin1';
 import firebaseApp from '../../firebase/firebaseConfig';
 import ReactToPDF from "react-to-pdf";
 

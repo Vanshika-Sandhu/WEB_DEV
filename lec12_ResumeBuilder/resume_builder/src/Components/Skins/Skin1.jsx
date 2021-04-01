@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
-import "./Skin2.css";
+import "./Skin1.css";
 
-class Skin2 extends Component {
+class Skin1 extends Component {
     state = {
         contactDetails: {
           fname: "Vanshika",
@@ -173,46 +173,50 @@ class Skin2 extends Component {
                     </div>
                     <div className="skills-div">
                         <div className="div-heading">SKILLS</div>
-                        <div className="body">
-                          <div className="sub-div">
-                            <div className="div-subheading">LANGUAGE</div>
-                            <ul className="list">
-                              {
-                                languages.map((language)=>{
-                                  return <li>{language}</li>
-                                })
-                              }
-                            </ul>
+                        <div className="skill-body">
+                          <div className="skill-sub-div">
+                            <div className="sub-div">
+                              <div className="div-subheading">LANGUAGE</div>
+                              <ul className="list">
+                                {
+                                  languages.map((language)=>{
+                                    return <li>{language}</li>
+                                  })
+                                }
+                              </ul>
+                            </div>
+                            <div className="sub-div">
+                              <div className="div-subheading">FRAMEWORKS</div>
+                              <ul className="list">
+                                {
+                                  frameworks.map((framework)=>{
+                                    return <li>{framework}</li>
+                                  })
+                                }
+                              </ul>
+                            </div>
                           </div>
-                          <div className="sub-div">
-                            <div className="div-subheading">FRAMEWORKS</div>
-                            <ul className="list">
-                              {
-                                frameworks.map((framework)=>{
-                                  return <li>{framework}</li>
-                                })
-                              }
-                            </ul>
-                          </div>
-                          <div className="sub-div">
-                            <div className="div-subheading">SOFTWARES</div>
-                            <ul className="list">
-                              {
-                                softwares.map((software)=>{
-                                  return <li>{software}</li>
-                                })
-                              }
-                            </ul>
-                          </div>
-                          <div className="sub-div">
-                            <div className="div-subheading">IDES</div>
-                            <ul className="list">
-                              {
-                                ides.map((ide)=>{
-                                  return <li>{ide}</li>
-                                })
-                              }
-                            </ul>
+                          <div className="skill-sub-div">
+                            <div className="sub-div">
+                              <div className="div-subheading">SOFTWARES</div>
+                              <ul className="list">
+                                {
+                                  softwares.map((software)=>{
+                                    return <li>{software}</li>
+                                  })
+                                }
+                              </ul>
+                            </div>
+                            <div className="sub-div">
+                              <div className="div-subheading">IDES</div>
+                              <ul className="list">
+                                {
+                                  ides.map((ide)=>{
+                                    return <li>{ide}</li>
+                                  })
+                                }
+                              </ul>
+                            </div>
                           </div>
                         </div>
                     </div>
@@ -228,6 +232,18 @@ class Skin2 extends Component {
                         </ul>
                       </div>
 
+                    </div>
+                    <div className="hobbies-div">
+                      <div className="div-heading">INTERESTS</div>   
+                      <div className="body">
+                      < ul className="list">
+                        {
+                          hobbies.map((hobby)=>{
+                            return <div className="achievement-li">{hobby}</div>
+                          })
+                        }
+                        </ul>
+                      </div>   
                     </div>
                     <div className="l5"></div>
                 </div>
@@ -257,7 +273,7 @@ class Skin2 extends Component {
 
                     </div>
                     <div className="experience-div">
-                      <div className="div-right-heading">EXPERIENCE</div>
+                      <div className="div-right-heading">TRAINING EXPERIENCE</div>
                       <div className="right-body">
                           {
                             experienceDetails.map((experienceDetail)=>{
@@ -302,14 +318,17 @@ class Skin2 extends Component {
                       </div>
 
                     </div>
-                    <div className="hobbies-div">
-                      <div className="div-right-heading">INTERESTS</div>   
+                    <div className="por-div">
+                      <div className="div-right-heading">POSITION OF RESPONSIBILITIES</div>   
                       <div className="right-body">
-                        {
-                          hobbies.map((hobby)=>{
-                            return <div className="right-p">{hobby}</div>
-                          })
-                        }
+                          {
+                            por.map((POR)=>{
+                              return <div className="right-sub-div">
+                                        <div className="right-head">{POR.porPosition}</div>
+                                        <p className="right-p">{POR.porSummary}</p>
+                                     </div>
+                            })
+                          }
                       </div>   
                     </div>
                     <div className="l6"></div>
@@ -321,4 +340,4 @@ class Skin2 extends Component {
     }
 }
  
-export default Skin2;
+export default Skin1;

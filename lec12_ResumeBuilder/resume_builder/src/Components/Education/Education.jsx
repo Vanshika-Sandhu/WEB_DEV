@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import firebase from "../../firebase/firebaseConfig";
 import "./Education.css";
 import {educationCodes} from "../../util/codes";
-import Skin2 from '../Skins/Skin2';
+import Skin2 from '../Skins/Skin1';
 import firebaseApp from '../../firebase/firebaseConfig';
 
 class Education extends Component {
