@@ -208,24 +208,24 @@ class Skin3 extends Component {
                                 </div>
                             </div>
                         <div className="resume3-contact-details">
-                          <div className="resume3-left-heading">CONTACT</div>
                           <div>
-                              <i class="fas fa-phone-square-alt icon"></i>
-                              <p className="resume3-subhead">{phone}</p>
+                              <div>
+                                  <i class="fas fa-phone-square-alt icon"></i>
+                                  <p className="resume3-subhead">{phone}</p>
+                              </div>
+                              <div>
+                                  <i class="fas fa-envelope-square icon"></i>                                
+                                  <p className="resume3-subhead ">{email}</p>
+                              </div>
+                              <div>
+                                  <i class="fab fa-linkedin icon"></i>
+                                  <p className="resume3-subhead">{linkedIn}</p>
+                              </div>
+                              <div>
+                                  <i class="fab fa-github-square icon"></i>
+                                  <p className="resume3-subhead">{github}</p>
+                              </div>
                           </div>
-                          <div>
-                              <i class="fas fa-envelope-square icon"></i>                                
-                              <p className="resume3-subhead ">{email}</p>
-                          </div>
-                          <div>
-                              <i class="fab fa-linkedin icon"></i>
-                              <p className="resume3-subhead">{linkedIn}</p>
-                          </div>
-                          <div>
-                              <i class="fab fa-github-square icon"></i>
-                              <p className="resume3-subhead">{github}</p>
-                          </div>
-                          
                           <div className="userAddress" >
                               <i class="fas fa-home icon"></i>
                               <p className="resume3-subhead">{userAddress}</p>

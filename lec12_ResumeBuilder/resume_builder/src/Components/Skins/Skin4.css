@@ -1,11 +1,292 @@
+.page{
+    margin: 50px;
+}
 .resume4{
     height: 100%;
     width: 100%;
     display: flex;
     flex-direction: column;
-    background:lightgrey;height: 100%;
+    /* background:lightgrey; */
+    border:0.1px solid lightgray;
+    position: relative;
+}
+.resume4-top{
+    height: 140px;
+    position: relative;
+}
+.resume4-top-line{
+    height: 10px;
+    /* background: #EF9190 ; */
+    background: #f2a4a4;
+}
+.resume4-name-info{
+    height: 90px;
+    width: 60%;
+    /* margin-left: 40%; */
+    padding: 5px;
+    padding-left: 30px;
+
+}
+.resume4-name-info div{
+    font-size: 40px;
+    font-weight: 900;
+    text-align: left;
+    letter-spacing: 2px;
+}
+.resume4-fname{
+    color: #032653;
+}
+.resume4-lname{
+    margin-top: -5px;
+    color:  #f2a4a4;
+}
+.resume4-profession{
+    height: 30px;
+    width: 58%;
+    margin-left: 30px;
+    font-size: 18px;
+    text-align: left;
+    color: #413B3B;
+    letter-spacing: 1px;
+}
+.resume4-contact-detail-info{
+    position: absolute;
+    height: 130px;
+    width: 280px;
+    top: 10px;
+    right: 20px;
+}
+.resume4-contact-detail-info div{
+    display: flex;
+    position: relative;
+    font-size: 12px;
+    width: 95%;
+    margin: 6px;
+}
+.resume4-contact-detail-info i{
+    position: absolute;
+    font-size: 20px;
+    left: 25px;
+    color: #032653;
+}
+.resume4 .fa-home{
+    left: 23px;
+}
+.resume4-subhead{
+    width: 80%;
+    margin-left: 20%;
+    color: #413B3B;
+}
+.resume4-summary{
+    max-height: 90px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    width: 80%;
+    margin-left: 10%;
+    font-size: 12px;
+    position: relative;
+    color: #413B3B;
+
+}
+.resume4-summary i{
+    position: absolute;
+    font-size: 30px;
+    color:  #f2a4a4;
+
+}
+.resume4-summary .fa-quote-left{
+    top: 0px;
+    left: -25px;
+}
+.resume4-summary .fa-quote-right{
+    top: 0px;
+    right: -25px;
+}
+.resume4-skills-detail-info{
+    margin-top:10px;
+    width: 92%;
+    margin-left: 4%;
+}
+.resume4-heading-div{
+    position: relative;
+    height:20px;
+    margin-bottom: 5px;
+}
+.r4-line{
+    position: absolute;
     width: 100%;
+    height: 2px;
+    background: #413B3B;
+    z-index: 1;
+    top: 9px;
+}
+.resume4-heading{
+    position: absolute;
+    height: 20px;
+    display: flex;
+    justify-content: center;
+    z-index: 2;
+    background-color: white;
+    color: #413B3B;
+    font-size: 18px;
+    font-weight: 900;
+    left: 90px;
+    padding-left:10px ;
+    padding-right:10px ;
+}
+.resume4-skill-sub-detail{
+    display: flex;
+    margin-bottom: 5px;
+    color: #413B3B;
+}
+.resume4-head{
+    min-width: 180px;
+    margin-left: 10px;
+    font-weight: 600;
+    font-size: 12px;
+    color: #032653;
+
+}
+.resume4-skills-content{
+    display: flex;
+    font-size: 12px;
+}
+.resume4-skills-content div{
+    min-width: 70px;
+    margin-right: 5px;
+}
+.resume4-experience-detail{
+    margin-top:0px;
+    width: 92%;
+    margin-left: 4%;
+}
+.resume4-experience-detail .resume4-heading{
+    left: 30px;
+}
+.resume4-experience-detail .resume4-skills-content{
+    flex-direction: column;
+    top: 30px;
+}
+.r4-exp-body{
+    display: flex;
+    margin-bottom: 7px;
+}
+.r4-exp-body .resume4-head{
+    width: 200px;
+}
+.r4-exp-body .resume4-subhead{
+    margin-left: -10px;
+    display: flex;
+    align-items: center;
+}
+.resume4-project-detail{
+    margin-top:0px;
+    width: 92%;
+    margin-left: 4%;
+}
+.resume4-project-detail .resume4-heading{
+    left: 77px;
+}
+.resume4-project-detail .resume4-skills-content{
+    flex-direction: column;
+    top: 30px;
+}
+.resume4-project-detail .resume4-subhead{
     display: flex;
     flex-direction: column;
-    background:lightgrey;
+    align-items: flex-start;
+    justify-content: center;
 }
+.resume4-por-detail{
+    margin-top:0px;
+    width: 92%;
+    margin-left: 4%;
+}
+.resume4-por-detail .resume4-heading{
+    left: 5px;
+}
+.resume4-por-detail .resume4-skills-content{
+    flex-direction: column;
+    top: 30px;
+}
+.resume4-education-detail{
+    margin-top:0px;
+    width: 92%;
+    margin-left: 4%;
+    height: 100px;
+}
+.resume4-education-detail .resume4-heading{
+    left: 62px;
+}
+.resume4-education-detail .resume4-skills-content{
+    flex-direction: column;
+    margin-top: 30px;
+}
+.resume4-education-detail .resume4-head{
+    width: 170px;
+}
+.resume4-education-detail .resume4-subhead{
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    margin-left: 5px;
+    min-width: 250px;
+}
+.resume4-education-detail .division{
+    display: flex;
+    width: 80%;
+    justify-content: left;
+}
+.resume4-achievements-detail{
+    margin-top: 0px;
+    width: 92%;
+    margin-left: 4%;
+}
+.resume4-achievements-detail .resume4-heading{
+    left: 43px;
+}
+.resume4-achievements-detail .resume4-skills-content{
+    flex-direction: column;
+    margin-top: 2px;
+}
+.resume4-achievements-detail .resume4-skills-content{
+    margin-left: 60px;
+    width: 99%;
+}
+.resume4-achievements-detail .resume4-subhead{
+    margin-left: none;
+    width: 90%;
+    margin: -1px;
+}
+.resume4-hobbies-detail{
+    margin-top:0px;
+    width: 92%;
+    margin-left: 4%;
+    height: 100px;
+}
+.resume4-hobbies-detail .resume4-heading{
+    left: 60px;
+}
+.resume4-hobbies-detail .resume4-skills-content{
+    margin-left: 70px;
+}
+.resume4-hobbies-detail .resume4-subhead{
+    margin-right: 30px;
+    width: 90%;
+}
+.resume4-bottom-line{
+    height: 10px;
+    background: #f2a4a4;
+    position: absolute;
+    width: 100%;
+    bottom: 0px;
+}
+
+
+
+
+
+
+
