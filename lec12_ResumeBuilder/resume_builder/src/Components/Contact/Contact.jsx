@@ -2,8 +2,8 @@ import React, { Component } from 'react';
 import "./Contact.css";
 import {contactCodes} from "../../util/codes";
 import firebaseApp from '../../firebase/firebaseConfig';
-import Skin2 from '../Skins/Skin1';
-import Skin from '../Skins/Skin';
+import Skin1 from '../Skins/Skin1';
+// import Skin from '../Skins/Skin';
 
 
 class Contact extends Component {
@@ -142,7 +142,7 @@ class Contact extends Component {
                 <div className="resume-viewer">
                     {/* get skin according to skinId */}
                     {/* <Skin skinId={this.state.skinId} contactDetails={this.state.contactDetails}></Skin> */}
-                    <Skin2 skinId={this.state.skinId} contactDetails={this.state.contactDetails}></Skin2>
+                    <Skin1 skinId={this.state.skinId} contactDetails={this.state.contactDetails}></Skin1>
                 </div>
             </div>
          );

@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import "./MySkin.css";
+import "./Skin2.css";
 
 class MySkin extends Component {
 

@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import "./Finalize.css";
-import Skin2 from '../Skins/Skin1';
+import Skin1 from '../Skins/Skin1';
 import firebaseApp from '../../firebase/firebaseConfig';
 import ReactToPDF from "react-to-pdf";
 
@@ -89,7 +89,7 @@ class Finalize extends Component {
                 </div>
                 <div className="finalize">
                     <div className="finalize-viewer">
-                        <Skin2 refProp={this.resume} contactDetails={contactDetails} educationDetails={educationDetails} ></Skin2>
+                        <Skin1 refProp={this.resume} contactDetails={contactDetails} educationDetails={educationDetails} ></Skin1>
                     </div>
                     <ReactToPDF targetRef = {this.resume} filename="resume.pdf" >
                         { ({toPdf}) =>{

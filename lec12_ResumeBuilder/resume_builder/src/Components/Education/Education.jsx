@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import firebase from "../../firebase/firebaseConfig";
 import "./Education.css";
 import {educationCodes} from "../../util/codes";
-import Skin2 from '../Skins/Skin1';
+import Skin1 from '../Skins/Skin1';
 import firebaseApp from '../../firebase/firebaseConfig';
 
 class Education extends Component {
@@ -155,7 +155,7 @@ class Education extends Component {
                 <button className="btn next" onClick={this.NextButtonHandler} >Next</button>
                 <div className="resume-viewer">
                     {/* get skin according to skinId */}
-                    <Skin2 skinId={this.state.skinId} educationDetails={this.state.educationDetails} contactDetails ={this.props.contactDetails}></Skin2>
+                    <Skin1 skinId={this.state.skinId} educationDetails={this.state.educationDetails} contactDetails ={this.props.contactDetails}></Skin1>
                 </div>
             </div> 
              );

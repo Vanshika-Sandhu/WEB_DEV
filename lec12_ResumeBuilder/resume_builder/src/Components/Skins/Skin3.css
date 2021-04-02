@@ -30,8 +30,8 @@
     width: 65%;
     height: 100%;
     background: white;
-    border-right: 1px solid lightgray;
-    border-bottom: 1px solid lightgray;
+    /* border-right: 1px solid lightgray;
+    border-bottom: 1px solid lightgray; */
 }
 .resume3-name{
     margin-bottom: 10px;

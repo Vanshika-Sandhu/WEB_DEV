@@ -1,6 +1,5 @@
 import React, { Component } from 'react';
 import Navbar from './Components/NavBar/Navbar';
-import MySkin from './Components/Skins/MySkin';
 import firebaseApp from "./firebase/firebaseConfig";
 import {BrowserRouter as Router, Redirect, Route, Switch} from "react-router-dom";
 import LandingPage from './Components/LandingPage/LandingPage';
@@ -15,7 +14,8 @@ import Education from './Components/Education/Education';
 import Finalize from './Components/Finalize/Finalize';
 import Skin3 from './Components/Skins/Skin3';
 import Skin4 from './Components/Skins/Skin4';
-// import Skin2 from './Components/Skins/Skin2';
+import Skin2 from './Components/Skins/Skin2';
+import Skin5 from './Components/Skins/Skin5'
 
 class App extends Component {
   state = { 
@@ -137,11 +137,12 @@ class App extends Component {
       // </div>
       // </Router>
 
-      // <MySkin/>
-
+      
       // <Skin1></Skin1>
+      // <Skin2/>
       // <Skin3></Skin3>
-      <Skin4></Skin4>
+      // <Skin4></Skin4>
+      <Skin5></Skin5>
       
     );
   }
